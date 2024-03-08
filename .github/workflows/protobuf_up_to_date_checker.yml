@@ -1,0 +1,43 @@
+name: Protobuf Up-to-date Checker
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'proto/**'
+
+jobs:
+  check-protobuf-up-to-date:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install Protoc
+      uses: arduino/setup-protoc@v3
+      with:
+        version: '25.1'
+
+    - uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: '^1.21'
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Setup and Run Protobuf Generation
+      run: |
+        make setup_proto
+        make gen_proto
+
+    - name: Check Diff
+      run: |
+        git diff --exit-code
+
