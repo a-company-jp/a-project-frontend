@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option go_package = "github.com/openhacku-team-a/a-project-frontend/proto/golang/pb_out";
+
+message UserData {
+  string user_id = 1;
+  string username = 2;
+  string firstname = 3;
+  string lastname = 4;
+  string firstname_kana = 5;
+  string lastname_kana = 6;
+  string status_message = 7;
+  repeated Tag tag = 8;
+  string icon_image_hash = 9; // GCS内のファイル名
+}
+
+message Tag {
+  string tag_id = 1;
+  string tag_name = 2;
+}
+
+message EventData {
+  string user_id = 1;
+  string event_id = 2;
+  string title = 3;
+  string content = 4;
+  string image_hash = 5; // GCS内のファイル名
+  string begin_date = 6; //  RFC3339
+  string finish_date = 7; // RFC3339
+}
