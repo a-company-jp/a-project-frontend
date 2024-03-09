@@ -2,7 +2,7 @@
 
 export const protobufPackage = "";
 
-export interface userData {
+export interface UserData {
   userId: string;
   username: string;
   firstname: string;
