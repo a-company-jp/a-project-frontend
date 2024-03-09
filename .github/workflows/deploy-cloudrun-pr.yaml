@@ -1,0 +1,70 @@
+name: Deploy to Cloud Run (PR preview)
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Google Cloud
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          token_format: access_token
+          workload_identity_provider: 'projects/218648927193/locations/global/workloadIdentityPools/default-pool/providers/provider-github'
+          service_account: 'gh-actions@openhacku-team-a.iam.gserviceaccount.com'
+
+      - name: Set up Cloud SDK
+        uses: 'google-github-actions/setup-gcloud@v2'
+        with:
+          version: '>= 363.0.0'
+
+      - name: Authorize Docker
+        id: docker-auth
+        uses: docker/login-action@v3
+        with:
+          username: 'oauth2accesstoken'
+          password: ${{ steps.auth.outputs.access_token }}
+          registry: asia-northeast1-docker.pkg.dev
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: asia-northeast1-docker.pkg.dev/openhacku-team-a/staging/frontend-pr-${{ github.event.number }}:latest
+          context: .
+          file: ./cloudrun/Dockerfile
+
+      - name: Deploy to Cloud Run
+        id: deploy
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: frontend-stg-pr-${{ github.event.number }}
+          region: "asia-northeast1"
+          image: asia-northeast1-docker.pkg.dev/openhacku-team-a/staging/frontend-pr-${{ github.event.number }}:latest
+
+      - name: Make CloudRun accessible
+        run: |
+          gcloud run services add-iam-policy-binding frontend-stg-pr-${{ github.event.number }} --region=asia-northeast1 --member=allUsers --role=roles/run.invoker
+
+      - name: Post comments
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          URL: ${{ github.event.pull_request.html_url }}
+        run:
+          gh pr comment -b "Deployed on ${{ steps.deploy.outputs.url }}" ${{ github.event.number }}
