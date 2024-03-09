@@ -47,17 +47,17 @@ jobs:
 
       - name: Download Cloud Run Service YAML
         run: |
-          gcloud run services describe hp-main --format yaml --region asia-northeast1 > ./cloudrun/service-hp-main.yaml
+          gcloud run services describe frontend-release --format yaml --region asia-northeast1 > ./cloudrun/service-frontend-release.yaml
 
       # replace github_sha field to latest commit sha. Changing spec.template is required to deploy new revision.
       # reference: https://cloud.google.com/run/docs/deploying?hl=ja#revision -- check yaml tab.
-      - name: Change some property of service-hp-main.yaml
+      - name: Change some property of service-frontend-release.yaml
         run: |
-          sed -i "s/github_sha: .*/github_sha: ${{ github.sha }}/g" ./cloudrun/service-hp-main.yaml
+          sed -i "s/github_sha: .*/github_sha: ${{ github.sha }}/g" ./cloudrun/service-frontend-release.yaml
 
       - name: Deploy to Cloud Run
         id: deploy
         uses: google-github-actions/deploy-cloudrun@v2
         with:
           region: "asia-northeast1"
-          metadata: "./cloudrun/service-hp-main.yaml"
+          metadata: "./cloudrun/service-frontend-release.yaml"
