@@ -159,7 +159,7 @@ const users: userData[] = [
  */
 const UserList = () => {
   return (
-    <div className="h-screen overflow-scroll divide-y">
+    <div className="divide-y">
       {users.map((user) => {
         return <User user={user} key={user.userId} />;
       })}

@@ -1,5 +1,6 @@
 import Sidebar from "@/components/Sidebar";
 import UserList from "@/components/UserList";
+import UserSearchForm from "@/components/UserSearchForm";
 
 const Main = () => {
   return (
@@ -11,9 +12,11 @@ const Main = () => {
         <div className="col-span-9">
           <div className="grid grid-cols-5">
             <div className="col-span-3">
-              <div className="grid grid-cols-4">
-                <div className="col-span-1">Search Form</div>
-                <div className="col-span-3">
+              <div className="h-screen overflow-scroll">
+                <div className="h-max">
+                  <UserSearchForm />
+                </div>
+                <div className="">
                   <UserList />
                 </div>
               </div>
