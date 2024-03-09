@@ -1,9 +1,9 @@
 import React from "react";
-import { userData } from "../../proto/typescript/pb_out/main";
+import { UserData } from "../../proto/typescript/pb_out/main";
 import UserIcon from "./UserIcon";
 
 interface Props {
-  user: userData | null;
+  user: UserData | null;
 }
 
 const CareerPreview = (props: Props) => {

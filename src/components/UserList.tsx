@@ -2,10 +2,10 @@
 
 import React, { Dispatch, SetStateAction } from "react";
 import User from "./User";
-import { userData } from "../../proto/typescript/pb_out/main";
+import { UserData } from "../../proto/typescript/pb_out/main";
 
 // テストデータ
-const users: userData[] = [
+const users: UserData[] = [
   {
     userId: "hogehogeId",
     username: "Mike Tanaka",
@@ -156,7 +156,7 @@ const users: userData[] = [
 ];
 
 interface Props {
-  setHoveredUser: Dispatch<SetStateAction<null | userData>>;
+  setHoveredUser: Dispatch<SetStateAction<null | UserData>>;
 }
 
 /**
