@@ -1,10 +1,12 @@
+import Sidebar from "@/components/Sidebar";
+
 const Main = () => {
   return (
     <div className="h-screen w-screen">
       <div className="w-full h-full">
         <div className="h-full grid grid-cols-12">
           <div className="col-span-2">
-            <div className="p-4 h-full bg-blue-300">Sidebar</div>
+            <Sidebar />
           </div>
           <div className="col-span-10">
             <div className="p-4 h-full grid grid-cols-3">
