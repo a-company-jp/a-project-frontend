@@ -1,8 +1,15 @@
+"use client";
+
+import CareerPreview from "@/components/CareerPreview";
 import Sidebar from "@/components/Sidebar";
 import UserList from "@/components/UserList";
 import UserSearchForm from "@/components/UserSearchForm";
+import { useState } from "react";
+import { userData } from "../../../proto/typescript/pb_out/main";
 
 const Main = () => {
+  const [hoveredUser, setHoveredUser] = useState<userData | null>(null);
+
   return (
     <div className="h-screen w-screen">
       <div className="grid grid-cols-10">
@@ -12,16 +19,20 @@ const Main = () => {
         <div className="col-span-9">
           <div className="grid grid-cols-5">
             <div className="col-span-3">
-              <div className="h-screen overflow-scroll">
+              <div className="p-4 h-screen overflow-scroll hidden-scrollbar">
                 <div className="h-max">
                   <UserSearchForm />
                 </div>
                 <div className="">
-                  <UserList />
+                  <UserList setHoveredUser={setHoveredUser} />
                 </div>
               </div>
             </div>
-            <div className="col-span-2">Career Preview</div>
+            <div className="col-span-2">
+              <div className="p-4 h-screen">
+                <CareerPreview user={hoveredUser} />
+              </div>
+            </div>
           </div>
         </div>
       </div>

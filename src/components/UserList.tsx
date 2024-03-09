@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { Dispatch, SetStateAction } from "react";
 import User from "./User";
 import { userData } from "../../proto/typescript/pb_out/main";
 
@@ -153,15 +155,25 @@ const users: userData[] = [
   },
 ];
 
+interface Props {
+  setHoveredUser: Dispatch<SetStateAction<null | userData>>;
+}
+
 /**
  * UserList Component
  * ユーザー一覧
  */
-const UserList = () => {
+const UserList = (props: Props) => {
+  const { setHoveredUser } = props;
+
   return (
     <div className="divide-y">
       {users.map((user) => {
-        return <User user={user} key={user.userId} />;
+        return (
+          <div key={user.userId} onMouseEnter={() => setHoveredUser(user)}>
+            <User user={user} />
+          </div>
+        );
       })}
     </div>
   );
