@@ -2,6 +2,7 @@ import React from "react";
 import User from "./User";
 import { userData } from "../../proto/typescript/pb_out/main";
 
+// テストデータ
 const users: userData[] = [
   {
     userId: "hogehogeId",
@@ -152,6 +153,10 @@ const users: userData[] = [
   },
 ];
 
+/**
+ * UserList Component
+ * ユーザー一覧
+ */
 const UserList = () => {
   return (
     <div className="divide-y">

@@ -6,6 +6,10 @@ interface Props {
   size: number;
 }
 
+/**
+ * UserIcon
+ * ユーザーのアイコン
+ */
 const UserIcon = (props: Props) => {
   const { iconImageHash, size } = props;
 

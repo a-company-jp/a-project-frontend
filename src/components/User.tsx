@@ -7,6 +7,10 @@ interface Props {
   user: userData;
 }
 
+/**
+ * User Component
+ * 一覧に表示するユーザー
+ */
 const User = (props: Props) => {
   const { user } = props;
   return (
