@@ -23,7 +23,7 @@ const Main = () => {
                 <div className="h-max">
                   <UserSearchForm />
                 </div>
-                <div className="">
+                <div className="p-4">
                   <UserList setHoveredUser={setHoveredUser} />
                 </div>
               </div>

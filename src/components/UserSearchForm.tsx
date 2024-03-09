@@ -6,7 +6,7 @@ const UserSearchForm = () => {
   return (
     <div className="p-4">
       <div className="my-4">
-        <p className="text-base my-4">ユーザーを検索する</p>
+        <p className="text-lg font-bold my-4">ユーザーを検索する</p>
         <input
           type="text"
           placeholder="キーワードで検索"
