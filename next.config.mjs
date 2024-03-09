@@ -6,7 +6,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'storage.googleapis.com',
         port: '',
-        pathname: '/image-upload-demo-a-open-hack-u/**'
+        pathname: '/dev-open-hacku-bucket/**'
       }
     ]
   }

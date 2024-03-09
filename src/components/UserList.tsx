@@ -25,7 +25,7 @@ const users: userData[] = [
       },
     ],
     iconImageHash:
-      "https://storage.googleapis.com/image-upload-demo-a-open-hack-u/dev-person-imgs/person1.jpg",
+      "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person1.jpg",
   },
   {
     userId: "John Smith",
@@ -46,7 +46,7 @@ const users: userData[] = [
       },
     ],
     iconImageHash:
-      "https://storage.googleapis.com/image-upload-demo-a-open-hack-u/dev-person-imgs/person2.jpg",
+      "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person2.jpg",
   },
   {
     userId: "Emily Johnson",
@@ -67,7 +67,7 @@ const users: userData[] = [
       },
     ],
     iconImageHash:
-      "https://storage.googleapis.com/image-upload-demo-a-open-hack-u/dev-person-imgs/person3.jpg",
+      "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person3.jpg",
   },
   {
     userId: "Jessica Lee",
@@ -88,7 +88,7 @@ const users: userData[] = [
       },
     ],
     iconImageHash:
-      "https://storage.googleapis.com/image-upload-demo-a-open-hack-u/dev-person-imgs/person4.jpg",
+      "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person4.jpg",
   },
   {
     userId: "Michael Brown",
@@ -109,7 +109,7 @@ const users: userData[] = [
       },
     ],
     iconImageHash:
-      "https://storage.googleapis.com/image-upload-demo-a-open-hack-u/dev-person-imgs/person5.jpg",
+      "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person5.jpg",
   },
   {
     userId: "Sophia Martinez",
@@ -130,7 +130,7 @@ const users: userData[] = [
       },
     ],
     iconImageHash:
-      "https://storage.googleapis.com/image-upload-demo-a-open-hack-u/dev-person-imgs/person6.jpg",
+      "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person6.jpg",
   },
   {
     userId: "David Garcia",
@@ -151,7 +151,7 @@ const users: userData[] = [
       },
     ],
     iconImageHash:
-      "https://storage.googleapis.com/image-upload-demo-a-open-hack-u/dev-person-imgs/person7.jpg",
+      "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person7.jpg",
   },
 ];
 
@@ -167,7 +167,7 @@ const UserList = (props: Props) => {
   const { setHoveredUser } = props;
 
   return (
-    <div className="divide-y">
+    <div>
       {users.map((user) => {
         return (
           <div key={user.userId} onMouseEnter={() => setHoveredUser(user)}>
