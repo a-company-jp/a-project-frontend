@@ -19,7 +19,7 @@ message Tag {
   string tag_name = 2;
 }
 
-message EventData {
+message Milestone {
   string user_id = 1;
   string event_id = 2;
   string title = 3;
@@ -27,4 +27,9 @@ message EventData {
   string image_hash = 5; // GCS内のファイル名
   string begin_date = 6; //  RFC3339
   string finish_date = 7; // RFC3339
+}
+
+message UserInfoResponse {
+  UserData user_data = 1;
+  repeated Milestone milestones = 2;
 }
