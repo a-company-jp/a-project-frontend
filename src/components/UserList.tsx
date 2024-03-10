@@ -24,6 +24,8 @@ const UserList = (props: Props) => {
   const pageChange = (data: { selected: number }) => {
     let pageNumber = data.selected;
     setStart(pageNumber * perPage);
+    // HoverされているUserをリセット
+    setHoveredUser(null);
   };
 
   return (

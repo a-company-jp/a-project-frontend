@@ -28,7 +28,7 @@ const CareerPreview = (props: Props) => {
             </div>
           </div>
         ) : (
-          <p>any user not hovered</p>
+          <p>Hover some user !!</p>
         )}
       </div>
     </div>
