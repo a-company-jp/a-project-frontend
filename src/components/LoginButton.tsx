@@ -1,10 +1,12 @@
 import React from "react";
 
+import {login}  from '../lib/firebase/auth';
+
 const LoginButton = () => {
     //ログインボタン
     return (
         <form>
-          <button id="buttonSignin">Sign in</button>
+          <button id="buttonSignin" onClick={login}>Sign in</button>
         </form>
     );
 }
