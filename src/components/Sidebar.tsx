@@ -3,6 +3,8 @@ import UserIcon from "./UserIcon";
 import SidebarIcon from "./SidebarIcon";
 
 const Sidebar = () => {
+  const userIconSize = 48;
+
   return (
     <div className="w-24 h-screen outline outline-2 items-center flex flex-col justify-between outline-gray-200 ">
       <div className="my-4 flex flex-col gap-y-4">
@@ -26,7 +28,7 @@ const Sidebar = () => {
       <div className="my-4">
         <UserIcon
           iconImageHash="https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person6.jpg"
-          size={48}
+          size={userIconSize}
         />
       </div>
     </div>
