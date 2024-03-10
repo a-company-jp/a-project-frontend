@@ -23,13 +23,13 @@ const Main = () => {
                 <div className="h-max">
                   <UserSearchForm />
                 </div>
-                <div className="p-4">
+                <div className="py-4 items-center">
                   <UserList setHoveredUser={setHoveredUser} />
                 </div>
               </div>
             </div>
             <div className="col-span-2">
-              <div className="p-4 h-screen">
+              <div className="pt-4 h-screen">
                 <CareerPreview user={hoveredUser} />
               </div>
             </div>
