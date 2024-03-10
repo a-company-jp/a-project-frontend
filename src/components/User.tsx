@@ -33,11 +33,9 @@ const User = (props: Props) => {
           </div>
         </div>
       </div>
-      <div className="mt-2 relative">
-        <div className="px-4 py-4 flex items-center rounded bg-gray-100 before:content-[''] before:absolute before:top-[-40%] before:left-10 before:border-[12px] before:border-transparent before:border-b-gray-100">
-          <div className="mr-2 material-symbols-outlined">chat</div>
-          <div>{user.statusMessage}</div>
-        </div>
+      <div className="mt-2 relative px-4 py-4 flex items-center rounded bg-gray-100 before:content-[''] before:absolute before:top-[-40%] before:left-10 before:border-[12px] before:border-transparent before:border-b-gray-100">
+        <div className="mr-2 material-symbols-outlined">chat</div>
+        <div>{user.statusMessage}</div>
       </div>
     </div>
   );
