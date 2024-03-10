@@ -18,8 +18,8 @@ const User = (props: Props) => {
 
   return (
     <div
-      className={`p-4 my-4 outline outline-2 outline-gray-200 rounded ${
-        hovered ? "outline-4 outline-blue-200" : ""
+      className={`p-4 my-4 outline outline-2  rounded ${
+        hovered ? "outline-4 outline-blue-200" : "outline-gray-200"
       }`}
     >
       <div className="flex flex-row items-center">
