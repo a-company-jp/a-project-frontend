@@ -168,7 +168,7 @@ const UserList = (props: Props) => {
   const { setHoveredUser, hoveredUser } = props;
 
   return (
-    <div className="w-full">
+    <div className="w-full py-4 items-center">
       {users.map((user) => {
         return (
           <div key={user.userId} className="flex flex-row items-center">
