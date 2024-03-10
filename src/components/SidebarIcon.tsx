@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 interface Props {
   icon: JSX.Element; // iconのElement
@@ -11,8 +11,7 @@ interface Props {
 const SidebarIcon = (props: Props) => {
   const { icon, path } = props;
   const pathname = usePathname();
-
-  // NOTE: onClickで遷移する関数かく
+  const router = useRouter();
 
   return (
     <div
@@ -21,6 +20,7 @@ const SidebarIcon = (props: Props) => {
           ? "text-white bg-blue-600"
           : "text-gray-500 hover:text-blue-600"
       } `}
+      onClick={() => router.push(path)}
     >
       {icon}
     </div>
