@@ -20,7 +20,7 @@ export interface Tag {
   tagName: string;
 }
 
-export interface EventData {
+export interface Milestone {
   userId: string;
   eventId: string;
   title: string;
@@ -31,6 +31,11 @@ export interface EventData {
   beginDate: string;
   /** RFC3339 */
   finishDate: string;
+}
+
+export interface UserInfoResponse {
+  userData: UserData | undefined;
+  milestones: Milestone[];
 }
 
 export const _PACKAGE_NAME = "";
