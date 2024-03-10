@@ -157,6 +157,7 @@ const users: UserData[] = [
 
 interface Props {
   setHoveredUser: Dispatch<SetStateAction<null | UserData>>;
+  hoveredUser: null | UserData;
 }
 
 /**
@@ -164,14 +165,33 @@ interface Props {
  * ユーザー一覧
  */
 const UserList = (props: Props) => {
-  const { setHoveredUser } = props;
+  const { setHoveredUser, hoveredUser } = props;
 
   return (
-    <div>
+    <div className="w-full">
       {users.map((user) => {
         return (
-          <div key={user.userId} onMouseEnter={() => setHoveredUser(user)}>
-            <User user={user} />
+          <div key={user.userId} className="flex flex-row items-center">
+            <div className="w-11/12" onMouseEnter={() => setHoveredUser(user)}>
+              <User
+                user={user}
+                hovered={
+                  hoveredUser ? hoveredUser.userId === user.userId : false
+                }
+              />
+            </div>
+            {hoveredUser && hoveredUser.userId === user.userId ? (
+              <div className="w-1/12">
+                <span
+                  className="material-symbols-outlined"
+                  style={{ fontSize: "96px", color: "#bfdbfe" }}
+                >
+                  arrow_right
+                </span>
+              </div>
+            ) : (
+              <div></div>
+            )}
           </div>
         );
       })}

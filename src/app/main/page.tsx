@@ -24,12 +24,15 @@ const Main = () => {
                   <UserSearchForm />
                 </div>
                 <div className="py-4 items-center">
-                  <UserList setHoveredUser={setHoveredUser} />
+                  <UserList
+                    setHoveredUser={setHoveredUser}
+                    hoveredUser={hoveredUser}
+                  />
                 </div>
               </div>
             </div>
             <div className="col-span-2">
-              <div className="pt-4 h-screen">
+              <div className="pt-4 pr-4 pb-4 h-screen">
                 <CareerPreview user={hoveredUser} />
               </div>
             </div>

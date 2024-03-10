@@ -5,6 +5,7 @@ import Tag from "./Tag";
 
 interface Props {
   user: UserData;
+  hovered: boolean;
 }
 
 /**
@@ -12,9 +13,13 @@ interface Props {
  * 一覧に表示するユーザー
  */
 const User = (props: Props) => {
-  const { user } = props;
+  const { user, hovered } = props;
   return (
-    <div className="p-4 my-4 outline outline-2 outline-gray-200 rounded hover:outline-4 hover:outline-blue-200">
+    <div
+      className={`p-4 my-4 outline outline-2 outline-gray-200 rounded ${
+        hovered ? "outline-4 outline-blue-200" : ""
+      }`}
+    >
       <div className="flex flex-row items-center">
         <div className="mb-2 mr-4">
           <UserIcon iconImageHash={user.iconImageHash} size={96} />

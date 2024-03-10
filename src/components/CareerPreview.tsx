@@ -10,7 +10,11 @@ const CareerPreview = (props: Props) => {
   const { user } = props;
 
   return (
-    <div className="h-full outline outline-2 outline-gray-200 rounded">
+    <div
+      className={`h-full outline rounded ${
+        user ? "outline-4 outline-blue-200" : "outline-2 outline-gray-200"
+      }`}
+    >
       <div className="flex h-full justify-center items-center">
         {
           // NOTE: ナジャさんの作成したコンポーネント置く。
