@@ -79,14 +79,14 @@ const UserList = (props: Props) => {
         }
         // 「前へ」の表示
         previousLabel="<"
-        // 「後へ」の表示
-        nextLabel=">"
         // 「前へ」のli要素のクラス名
         previousClassName={"inline-flex justify-center"}
-        // 「後へ」のli要素のクラス名
-        nextClassName={"inline-flex justify-center"}
         // 「前へ」のa要素のクラス名
         previousLinkClassName="justify-center inline-flex items-center text-base rounded h-8 w-8 hover:bg-gray-200"
+        // 「後へ」の表示
+        nextLabel=">"
+        // 「後へ」のli要素のクラス名
+        nextClassName={"inline-flex justify-center"}
         // 「後へ」のa要素のクラス名
         nextLinkClassName="justify-center inline-flex items-center text-base rounded h-8 w-8 hover:bg-gray-200"
         // 使えないボタン（先頭にいる時の「前へ」など）のクラス名
