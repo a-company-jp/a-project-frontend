@@ -32,10 +32,7 @@ const UserList = (props: Props) => {
             </div>
             {hoveredUser && hoveredUser.userId === user.userId ? (
               <div className="w-1/12">
-                <span
-                  className="material-symbols-outlined"
-                  style={{ fontSize: "96px", color: "#bfdbfe" }}
-                >
+                <span className="material-symbols-outlined material-icons text-8xl text-blue-200 ">
                   arrow_right
                 </span>
               </div>

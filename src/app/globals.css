@@ -13,3 +13,55 @@
     display: none;
   }
 }
+
+.material-icons.text-xs {
+  font-size: 12px;
+}
+
+.material-icons.text-sm {
+  font-size: 14px;
+}
+
+.material-icons.text-base {
+  font-size: 16px;
+}
+
+.material-icons.text-lg {
+  font-size: 18px;
+}
+
+.material-icons.text-xl {
+  font-size: 20px;
+}
+
+.material-icons.text-2xl {
+  font-size: 24px;
+}
+
+.material-icons.text-3xl {
+  font-size: 30px;
+}
+
+.material-icons.text-4xl {
+  font-size: 36px;
+}
+
+.material-icons.text-5xl {
+  font-size: 48px;
+}
+
+.material-icons.text-6xl {
+  font-size: 60px;
+}
+
+.material-icons.text-7xl {
+  font-size: 72px;
+}
+
+.material-icons.text-8xl {
+  font-size: 96px;
+}
+
+.material-icons.text-9xl {
+  font-size: 128px;
+}
