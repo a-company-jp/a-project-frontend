@@ -8,7 +8,7 @@ const Sidebar = () => {
       <div className="my-4 flex flex-col gap-y-4">
         <SidebarIcon
           icon={
-            <span className="material-symbols-outlined material-icons text-3xl">
+            <span className="material-symbols-outlined material-icons text-3xl cursor-pointer">
               home
             </span>
           }
@@ -16,7 +16,7 @@ const Sidebar = () => {
         />
         <SidebarIcon
           icon={
-            <span className="material-symbols-outlined material-icons text-3xl">
+            <span className="material-symbols-outlined material-icons text-3xl cursor-pointer">
               settings
             </span>
           }
