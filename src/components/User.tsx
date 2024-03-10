@@ -14,7 +14,7 @@ interface Props {
 const User = (props: Props) => {
   const { user } = props;
   return (
-    <div className="p-4 my-4">
+    <div className="p-4 my-4 outline outline-2 outline-gray-200 rounded hover:outline-4 hover:outline-blue-200">
       <div className="flex flex-row items-center">
         <div className="mb-2 mr-4">
           <UserIcon iconImageHash={user.iconImageHash} size={96} />
