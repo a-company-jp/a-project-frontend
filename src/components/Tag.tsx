@@ -8,7 +8,7 @@ const Tag = (props: Props) => {
   const { name } = props;
   return (
     <div className="mr-2">
-      <span className="text-sm bg-orange-400 py-1 px-3 text-white rounded-2xl">
+      <span className="text-[12px] bg-orange-400 py-1 px-3 text-white rounded-2xl">
         {name}
       </span>
     </div>

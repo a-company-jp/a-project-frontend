@@ -167,7 +167,7 @@ const UserList = (props: Props) => {
   const { setHoveredUser } = props;
 
   return (
-    <div>
+    <div className="divide-y">
       {users.map((user) => {
         return (
           <div key={user.userId} onMouseEnter={() => setHoveredUser(user)}>
