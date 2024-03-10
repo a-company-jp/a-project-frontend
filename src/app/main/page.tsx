@@ -11,22 +11,15 @@ const Main = () => {
   const [hoveredUser, setHoveredUser] = useState<UserData | null>(null);
 
   return (
-    <div className="h-screen w-screen grid grid-cols-10">
-      <div className="col-span-1">
-        <Sidebar />
-      </div>
-      <div className="col-span-9">
-        <div className="grid grid-cols-5">
-          <div className="col-span-3 p-4 h-screen overflow-scroll hidden-scrollbar">
-            <UserSearchForm />
-            <UserList
-              setHoveredUser={setHoveredUser}
-              hoveredUser={hoveredUser}
-            />
-          </div>
-          <div className="col-span-2">
-            <CareerPreview user={hoveredUser} />
-          </div>
+    <div className="h-screen w-screen flex">
+      <Sidebar />
+      <div className="w-full grid grid-cols-5">
+        <div className="col-span-3 p-4 h-screen overflow-scroll hidden-scrollbar">
+          <UserSearchForm />
+          <UserList setHoveredUser={setHoveredUser} hoveredUser={hoveredUser} />
+        </div>
+        <div className="col-span-2">
+          <CareerPreview user={hoveredUser} />
         </div>
       </div>
     </div>
