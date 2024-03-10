@@ -4,7 +4,7 @@ import React from "react";
 // ユーザーを検索するところ
 const UserSearchForm = () => {
   return (
-    <div className="pb-4">
+    <div className="pb-4 h-max">
       <p className="text-lg font-bold my-4">ユーザーを検索する</p>
       <input
         type="text"
