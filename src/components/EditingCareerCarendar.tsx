@@ -1,7 +1,8 @@
-"use client"
+"use client";
 
 import { useCallback, useState } from "react";
 import EditingCareerEvent from "./EditingCareerEvent";
+import milestones from "@/sample-data/milestones.json";
 
 const mockData: mockEvent = {
   id: "76310870",
@@ -21,9 +22,27 @@ const mockData: mockEvent = {
 const FULL_YEAR = 100;
 const START_YEAR = 2022;
 
+const USER_ID = "3";
+
 const EditingCareerCalendar = () => {
   const array = new Array(FULL_YEAR).fill(0);
-  const [lifeEvents, setLifeEvents] = useState<mockEvent[]>([mockData]);
+  const [lifeEvents, setLifeEvents] = useState<mockEvent[]>(
+    milestones
+      .filter((m) => m.userId === USER_ID)
+      .map((mm) => ({
+        id: mm.userId,
+        term: {
+          start: {
+            year: parseInt(mm.beginDate.split("-")[0]),
+            month: parseInt(mm.beginDate.split("-")[1]),
+          },
+          end: {
+            year: parseInt(mm.finishDate.split("-")[0]),
+            month: parseInt(mm.finishDate.split("-")[1]),
+          },
+        },
+      }))
+  );
 
   const updateLifeEvent = useCallback(
     (newLifeEvent: mockEvent) => {
