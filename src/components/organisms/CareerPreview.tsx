@@ -1,6 +1,6 @@
 import React from "react";
-import { UserData } from "../../proto/typescript/pb_out/main";
-import UserIcon from "./UserIcon";
+import UserIcon from "../atoms/UserIcon";
+import { UserData } from "../../../proto/typescript/pb_out/main";
 
 interface Props {
   user: UserData | null;

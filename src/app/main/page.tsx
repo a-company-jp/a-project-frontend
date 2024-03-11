@@ -1,9 +1,9 @@
 "use client";
 
-import CareerPreview from "@/components/CareerPreview";
-import Sidebar from "@/components/Sidebar";
-import UserList from "@/components/UserList";
-import UserSearchForm from "@/components/UserSearchForm";
+import CareerPreview from "@/components/organisms/CareerPreview"; 
+import Sidebar from "@/components/organisms/Sidebar";
+import UserList from "@/components/organisms/UserList"; 
+import UserSearchForm from "@/components/molecules/UserSearchForm";
 import { useState } from "react";
 import { UserData } from "../../../proto/typescript/pb_out/main";
 
