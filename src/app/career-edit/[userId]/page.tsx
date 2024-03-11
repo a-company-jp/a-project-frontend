@@ -1,3 +1,5 @@
+"use client"
+
 import EditingCareerCalendar from "@/components/EditingCareerCarendar";
 import React from "react";
 
