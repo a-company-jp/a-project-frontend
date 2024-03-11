@@ -38,7 +38,7 @@ const MileStoneDate = ({ beginDate, finishDate }: Props) : JSX.Element => {
     // styles (IMO: No strict typing needed.)
     const styles = {
         sizing: 'w-32 md:w-48 h-full',
-        text: 'md:text-2xl te"xt-xs text-center',
+        text: 'md:text-2xl te"xt-xs text-center pr-4',
         flex: 'flex flex-col items-center justify-center',
         color: 'bg-white'
     }
