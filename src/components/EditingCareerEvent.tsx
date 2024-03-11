@@ -2,10 +2,11 @@
 
 import useEditingCareerEvent from "@/hooks/useEditingCareerEvent";
 import { useMemo } from "react";
+import { Milestone } from "../../proto/typescript/pb_out/main";
 
 type Props = {
-  lifeEvent: mockEvent;
-  updateLifeEvent: (newLifeEvent: mockEvent) => void;
+  lifeEvent: Milestone;
+  updateLifeEvent: (newLifeEvent: Milestone) => void;
 };
 
 const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {

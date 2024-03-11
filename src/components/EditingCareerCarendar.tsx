@@ -3,6 +3,7 @@
 import { useCallback, useState } from "react";
 import EditingCareerEvent from "./EditingCareerEvent";
 import milestones from "@/sample-data/milestones.json";
+import { Milestone } from "../../proto/typescript/pb_out/main";
 
 // とりあえず100年分のカレンダーを表示
 const FULL_YEAR = 100;
@@ -14,28 +15,16 @@ type Props = {
 
 const EditingCareerCalendar = ({ userId }: Props) => {
   const array = new Array(FULL_YEAR).fill(0);
-  const [lifeEvents, setLifeEvents] = useState<mockEvent[]>(
-    milestones
-      .filter((m) => m.userId === userId)
-      .map((mm) => ({
-        id: mm.userId,
-        term: {
-          start: {
-            year: parseInt(mm.beginDate.split("-")[0]),
-            month: parseInt(mm.beginDate.split("-")[1]),
-          },
-          end: {
-            year: parseInt(mm.finishDate.split("-")[0]),
-            month: parseInt(mm.finishDate.split("-")[1]),
-          },
-        },
-      }))
+  const [lifeEvents, setLifeEvents] = useState<Milestone[]>(
+    milestones.filter((m) => m.userId === userId)
   );
 
   const updateLifeEvent = useCallback(
-    (newLifeEvent: mockEvent) => {
+    (newLifeEvent: Milestone) => {
       setLifeEvents(
-        lifeEvents.map((l) => (l.id === newLifeEvent.id ? newLifeEvent : l))
+        lifeEvents.map((l) =>
+          l.milestoneId === newLifeEvent.milestoneId ? newLifeEvent : l
+        )
       );
     },
     [lifeEvents]
