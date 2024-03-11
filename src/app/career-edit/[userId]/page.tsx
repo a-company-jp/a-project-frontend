@@ -1,6 +1,6 @@
 "use client";
 
-import EditingCareerCalendar from "@/components/EditingCareerCarendar";
+import EditingCareerCalendar from "@/components/EditingCareerCalendar";
 import { useParams } from "next/navigation";
 import React from "react";
 
