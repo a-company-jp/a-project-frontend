@@ -19,13 +19,13 @@ const MileStoneImage = ({ imageHash }: Props): JSX.Element => {
     const imageUri = imageHash ? generateImageUri(imageHash) : '/milestone-sample.png'
 
     const imageSizes = {
-        pc: {
+        large: {
             width: 350,
             height: 250
         },
-        mobile: {
+        small: {
             width: 210,
-            height: 180
+            height: 160
         }
     }
 
@@ -46,8 +46,8 @@ const MileStoneImage = ({ imageHash }: Props): JSX.Element => {
                 src={imageUri}
                 className='relative md:right-3 left-3'
                 alt='Milestone Image'
-                width={windowWidth > 768 ? imageSizes.pc.width : imageSizes.mobile.width}
-                height={windowWidth > 768 ? imageSizes.pc.height : imageSizes.mobile.height} />
+                width={windowWidth > 768 ? imageSizes.large.width : imageSizes.small.width}
+                height={windowWidth > 768 ? imageSizes.large.height : imageSizes.small.height} />
         </>
     )
 }
