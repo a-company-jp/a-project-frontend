@@ -31,9 +31,10 @@ const MileStoneImage = ({ imageHash }: Props): JSX.Element => {
 
     // states
     // TODO: implement custom hook
-    const [windowWidth, setWindowWidth] = React.useState<number>(window.innerWidth)
-    const handleResize = () => setWindowWidth(window.innerWidth)
+    const [windowWidth, setWindowWidth] = React.useState<number>(0)
     React.useEffect(() => {
+        setWindowWidth(window.innerWidth)
+        const handleResize = () => setWindowWidth(window.innerWidth)
         window.addEventListener('resize', handleResize)
         return () => window.removeEventListener('resize', handleResize)
     }, [])

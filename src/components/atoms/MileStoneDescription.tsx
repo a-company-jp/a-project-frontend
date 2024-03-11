@@ -37,9 +37,10 @@ const MileStoneDescription = ({ modal, isModalOpen, openModal, description }: Pr
     }
   }
 
-  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth)
-  const handleResize = () => setWindowWidth(window.innerWidth)
+  const [windowWidth, setWindowWidth] = useState<number>(0)
   React.useEffect(() => {
+    setWindowWidth(window.innerWidth)
+    const handleResize = (() => setWindowWidth(window.innerWidth))
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])

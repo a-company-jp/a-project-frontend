@@ -43,11 +43,12 @@ const MileStoneDate = ({ beginDate, finishDate }: Props) : JSX.Element => {
         color: 'bg-white'
     }
 
-    // TODO: implement custom hook
-    const [windowWidth, setWindowWidth] = React.useState<number>(window.innerWidth)
-    const handleResize = () => setWindowWidth(window.innerWidth)
-
+    // TODO: implement custom hook    
+    const [windowWidth, setWindowWidth] = React.useState<number>(0)
+    
     React.useEffect(() => {
+        setWindowWidth(window.innerWidth)
+        const handleResize = window && (() => setWindowWidth(window.innerWidth))
         window.addEventListener('resize', handleResize)
         return () => window.removeEventListener('resize', handleResize)
     }, [])
