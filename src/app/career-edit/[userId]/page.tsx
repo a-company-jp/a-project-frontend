@@ -4,7 +4,7 @@ import EditingCareerCalendar from "@/components/EditingCareerCalendar";
 import { useParams } from "next/navigation";
 import React from "react";
 
-const careerEdit = () => {
+const CareerEdit = () => {
   const params = useParams();
   const userId = Array.isArray(params.userId) ? null : params.userId;
 
@@ -16,4 +16,4 @@ const careerEdit = () => {
   );
 };
 
-export default careerEdit;
+export default CareerEdit;
