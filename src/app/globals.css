@@ -2,7 +2,4 @@
 @tailwind components;
 @tailwind utilities;
 
-.move-line-right {
-  transform: translateX(-16vw); /* TODO: optimize */
-}
 
