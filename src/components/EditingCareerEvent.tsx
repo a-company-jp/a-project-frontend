@@ -2,10 +2,11 @@
 
 import useEditingCareerEvent from "@/hooks/useEditingCareerEvent";
 import { useMemo } from "react";
+import { Milestone } from "../../proto/typescript/pb_out/main";
 
 type Props = {
-  lifeEvent: mockEvent;
-  updateLifeEvent: (newLifeEvent: mockEvent) => void;
+  lifeEvent: Milestone;
+  updateLifeEvent: (newLifeEvent: Milestone) => void;
 };
 
 const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
@@ -37,6 +38,8 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
       onMouseDown={handleMouseDownSlide}
     >
       <p>{`${term.start.year}年${term.start.month}月 ~ ${term.end.year}年${term.end.month}月`}</p>
+      <p>{lifeEvent.title}</p>
+      <p>{lifeEvent.content}</p>
       <div
         className={`w-full h-5 absolute bottom-0 ${
           editingState === "grabbing" ? "cursor-grabbing" : "cursor-row-resize"

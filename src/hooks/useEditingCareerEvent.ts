@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
+import { Milestone } from "../../proto/typescript/pb_out/main";
 
-const START_YEAR = 2025;
+const START_YEAR = 2022;
 
 type Props = {
-  lifeEvent: mockEvent,
-  updateLifeEvent: (newLifeEvent: mockEvent) => void,
+  lifeEvent: Milestone,
+  updateLifeEvent: (newLifeEvent: Milestone) => void,
 }
 
 const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
@@ -14,21 +15,30 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
   });
   const [editingState, setEditingState] = useState<"grabbing" | "sliding" | "none">("none");
 
+  const term = useMemo(() => ({
+    start: {
+      year: parseInt(lifeEvent.beginDate.split("-")[0]),
+      month: parseInt(lifeEvent.beginDate.split("-")[1]),
+    },
+    end: {
+      year: parseInt(lifeEvent.finishDate.split("-")[0]),
+      month: parseInt(lifeEvent.finishDate.split("-")[1]),
+    },
+  }), [lifeEvent]);
+
   useEffect(() => {
-    const newGridRowStart = lifeEvent.term.start.month + (lifeEvent.term.start.year - START_YEAR) * 12;
-    const newGridRowEnd = lifeEvent.term.end.month + (lifeEvent.term.end.year - START_YEAR) * 12 + 1;
+    const newGridRowStart = term.start.month + (term.start.year - START_YEAR) * 12;
+    const newGridRowEnd = term.end.month + (term.end.year - START_YEAR) * 12 + 1;
     setGridRow({ start: newGridRowStart, end: newGridRowEnd });
-  }, [lifeEvent]);
+  }, [term]);
 
-  const term = useMemo(() => lifeEvent.term, [lifeEvent]);
-
-  const gridRowToTerm = (inputGridRow: { start: number; end: number }) => {
+  const gridRowToDateString = (inputGridRow: { start: number; end: number }) => {
     const startMonth = inputGridRow.start % 12;
     const startYear = Math.floor(inputGridRow.start / 12 + START_YEAR);
     const endMonth = (inputGridRow.end - 1) % 12;
     const endYear = Math.floor((inputGridRow.end - 1) / 12 + START_YEAR);
     const newTerm = {
-      start: {
+      begin: {
         year: startMonth === 0 ? startYear - 1 : startYear,
         month: startMonth === 0 ? 12 : startMonth,
       },
@@ -36,8 +46,11 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
         year: endMonth === 0 ? endYear - 1 : endYear,
         month: endMonth === 0 ? 12 : endMonth,
       },
-    } as mockTerm;
-    return newTerm;
+    };
+    return {
+      begin: `${newTerm.begin.year}-${newTerm.begin.month}-01`,
+      end: `${newTerm.end.year}-${newTerm.end.month}-01`,
+    };
   }
 
   const handleMouseDownSlide = (
@@ -56,9 +69,11 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
         start: newGridStart > 0 ? newGridStart : 1,
         end: newGridStart > 0 ? newGridEnd : gridHeight,
       };
+      const dnewDateString = gridRowToDateString(newGridRow);
       updateLifeEvent({
-        id: lifeEvent.id,
-        term: gridRowToTerm(newGridRow),
+        ...lifeEvent,
+        beginDate: dnewDateString.begin,
+        finishDate: dnewDateString.end,
       });
     };
 
@@ -85,10 +100,12 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
         start: currentGridStart,
         end: newGridEnd,
       };
+      const dnewDateString = gridRowToDateString(newGridRow);
       updateLifeEvent({
-        id: lifeEvent.id,
-        term: gridRowToTerm(newGridRow),
-      })
+        ...lifeEvent,
+        beginDate: dnewDateString.begin,
+        finishDate: dnewDateString.end,
+      });
     };
 
     const handleMouseUp = () => {

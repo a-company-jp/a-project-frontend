@@ -1,34 +1,30 @@
-"use client"
+"use client";
 
 import { useCallback, useState } from "react";
 import EditingCareerEvent from "./EditingCareerEvent";
-
-const mockData: mockEvent = {
-  id: "76310870",
-  term: {
-    start: {
-      year: 2025,
-      month: 4,
-    },
-    end: {
-      year: 2026,
-      month: 3,
-    },
-  },
-};
+import milestones from "@/sample-data/milestones.json";
+import { Milestone } from "../../proto/typescript/pb_out/main";
 
 // とりあえず100年分のカレンダーを表示
 const FULL_YEAR = 100;
-const START_YEAR = 2025;
+const START_YEAR = 2022;
 
-const EditingCareerCalendar = () => {
+type Props = {
+  userId: string;
+};
+
+const EditingCareerCalendar = ({ userId }: Props) => {
   const array = new Array(FULL_YEAR).fill(0);
-  const [lifeEvents, setLifeEvents] = useState<mockEvent[]>([mockData]);
+  const [lifeEvents, setLifeEvents] = useState<Milestone[]>(
+    milestones.filter((m) => m.userId === userId)
+  );
 
   const updateLifeEvent = useCallback(
-    (newLifeEvent: mockEvent) => {
+    (newLifeEvent: Milestone) => {
       setLifeEvents(
-        lifeEvents.map((l) => (l.id === newLifeEvent.id ? newLifeEvent : l))
+        lifeEvents.map((l) =>
+          l.milestoneId === newLifeEvent.milestoneId ? newLifeEvent : l
+        )
       );
     },
     [lifeEvents]
