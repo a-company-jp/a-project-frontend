@@ -22,13 +22,15 @@ const mockData: mockEvent = {
 const FULL_YEAR = 100;
 const START_YEAR = 2022;
 
-const USER_ID = "3";
+type Props = {
+  userId: string;
+};
 
-const EditingCareerCalendar = () => {
+const EditingCareerCalendar = ({ userId }: Props) => {
   const array = new Array(FULL_YEAR).fill(0);
   const [lifeEvents, setLifeEvents] = useState<mockEvent[]>(
     milestones
-      .filter((m) => m.userId === USER_ID)
+      .filter((m) => m.userId === userId)
       .map((mm) => ({
         id: mm.userId,
         term: {
