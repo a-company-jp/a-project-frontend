@@ -24,8 +24,8 @@ const MileStoneImage = ({ imageHash }: Props): JSX.Element => {
             height: 250
         },
         mobile: {
-            width: 280,
-            height: 230
+            width: 210,
+            height: 180
         }
     }
 
@@ -43,7 +43,7 @@ const MileStoneImage = ({ imageHash }: Props): JSX.Element => {
         <>
             <Image
                 src={imageUri}
-                className='relative right-3'
+                className='relative md:right-3 left-3'
                 alt='Milestone Image'
                 width={windowWidth > 768 ? imageSizes.pc.width : imageSizes.mobile.width}
                 height={windowWidth > 768 ? imageSizes.pc.height : imageSizes.mobile.height} />
