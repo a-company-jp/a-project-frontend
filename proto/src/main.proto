@@ -21,7 +21,7 @@ message Tag {
 
 message Milestone {
   string user_id = 1;
-  string event_id = 2;
+  string milestone_id = 2;
   string title = 3;
   string content = 4;
   string image_hash = 5; // GCS内のファイル名
