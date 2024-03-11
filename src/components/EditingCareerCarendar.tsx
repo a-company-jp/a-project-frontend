@@ -4,20 +4,6 @@ import { useCallback, useState } from "react";
 import EditingCareerEvent from "./EditingCareerEvent";
 import milestones from "@/sample-data/milestones.json";
 
-const mockData: mockEvent = {
-  id: "76310870",
-  term: {
-    start: {
-      year: 2025,
-      month: 4,
-    },
-    end: {
-      year: 2026,
-      month: 3,
-    },
-  },
-};
-
 // とりあえず100年分のカレンダーを表示
 const FULL_YEAR = 100;
 const START_YEAR = 2022;
