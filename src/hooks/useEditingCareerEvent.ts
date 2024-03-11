@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-const START_YEAR = 2025;
+const START_YEAR = 2022;
 
 type Props = {
   lifeEvent: mockEvent,

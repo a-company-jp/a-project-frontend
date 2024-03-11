@@ -19,7 +19,7 @@ const mockData: mockEvent = {
 
 // とりあえず100年分のカレンダーを表示
 const FULL_YEAR = 100;
-const START_YEAR = 2025;
+const START_YEAR = 2022;
 
 const EditingCareerCalendar = () => {
   const array = new Array(FULL_YEAR).fill(0);
