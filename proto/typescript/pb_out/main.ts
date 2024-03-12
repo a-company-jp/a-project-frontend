@@ -22,7 +22,7 @@ export interface Tag {
 
 export interface Milestone {
   userId: string;
-  eventId: string;
+  milestoneId: string;
   title: string;
   content: string;
   /** GCS内のファイル名 */
