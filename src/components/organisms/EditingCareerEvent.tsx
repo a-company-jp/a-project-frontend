@@ -2,7 +2,7 @@
 
 import useEditingCareerEvent from "@/hooks/useEditingCareerEvent";
 import { useMemo } from "react";
-import { Milestone } from "../../proto/typescript/pb_out/main";
+import { Milestone } from "../../../proto/typescript/pb_out/main";
 
 type Props = {
   lifeEvent: Milestone;
