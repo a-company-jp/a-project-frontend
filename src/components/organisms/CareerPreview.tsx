@@ -1,30 +1,37 @@
 import React from "react";
 import UserIcon from "../atoms/UserIcon";
-import { UserData } from "../../../proto/typescript/pb_out/main";
+import { UserInfoResponse } from "../../../proto/typescript/pb_out/main";
 
 interface Props {
-  user: UserData | null;
+  userInfo: UserInfoResponse | null;
 }
 
 const CareerPreview = (props: Props) => {
-  const { user } = props;
+  const { userInfo } = props;
 
   return (
     <div className="pt-4 pr-4 pb-4 h-screen">
       <div
         className={`h-full outline rounded flex justify-center items-center ${
-          user ? "outline-4 outline-blue-200" : "outline-2 outline-gray-200"
+          userInfo ? "outline-4 outline-blue-200" : "outline-2 outline-gray-200"
         }`}
       >
         {
           // NOTE: ナジャさんの作成したコンポーネント置く。
           // 仮にHoverしたユーザーの情報を表示させている。
         }
-        {user ? (
+        {userInfo ? (
           <div className="flex-row items-center">
-            <UserIcon iconImageHash={user.iconImageHash} size={128} />
+            <UserIcon
+              iconImageHash={userInfo.userData?.iconImageHash ?? ""}
+              size={128}
+            />
             <div className="text-center">
-              <span>{user.firstname + " " + user.lastname}</span>
+              <span>
+                {userInfo.userData?.firstname +
+                  " " +
+                  userInfo.userData?.lastname}
+              </span>
             </div>
           </div>
         ) : (

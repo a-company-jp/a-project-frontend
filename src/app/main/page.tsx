@@ -5,14 +5,15 @@ import Sidebar from "@/components/organisms/Sidebar";
 import UserList from "@/components/organisms/UserList";
 import UserSearchForm from "@/components/molecules/UserSearchForm";
 import { useState } from "react";
-import { UserData } from "../../../proto/typescript/pb_out/main";
 import { useRouter } from "next/navigation";
 import { auth } from "@/lib/firebase/client";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { UserInfoResponse } from "../../../proto/typescript/pb_out/main";
 
 const Main = () => {
   const router = useRouter();
-  const [hoveredUser, setHoveredUser] = useState<UserData | null>(null);
+  const [hoveredUserInfo, setHoveredUserInfo] =
+    useState<UserInfoResponse | null>(null);
   const [user, isLoading] = useAuthState(auth);
   const redirectLogin = () => {
     router.push("/login");
@@ -34,10 +35,13 @@ const Main = () => {
       <div className="w-full grid grid-cols-5">
         <div className="col-span-3 p-4 h-screen overflow-scroll hidden-scrollbar">
           <UserSearchForm />
-          <UserList setHoveredUser={setHoveredUser} hoveredUser={hoveredUser} />
+          <UserList
+            setHoveredUserInfo={setHoveredUserInfo}
+            hoveredUserInfo={hoveredUserInfo}
+          />
         </div>
         <div className="col-span-2">
-          <CareerPreview user={hoveredUser} />
+          <CareerPreview userInfo={hoveredUserInfo} />
         </div>
       </div>
     </div>
