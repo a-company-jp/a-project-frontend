@@ -8,7 +8,8 @@ const nextConfig = {
         port: '',
         pathname: '/dev-open-hacku-bucket/**'
       }
-    ]
+    ],
+    domains: ['lh3.googleusercontent.com']
   }
 };
 
