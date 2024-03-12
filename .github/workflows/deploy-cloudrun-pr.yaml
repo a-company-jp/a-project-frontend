@@ -42,6 +42,10 @@ jobs:
           password: ${{ steps.auth.outputs.access_token }}
           registry: asia-northeast1-docker.pkg.dev
 
+      - name: create .env file
+        run: |
+          echo "${{ secrets.ENV_VARS }}" > .env
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
@@ -57,6 +61,7 @@ jobs:
           service: frontend-stg-pr-${{ github.event.number }}
           region: "asia-northeast1"
           image: asia-northeast1-docker.pkg.dev/openhacku-team-a/staging/frontend-pr-${{ github.event.number }}:latest
+          env_vars_file: ".env"
 
       - name: Make CloudRun accessible
         run: |
