@@ -30,6 +30,29 @@ const EditingCareerCalendar = ({ userId }: Props) => {
     [lifeEvents]
   );
 
+  const addNewLifeEvent = useCallback(
+    (newLifeEvent: Milestone) => {
+      setLifeEvents([...lifeEvents, newLifeEvent]);
+    },
+    [lifeEvents]
+  );
+
+  const handleClickCalender = useCallback(
+    (calendarIndex: number) => {
+      const newLifeEventBeginYear = calendarIndex + START_YEAR;
+      addNewLifeEvent({
+        userId: userId,
+        milestoneId: `${Math.random() * 10000}`, //仮置き
+        title: "新しいマイルストーン",
+        content: "新しいマイルストーンのコンテンツ",
+        imageHash: "",
+        beginDate: `${newLifeEventBeginYear}-01-01`,
+        finishDate: `${newLifeEventBeginYear}-12-01`,
+      });
+    },
+    [userId, addNewLifeEvent]
+  );
+
   return (
     <div
       className="grid"
@@ -48,11 +71,19 @@ const EditingCareerCalendar = ({ userId }: Props) => {
       ))}
       {array.map((_, index) => (
         <div
-          className="border-y-[0.5px] col-start-2 col-end-4"
+          className="border-y-[0.5px] col-start-2 col-end-4 cursor-default"
           style={{
             gridRow: `${index * 12 + 1} / span 12`,
           }}
           key={`year-${index}`}
+          onClick={() => {
+            handleClickCalender(index);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") handleClickCalender(index);
+          }}
+          role="button"
+          tabIndex={0}
         >
           {" "}
         </div>
