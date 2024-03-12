@@ -1,13 +1,15 @@
-import React from 'react'
+import React from "react";
 
 type Props = {
-    title: string
-}
+  title: string;
+};
 
 const styles = {
-    text: 'md:text-3xl text-lg'
-}
+  text: "md:text-3xl text-lg",
+};
 
-const MileStoneTitle = ({ title }: Props) => <h3 className={styles.text}>{title}</h3>
+const MileStoneTitle = ({ title }: Props) => (
+  <h3 className={styles.text}>{title}</h3>
+);
 
-export default MileStoneTitle
+export default MileStoneTitle;

@@ -24,7 +24,7 @@ const User = (props: Props) => {
     >
       <div className="flex flex-row items-center">
         <div className="mb-2 mr-4">
-          <UserIcon iconUrl={user.iconUrl??""} size={iconSize} />
+          <UserIcon iconUrl={user.iconUrl ?? ""} size={iconSize} />
         </div>
         <div>
           <div className="text-2xl font-semibold">{user.username}</div>
