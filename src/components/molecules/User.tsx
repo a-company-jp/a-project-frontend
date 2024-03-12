@@ -1,7 +1,7 @@
 import React from "react";
-import { UserData } from "../../proto/typescript/pb_out/main";
-import UserIcon from "./UserIcon";
-import Tag from "./Tag";
+import { UserData } from "../../../proto/typescript/pb_out/main"; 
+import UserIcon from "../atoms/UserIcon"; 
+import Tag from "../atoms/Tag"; 
 
 interface Props {
   user: UserData;

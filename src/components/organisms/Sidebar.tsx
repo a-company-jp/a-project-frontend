@@ -1,9 +1,16 @@
 import React from "react";
-import UserIcon from "./UserIcon";
-import SidebarIcon from "./SidebarIcon";
+import UserIcon from "../atoms/UserIcon";
+import { useRouter } from "next/navigation";
+import SidebarIcon from "../atoms/SidebarIcon";
+import { logout } from "@/lib/firebase/auth";
 
 const Sidebar = () => {
+  const router = useRouter();
   const userIconSize = 48;
+  const handleClick = () => {
+    logout();
+    router.push("/login");
+  };
 
   return (
     <div className="w-24 h-screen outline outline-2 items-center flex flex-col justify-between outline-gray-200 ">
@@ -19,10 +26,26 @@ const Sidebar = () => {
         <SidebarIcon
           icon={
             <span className="material-symbols-outlined material-icons text-3xl cursor-pointer">
+              edit
+            </span>
+          }
+          path="/edit"
+        />
+        <SidebarIcon
+          icon={
+            <span className="material-symbols-outlined material-icons text-3xl cursor-pointer">
               settings
             </span>
           }
           path="/setting"
+        />
+        <SidebarIcon
+          icon={
+            <span className="material-symbols-outlined material-icons text-3xl cursor-pointer">
+              logout
+            </span>
+          }
+          onClick={handleClick}
         />
       </div>
       <div className="my-4">

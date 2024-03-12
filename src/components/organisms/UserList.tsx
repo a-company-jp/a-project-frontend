@@ -1,8 +1,8 @@
 "use client";
 
 import React, { Dispatch, SetStateAction, useState } from "react";
-import User from "./User";
-import { UserData } from "../../proto/typescript/pb_out/main";
+import User from "../molecules/User";
+import { UserData } from "../../../proto/typescript/pb_out/main"; 
 import users from "@/constants/json/user-data.json"; // テストデータ読み込み
 import ReactPaginate from "react-paginate";
 

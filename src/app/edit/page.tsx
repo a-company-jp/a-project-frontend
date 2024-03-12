@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { auth } from "@/lib/firebase/client";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-const Setting = () => {
+const Edit = () => {
   const router = useRouter();
   const [user, isLoading] = useAuthState(auth);
   const redirectLogin = () => {
@@ -25,11 +25,11 @@ const Setting = () => {
   return user ? (
     <div className="h-screen w-screen flex">
       <Sidebar />
-      <div className="w-full grid grid-cols-5">プロフィール設定</div>
+      <div className="w-full grid grid-cols-5">キャリア編集</div>
     </div>
   ) : (
     redirectLogin()
   );
 };
 
-export default Setting;
+export default Edit;

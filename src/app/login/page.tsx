@@ -1,15 +1,16 @@
 "use client";
 
-import Sidebar from "@/components/organisms/Sidebar";
 import { useRouter } from "next/navigation";
 import { auth } from "@/lib/firebase/client";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { login } from "@/lib/firebase/auth";
+import LoginButton from "@/components/atoms/LoginButton";
 
-const Setting = () => {
+const Home = () => {
   const router = useRouter();
   const [user, isLoading] = useAuthState(auth);
-  const redirectLogin = () => {
-    router.push("/login");
+  const redirectMain = () => {
+    router.push("/main");
   };
 
   if (isLoading)
@@ -22,14 +23,7 @@ const Setting = () => {
       </div>
     );
 
-  return user ? (
-    <div className="h-screen w-screen flex">
-      <Sidebar />
-      <div className="w-full grid grid-cols-5">プロフィール設定</div>
-    </div>
-  ) : (
-    redirectLogin()
-  );
+  return user ? redirectMain() : <LoginButton onClick={login} />;
 };
 
-export default Setting;
+export default Home;
