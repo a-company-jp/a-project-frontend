@@ -33,9 +33,27 @@ export interface Milestone {
   finishDate: string;
 }
 
+export interface UserInfoUpdateRequest {
+  userData: UserData | undefined;
+}
+
 export interface UserInfoResponse {
   userData: UserData | undefined;
   milestones: Milestone[];
+}
+
+export interface MilestoneCreateRequest {
+  /** milestone_id should be empty. */
+  milestone: Milestone | undefined;
+}
+
+export interface MilestoneCreateResponse {
+  milestone: Milestone | undefined;
+}
+
+export interface MilestoneUpdateRequest {
+  /** user_id and milestone_id should be valid. */
+  milestone: Milestone | undefined;
 }
 
 export const _PACKAGE_NAME = "";
