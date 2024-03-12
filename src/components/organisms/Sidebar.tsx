@@ -47,6 +47,14 @@ const Sidebar = () => {
         <SidebarIcon
           icon={
             <span className="material-symbols-outlined material-icons text-3xl cursor-pointer">
+              map
+            </span>
+          }
+          path="/future-time-line"
+        />
+        <SidebarIcon
+          icon={
+            <span className="material-symbols-outlined material-icons text-3xl cursor-pointer">
               logout
             </span>
           }
