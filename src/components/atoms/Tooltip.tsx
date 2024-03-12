@@ -37,4 +37,6 @@ const Tooltip = memo((props: Props) => {
   );
 });
 
+Tooltip.displayName = "Tooltip";
+
 export default Tooltip;
