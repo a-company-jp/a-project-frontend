@@ -71,7 +71,7 @@ const EditingCareerCalendar = ({ userId }: Props) => {
       ))}
       {array.map((_, index) => (
         <div
-          className="border-y-[0.5px] col-start-2 col-end-4"
+          className="border-y-[0.5px] col-start-2 col-end-4 cursor-default"
           style={{
             gridRow: `${index * 12 + 1} / span 12`,
           }}
