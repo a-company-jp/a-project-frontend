@@ -7,7 +7,7 @@ type MileStone = {
   milestoneId: string;
   title: string;
   content: string;
-  imageUrl: string|null;
+  imageUrl?: string | undefined;
   beginDate: string;
   finishDate: string;
 };

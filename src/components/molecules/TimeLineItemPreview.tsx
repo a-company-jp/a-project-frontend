@@ -11,7 +11,7 @@ type Props = {
   content: string;
   beginDate: string;
   finishDate: string;
-  imageUrl: string | null;
+  imageUrl?: string | undefined;
 };
 
 const TimeLineItemPreview = ({

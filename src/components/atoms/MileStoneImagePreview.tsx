@@ -9,7 +9,7 @@ const generateImageUri = (imageUrl: string) => {
 };
 
 type Props = {
-  imageUrl: string | null;
+  imageUrl?: string | undefined | null;
 };
 
 const MileStoneImagePreview = ({ imageUrl }: Props): JSX.Element => {
