@@ -29,7 +29,23 @@ message Milestone {
   string finish_date = 7; // RFC3339
 }
 
+message UserInfoUpdateRequest {
+  UserData user_data = 1;
+}
+
 message UserInfoResponse {
   UserData user_data = 1;
   repeated Milestone milestones = 2;
+}
+
+message MilestoneCreateRequest {
+  Milestone milestone = 1; // milestone_id should be empty.
+}
+
+message MilestoneCreateResponse {
+  Milestone milestone = 1;
+}
+
+message MilestoneUpdateRequest {
+  Milestone milestone = 1; // user_id and milestone_id should be valid.
 }
