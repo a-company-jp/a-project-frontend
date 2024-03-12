@@ -1,6 +1,6 @@
 import React from "react";
-import TimeLineItem from "../molecules/TimeLineItem";
 import Line from "../atoms/Line";
+import TimeLineItemPreview from "../molecules/TimeLineItemPreview";
 
 type MileStone = {
   userId: string;
@@ -12,11 +12,13 @@ type MileStone = {
   finishDate: string;
 };
 
-function FutureTimeLine({ milestones }: { milestones: MileStone[] }) {
+function FutureTimeLinePreview({ milestones }: { milestones: MileStone[] }) {
   if (milestones.length === 0) {
     return <div>まだイベントがありません</div>;
   } else if (milestones.length === 1) {
-    return <TimeLineItem key={milestones[0].milestoneId} {...milestones[0]} />;
+    return (
+      <TimeLineItemPreview key={milestones[0].milestoneId} {...milestones[0]} />
+    );
   }
 
   const finalMilestone: MileStone = milestones[-1];
@@ -27,17 +29,23 @@ function FutureTimeLine({ milestones }: { milestones: MileStone[] }) {
       {milestonesWithoutFinal.length > 0 &&
         milestones.map((milestone) => {
           return (
-            <>
-              <TimeLineItem key={milestone.milestoneId} {...milestone} />
+            <div
+              className="flex flex-col items-center"
+              key={milestone.milestoneId}
+            >
+              <TimeLineItemPreview {...milestone} />
               <Line />
-            </>
+            </div>
           );
         })}
       {finalMilestone && (
-        <TimeLineItem key={finalMilestone.milestoneId} {...finalMilestone} />
+        <TimeLineItemPreview
+          key={finalMilestone.milestoneId}
+          {...finalMilestone}
+        />
       )}
     </>
   );
 }
 
-export default FutureTimeLine;
+export default FutureTimeLinePreview;

@@ -2,13 +2,13 @@
 
 import React, { Dispatch, SetStateAction, useState } from "react";
 import User from "../molecules/User";
-import { UserData } from "../../../proto/typescript/pb_out/main"; 
-import users from "@/constants/json/user-data.json"; // テストデータ読み込み
+import userInfos from "@/constants/json/user-info.json"; // テストデータ読み込み
 import ReactPaginate from "react-paginate";
+import { UserInfoResponse } from "../../../proto/typescript/pb_out/main";
 
 interface Props {
-  setHoveredUser: Dispatch<SetStateAction<null | UserData>>;
-  hoveredUser: null | UserData;
+  setHoveredUserInfo: Dispatch<SetStateAction<null | UserInfoResponse>>;
+  hoveredUserInfo: null | UserInfoResponse;
 }
 
 /**
@@ -16,7 +16,7 @@ interface Props {
  * ユーザー一覧
  */
 const UserList = (props: Props) => {
-  const { setHoveredUser, hoveredUser } = props;
+  const { setHoveredUserInfo, hoveredUserInfo } = props;
   const [start, setStart] = useState(0); // 表示させる範囲の先頭インデックス
   const perPage = 4; // 表示させる要素の個数
 
@@ -25,27 +25,34 @@ const UserList = (props: Props) => {
     let pageNumber = data.selected;
     setStart(pageNumber * perPage);
     // HoverされているUserをリセット
-    setHoveredUser(null);
+    setHoveredUserInfo(null);
   };
 
   return (
     <div className="w-full py-4 items-center">
       <div>
-        {users.slice(start, start + perPage).map((user) => {
+        {userInfos.slice(start, start + perPage).map((userInfo) => {
           return (
-            <li key={user.userId} className="flex flex-row items-center">
+            <li
+              key={userInfo.userData?.userId}
+              className="flex flex-row items-center"
+            >
               <div
                 className="w-11/12"
-                onMouseEnter={() => setHoveredUser(user)}
+                onMouseEnter={() => setHoveredUserInfo(userInfo)}
               >
                 <User
-                  user={user}
+                  user={userInfo.userData}
                   hovered={
-                    hoveredUser ? hoveredUser.userId === user.userId : false
+                    hoveredUserInfo
+                      ? hoveredUserInfo.userData?.userId ===
+                        userInfo.userData.userId
+                      : false
                   }
                 />
               </div>
-              {hoveredUser && hoveredUser.userId === user.userId ? (
+              {hoveredUserInfo &&
+              hoveredUserInfo.userData?.userId === userInfo.userData.userId ? (
                 <div className="w-1/12">
                   <span className="material-symbols-outlined material-icons text-8xl text-blue-200 ">
                     arrow_right
@@ -60,7 +67,7 @@ const UserList = (props: Props) => {
       </div>
       <ReactPaginate
         // 総ページ数
-        pageCount={Math.ceil(users.length / perPage)}
+        pageCount={Math.ceil(userInfos.length / perPage)}
         // 先頭と末尾に表示させるページ数
         marginPagesDisplayed={2}
         // 今いるページの前後何ページを表示させるか
