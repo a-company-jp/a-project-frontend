@@ -9,7 +9,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 const Sidebar = () => {
 
   const router = useRouter();
-  const [user, isLoading] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const userIconSize = 48;
   const handleClick = () => {
     logout();
