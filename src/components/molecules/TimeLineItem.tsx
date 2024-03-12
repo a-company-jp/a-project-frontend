@@ -8,10 +8,10 @@ type Props = {
   content: string
   beginDate: string
   finishDate: string
-  imageHash: string
+  imageUrl: string
 }
 
-const TimeLineItem = ({ title, content, beginDate, finishDate, imageHash }: Props) => {
+const TimeLineItem = ({ title, content, beginDate, finishDate, imageUrl }: Props) => {
 
   const styles = {
     sizing: 'md:h-52 h-28  md:w-4/5 w-11/12 rounded-lg ',
@@ -24,7 +24,7 @@ const TimeLineItem = ({ title, content, beginDate, finishDate, imageHash }: Prop
       <section className={`${styles.sizing} ${styles.flex} ${styles.color}`}>
         <MileStoneDate beginDate={beginDate} finishDate={finishDate} />
         <MileStoneContent title={title} description={content} />
-        <MileStoneImage imageHash={imageHash} />
+        <MileStoneImage imageUrl={imageUrl} />
       </section>
     </>
   )

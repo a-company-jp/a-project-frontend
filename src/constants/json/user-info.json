@@ -18,7 +18,7 @@
           "tagName": "CTO"
         }
       ],
-      "iconImageHash": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person1.jpg"
+      "iconUrl": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person1.jpg"
     },
     "milestones": [
       {
@@ -26,7 +26,7 @@
         "milestoneId": "1",
         "title": "Mile Stone Title",
         "content": "long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-01-11",
         "finishDate": "2024-03-11"
       },
@@ -35,7 +35,7 @@
         "milestoneId": "2",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-04-11",
         "finishDate": "2024-06-11"
       },
@@ -44,7 +44,7 @@
         "milestoneId": "3",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-07-11",
         "finishDate": "2024-09-11"
       },
@@ -53,7 +53,7 @@
         "milestoneId": "4",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-10-11",
         "finishDate": "2024-12-11"
       },
@@ -62,7 +62,7 @@
         "milestoneId": "5",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2024-01-11",
         "finishDate": "2025-03-11"
       },
@@ -71,7 +71,7 @@
         "milestoneId": "6",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2024-04-11",
         "finishDate": "2025-06-11"
       },
@@ -80,7 +80,7 @@
         "milestoneId": "7",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2024-07-11",
         "finishDate": "2025-09-11"
       },
@@ -89,7 +89,7 @@
         "milestoneId": "8",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2024-10-11",
         "finishDate": "2026-12-11"
       }
@@ -114,7 +114,7 @@
           "tagName": "Tech Enthusiast"
         }
       ],
-      "iconImageHash": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person2.jpg"
+      "iconUrl": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person2.jpg"
     },
     "milestones": [
       {
@@ -122,7 +122,7 @@
         "milestoneId": "1",
         "title": "Mile Stone Title",
         "content": "long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-01-11",
         "finishDate": "2024-03-11"
       },
@@ -131,7 +131,7 @@
         "milestoneId": "2",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-04-11",
         "finishDate": "2024-06-11"
       },
@@ -140,7 +140,7 @@
         "milestoneId": "3",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-07-11",
         "finishDate": "2024-09-11"
       },
@@ -149,7 +149,7 @@
         "milestoneId": "4",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-10-11",
         "finishDate": "2024-12-11"
       },
@@ -158,7 +158,7 @@
         "milestoneId": "5",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2024-01-11",
         "finishDate": "2025-03-11"
       },
@@ -167,7 +167,7 @@
         "milestoneId": "6",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2024-04-11",
         "finishDate": "2025-06-11"
       },
@@ -176,7 +176,7 @@
         "milestoneId": "7",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2024-07-11",
         "finishDate": "2025-09-11"
       },
@@ -185,7 +185,7 @@
         "milestoneId": "8",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2024-10-11",
         "finishDate": "2026-12-11"
       }
@@ -210,7 +210,7 @@
           "tagName": "Problem Solver"
         }
       ],
-      "iconImageHash": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person3.jpg"
+      "iconUrl": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person3.jpg"
     },
     "milestones": [
       {
@@ -218,7 +218,7 @@
         "milestoneId": "1",
         "title": "Mile Stone Title",
         "content": "long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-01-11",
         "finishDate": "2024-03-11"
       },
@@ -227,7 +227,7 @@
         "milestoneId": "2",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-04-11",
         "finishDate": "2024-06-11"
       },
@@ -236,7 +236,7 @@
         "milestoneId": "3",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-07-11",
         "finishDate": "2024-09-11"
       },
@@ -245,7 +245,7 @@
         "milestoneId": "4",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-10-11",
         "finishDate": "2024-12-11"
       },
@@ -254,7 +254,7 @@
         "milestoneId": "5",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2024-01-11",
         "finishDate": "2025-03-11"
       },
@@ -263,7 +263,7 @@
         "milestoneId": "6",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2024-04-11",
         "finishDate": "2025-06-11"
       },
@@ -272,7 +272,7 @@
         "milestoneId": "7",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2024-07-11",
         "finishDate": "2025-09-11"
       },
@@ -281,7 +281,7 @@
         "milestoneId": "8",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2024-10-11",
         "finishDate": "2026-12-11"
       }
@@ -306,7 +306,7 @@
           "tagName": "Entrepreneur"
         }
       ],
-      "iconImageHash": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person4.jpg"
+      "iconUrl": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person4.jpg"
     },
     "milestones": [
       {
@@ -314,7 +314,7 @@
         "milestoneId": "1",
         "title": "Mile Stone Title",
         "content": "long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-01-11",
         "finishDate": "2024-03-11"
       },
@@ -323,7 +323,7 @@
         "milestoneId": "2",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-04-11",
         "finishDate": "2024-06-11"
       },
@@ -332,7 +332,7 @@
         "milestoneId": "3",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-07-11",
         "finishDate": "2024-09-11"
       },
@@ -341,7 +341,7 @@
         "milestoneId": "4",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-10-11",
         "finishDate": "2024-12-11"
       },
@@ -350,7 +350,7 @@
         "milestoneId": "5",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2024-01-11",
         "finishDate": "2025-03-11"
       },
@@ -359,7 +359,7 @@
         "milestoneId": "6",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2024-04-11",
         "finishDate": "2025-06-11"
       },
@@ -368,7 +368,7 @@
         "milestoneId": "7",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2024-07-11",
         "finishDate": "2025-09-11"
       },
@@ -377,7 +377,7 @@
         "milestoneId": "8",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2024-10-11",
         "finishDate": "2026-12-11"
       }
@@ -402,7 +402,7 @@
           "tagName": "Data Scientist"
         }
       ],
-      "iconImageHash": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person5.jpg"
+      "iconUrl": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person5.jpg"
     },
     "milestones": [
       {
@@ -410,7 +410,7 @@
         "milestoneId": "1",
         "title": "Mile Stone Title",
         "content": "long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-01-11",
         "finishDate": "2024-03-11"
       },
@@ -419,7 +419,7 @@
         "milestoneId": "2",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2024-04-11",
         "finishDate": "2025-06-11"
       },
@@ -428,7 +428,7 @@
         "milestoneId": "3",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2025-07-11",
         "finishDate": "2026-09-11"
       },
@@ -437,7 +437,7 @@
         "milestoneId": "4",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2026-10-11",
         "finishDate": "2027-12-11"
       },
@@ -446,7 +446,7 @@
         "milestoneId": "5",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2028-01-11",
         "finishDate": "2029-03-11"
       },
@@ -455,7 +455,7 @@
         "milestoneId": "6",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2029-04-11",
         "finishDate": "2030-06-11"
       },
@@ -464,7 +464,7 @@
         "milestoneId": "7",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2030-07-11",
         "finishDate": "2031-09-11"
       },
@@ -473,7 +473,7 @@
         "milestoneId": "8",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2031-10-11",
         "finishDate": "2032-12-11"
       }
@@ -498,7 +498,7 @@
           "tagName": "Machine Learning Engineer"
         }
       ],
-      "iconImageHash": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person6.jpg"
+      "iconUrl": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person6.jpg"
     },
     "milestones": [
       {
@@ -506,7 +506,7 @@
         "milestoneId": "1",
         "title": "Mile Stone Title",
         "content": "long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-01-11",
         "finishDate": "2024-03-11"
       },
@@ -515,7 +515,7 @@
         "milestoneId": "2",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2024-04-11",
         "finishDate": "2025-06-11"
       },
@@ -524,7 +524,7 @@
         "milestoneId": "3",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2025-07-11",
         "finishDate": "2026-09-11"
       },
@@ -533,7 +533,7 @@
         "milestoneId": "4",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2026-10-11",
         "finishDate": "2027-12-11"
       },
@@ -542,7 +542,7 @@
         "milestoneId": "5",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2028-01-11",
         "finishDate": "2029-03-11"
       },
@@ -551,7 +551,7 @@
         "milestoneId": "6",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2029-04-11",
         "finishDate": "2030-06-11"
       },
@@ -560,7 +560,7 @@
         "milestoneId": "7",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2030-07-11",
         "finishDate": "2031-09-11"
       },
@@ -569,7 +569,7 @@
         "milestoneId": "8",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2031-10-11",
         "finishDate": "2032-12-11"
       }
@@ -594,7 +594,7 @@
           "tagName": "UI/UX Designer"
         }
       ],
-      "iconImageHash": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person7.jpg"
+      "iconUrl": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person7.jpg"
     },
     "milestones": [
       {
@@ -602,7 +602,7 @@
         "milestoneId": "1",
         "title": "Mile Stone Title",
         "content": "long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-01-11",
         "finishDate": "2024-03-11"
       },
@@ -611,7 +611,7 @@
         "milestoneId": "2",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2024-04-11",
         "finishDate": "2025-06-11"
       },
@@ -620,7 +620,7 @@
         "milestoneId": "3",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2025-07-11",
         "finishDate": "2026-09-11"
       },
@@ -629,7 +629,7 @@
         "milestoneId": "4",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2026-10-11",
         "finishDate": "2027-12-11"
       },
@@ -638,7 +638,7 @@
         "milestoneId": "5",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2028-01-11",
         "finishDate": "2029-03-11"
       },
@@ -647,7 +647,7 @@
         "milestoneId": "6",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2029-04-11",
         "finishDate": "2030-06-11"
       },
@@ -656,7 +656,7 @@
         "milestoneId": "7",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2030-07-11",
         "finishDate": "2031-09-11"
       },
@@ -665,7 +665,7 @@
         "milestoneId": "8",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2031-10-11",
         "finishDate": "2032-12-11"
       }

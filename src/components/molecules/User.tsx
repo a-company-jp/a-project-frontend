@@ -1,7 +1,7 @@
 import React from "react";
-import { UserData } from "../../../proto/typescript/pb_out/main"; 
-import UserIcon from "../atoms/UserIcon"; 
-import Tag from "../atoms/Tag"; 
+import { UserData } from "../../../proto/typescript/pb_out/main";
+import UserIcon from "../atoms/UserIcon";
+import Tag from "../atoms/Tag";
 
 interface Props {
   user: UserData;
@@ -24,7 +24,7 @@ const User = (props: Props) => {
     >
       <div className="flex flex-row items-center">
         <div className="mb-2 mr-4">
-          <UserIcon iconImageHash={user.iconImageHash} size={iconSize} />
+          <UserIcon iconUrl={user.iconUrl??""} size={iconSize} />
         </div>
         <div>
           <div className="text-2xl font-semibold">{user.username}</div>

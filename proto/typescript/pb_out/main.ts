@@ -12,7 +12,7 @@ export interface UserData {
   statusMessage: string;
   tag: Tag[];
   /** GCS内のファイル名 */
-  iconImageHash: string;
+  iconUrl?: string | undefined;
 }
 
 export interface Tag {
@@ -26,7 +26,9 @@ export interface Milestone {
   title: string;
   content: string;
   /** GCS内のファイル名 */
-  imageHash: string;
+  imageUrl?:
+    | string
+    | undefined;
   /** RFC3339 */
   beginDate: string;
   /** RFC3339 */

@@ -45,7 +45,7 @@ const EditingCareerCalendar = ({ userId }: Props) => {
         milestoneId: `${Math.random() * 10000}`, //仮置き
         title: "新しいマイルストーン",
         content: "新しいマイルストーンのコンテンツ",
-        imageHash: "",
+        imageUrl: "",
         beginDate: `${newLifeEventBeginYear}-01-01`,
         finishDate: `${newLifeEventBeginYear}-12-01`,
       });
