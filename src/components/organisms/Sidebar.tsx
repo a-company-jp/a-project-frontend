@@ -3,14 +3,19 @@ import UserIcon from "../atoms/UserIcon";
 import { useRouter } from "next/navigation";
 import SidebarIcon from "../atoms/SidebarIcon";
 import { logout } from "@/lib/firebase/auth";
+import { auth } from "@/lib/firebase/client";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const Sidebar = () => {
+
   const router = useRouter();
+  const [user] = useAuthState(auth);
   const userIconSize = 48;
   const handleClick = () => {
     logout();
     router.push("/login");
   };
+  const defaultUseIcon="https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person6.jpg"
 
   return (
     <div className="w-24 h-screen outline outline-2 items-center flex flex-col justify-between outline-gray-200 ">
@@ -50,7 +55,7 @@ const Sidebar = () => {
       </div>
       <div className="my-4">
         <UserIcon
-          iconImageHash="https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person6.jpg"
+          iconImageHash={user?.photoURL || defaultUseIcon}
           size={userIconSize}
         />
       </div>

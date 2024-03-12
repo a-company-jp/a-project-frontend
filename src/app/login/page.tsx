@@ -3,8 +3,7 @@
 import { useRouter } from "next/navigation";
 import { auth } from "@/lib/firebase/client";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { login } from "@/lib/firebase/auth";
-import LoginButton from "@/components/atoms/LoginButton";
+import Login from "@/components/templates/Login";
 
 const Home = () => {
   const router = useRouter();
@@ -23,7 +22,7 @@ const Home = () => {
       </div>
     );
 
-  return user ? redirectMain() : <LoginButton onClick={login} />;
+  return user ? redirectMain() : <Login />;
 };
 
 export default Home;

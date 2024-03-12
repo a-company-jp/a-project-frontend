@@ -281,6 +281,53 @@ func (x *Milestone) GetFinishDate() string {
 	return ""
 }
 
+type UserInfoUpdateRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	UserData *UserData `protobuf:"bytes,1,opt,name=user_data,json=userData,proto3" json:"user_data,omitempty"`
+}
+
+func (x *UserInfoUpdateRequest) Reset() {
+	*x = UserInfoUpdateRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_main_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UserInfoUpdateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserInfoUpdateRequest) ProtoMessage() {}
+
+func (x *UserInfoUpdateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_main_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserInfoUpdateRequest.ProtoReflect.Descriptor instead.
+func (*UserInfoUpdateRequest) Descriptor() ([]byte, []int) {
+	return file_main_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *UserInfoUpdateRequest) GetUserData() *UserData {
+	if x != nil {
+		return x.UserData
+	}
+	return nil
+}
+
 type UserInfoResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -293,7 +340,7 @@ type UserInfoResponse struct {
 func (x *UserInfoResponse) Reset() {
 	*x = UserInfoResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_main_proto_msgTypes[3]
+		mi := &file_main_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -306,7 +353,7 @@ func (x *UserInfoResponse) String() string {
 func (*UserInfoResponse) ProtoMessage() {}
 
 func (x *UserInfoResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_main_proto_msgTypes[3]
+	mi := &file_main_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -319,7 +366,7 @@ func (x *UserInfoResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserInfoResponse.ProtoReflect.Descriptor instead.
 func (*UserInfoResponse) Descriptor() ([]byte, []int) {
-	return file_main_proto_rawDescGZIP(), []int{3}
+	return file_main_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *UserInfoResponse) GetUserData() *UserData {
@@ -332,6 +379,147 @@ func (x *UserInfoResponse) GetUserData() *UserData {
 func (x *UserInfoResponse) GetMilestones() []*Milestone {
 	if x != nil {
 		return x.Milestones
+	}
+	return nil
+}
+
+type MilestoneCreateRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Milestone *Milestone `protobuf:"bytes,1,opt,name=milestone,proto3" json:"milestone,omitempty"` // milestone_id should be empty.
+}
+
+func (x *MilestoneCreateRequest) Reset() {
+	*x = MilestoneCreateRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_main_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MilestoneCreateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MilestoneCreateRequest) ProtoMessage() {}
+
+func (x *MilestoneCreateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_main_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MilestoneCreateRequest.ProtoReflect.Descriptor instead.
+func (*MilestoneCreateRequest) Descriptor() ([]byte, []int) {
+	return file_main_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *MilestoneCreateRequest) GetMilestone() *Milestone {
+	if x != nil {
+		return x.Milestone
+	}
+	return nil
+}
+
+type MilestoneCreateResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Milestone *Milestone `protobuf:"bytes,1,opt,name=milestone,proto3" json:"milestone,omitempty"`
+}
+
+func (x *MilestoneCreateResponse) Reset() {
+	*x = MilestoneCreateResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_main_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MilestoneCreateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MilestoneCreateResponse) ProtoMessage() {}
+
+func (x *MilestoneCreateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_main_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MilestoneCreateResponse.ProtoReflect.Descriptor instead.
+func (*MilestoneCreateResponse) Descriptor() ([]byte, []int) {
+	return file_main_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *MilestoneCreateResponse) GetMilestone() *Milestone {
+	if x != nil {
+		return x.Milestone
+	}
+	return nil
+}
+
+type MilestoneUpdateRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Milestone *Milestone `protobuf:"bytes,1,opt,name=milestone,proto3" json:"milestone,omitempty"` // user_id and milestone_id should be valid.
+}
+
+func (x *MilestoneUpdateRequest) Reset() {
+	*x = MilestoneUpdateRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_main_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MilestoneUpdateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MilestoneUpdateRequest) ProtoMessage() {}
+
+func (x *MilestoneUpdateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_main_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MilestoneUpdateRequest.ProtoReflect.Descriptor instead.
+func (*MilestoneUpdateRequest) Descriptor() ([]byte, []int) {
+	return file_main_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *MilestoneUpdateRequest) GetMilestone() *Milestone {
+	if x != nil {
+		return x.Milestone
 	}
 	return nil
 }
@@ -375,19 +563,36 @@ var file_main_proto_rawDesc = []byte{
 	0x0a, 0x62, 0x65, 0x67, 0x69, 0x6e, 0x5f, 0x64, 0x61, 0x74, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28,
 	0x09, 0x52, 0x09, 0x62, 0x65, 0x67, 0x69, 0x6e, 0x44, 0x61, 0x74, 0x65, 0x12, 0x1f, 0x0a, 0x0b,
 	0x66, 0x69, 0x6e, 0x69, 0x73, 0x68, 0x5f, 0x64, 0x61, 0x74, 0x65, 0x18, 0x07, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x0a, 0x66, 0x69, 0x6e, 0x69, 0x73, 0x68, 0x44, 0x61, 0x74, 0x65, 0x22, 0x66, 0x0a,
-	0x10, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x12, 0x26, 0x0a, 0x09, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x64, 0x61, 0x74, 0x61, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x0b, 0x32, 0x09, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x44, 0x61, 0x74, 0x61, 0x52,
-	0x08, 0x75, 0x73, 0x65, 0x72, 0x44, 0x61, 0x74, 0x61, 0x12, 0x2a, 0x0a, 0x0a, 0x6d, 0x69, 0x6c,
-	0x65, 0x73, 0x74, 0x6f, 0x6e, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0a, 0x2e,
-	0x4d, 0x69, 0x6c, 0x65, 0x73, 0x74, 0x6f, 0x6e, 0x65, 0x52, 0x0a, 0x6d, 0x69, 0x6c, 0x65, 0x73,
-	0x74, 0x6f, 0x6e, 0x65, 0x73, 0x42, 0x44, 0x5a, 0x42, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e,
-	0x63, 0x6f, 0x6d, 0x2f, 0x6f, 0x70, 0x65, 0x6e, 0x68, 0x61, 0x63, 0x6b, 0x75, 0x2d, 0x74, 0x65,
-	0x61, 0x6d, 0x2d, 0x61, 0x2f, 0x61, 0x2d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x2d, 0x66,
-	0x72, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x64, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f,
-	0x6c, 0x61, 0x6e, 0x67, 0x2f, 0x70, 0x62, 0x5f, 0x6f, 0x75, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x33,
+	0x09, 0x52, 0x0a, 0x66, 0x69, 0x6e, 0x69, 0x73, 0x68, 0x44, 0x61, 0x74, 0x65, 0x22, 0x3f, 0x0a,
+	0x15, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x26, 0x0a, 0x09, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x64,
+	0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x09, 0x2e, 0x55, 0x73, 0x65, 0x72,
+	0x44, 0x61, 0x74, 0x61, 0x52, 0x08, 0x75, 0x73, 0x65, 0x72, 0x44, 0x61, 0x74, 0x61, 0x22, 0x66,
+	0x0a, 0x10, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x12, 0x26, 0x0a, 0x09, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x64, 0x61, 0x74, 0x61, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x09, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x44, 0x61, 0x74, 0x61,
+	0x52, 0x08, 0x75, 0x73, 0x65, 0x72, 0x44, 0x61, 0x74, 0x61, 0x12, 0x2a, 0x0a, 0x0a, 0x6d, 0x69,
+	0x6c, 0x65, 0x73, 0x74, 0x6f, 0x6e, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0a,
+	0x2e, 0x4d, 0x69, 0x6c, 0x65, 0x73, 0x74, 0x6f, 0x6e, 0x65, 0x52, 0x0a, 0x6d, 0x69, 0x6c, 0x65,
+	0x73, 0x74, 0x6f, 0x6e, 0x65, 0x73, 0x22, 0x42, 0x0a, 0x16, 0x4d, 0x69, 0x6c, 0x65, 0x73, 0x74,
+	0x6f, 0x6e, 0x65, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x12, 0x28, 0x0a, 0x09, 0x6d, 0x69, 0x6c, 0x65, 0x73, 0x74, 0x6f, 0x6e, 0x65, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x0b, 0x32, 0x0a, 0x2e, 0x4d, 0x69, 0x6c, 0x65, 0x73, 0x74, 0x6f, 0x6e, 0x65, 0x52,
+	0x09, 0x6d, 0x69, 0x6c, 0x65, 0x73, 0x74, 0x6f, 0x6e, 0x65, 0x22, 0x43, 0x0a, 0x17, 0x4d, 0x69,
+	0x6c, 0x65, 0x73, 0x74, 0x6f, 0x6e, 0x65, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x28, 0x0a, 0x09, 0x6d, 0x69, 0x6c, 0x65, 0x73, 0x74, 0x6f,
+	0x6e, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0a, 0x2e, 0x4d, 0x69, 0x6c, 0x65, 0x73,
+	0x74, 0x6f, 0x6e, 0x65, 0x52, 0x09, 0x6d, 0x69, 0x6c, 0x65, 0x73, 0x74, 0x6f, 0x6e, 0x65, 0x22,
+	0x42, 0x0a, 0x16, 0x4d, 0x69, 0x6c, 0x65, 0x73, 0x74, 0x6f, 0x6e, 0x65, 0x55, 0x70, 0x64, 0x61,
+	0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x28, 0x0a, 0x09, 0x6d, 0x69, 0x6c,
+	0x65, 0x73, 0x74, 0x6f, 0x6e, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0a, 0x2e, 0x4d,
+	0x69, 0x6c, 0x65, 0x73, 0x74, 0x6f, 0x6e, 0x65, 0x52, 0x09, 0x6d, 0x69, 0x6c, 0x65, 0x73, 0x74,
+	0x6f, 0x6e, 0x65, 0x42, 0x44, 0x5a, 0x42, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f,
+	0x6d, 0x2f, 0x6f, 0x70, 0x65, 0x6e, 0x68, 0x61, 0x63, 0x6b, 0x75, 0x2d, 0x74, 0x65, 0x61, 0x6d,
+	0x2d, 0x61, 0x2f, 0x61, 0x2d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x2d, 0x66, 0x72, 0x6f,
+	0x6e, 0x74, 0x65, 0x6e, 0x64, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6c, 0x61,
+	0x6e, 0x67, 0x2f, 0x70, 0x62, 0x5f, 0x6f, 0x75, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x33,
 }
 
 var (
@@ -402,22 +607,30 @@ func file_main_proto_rawDescGZIP() []byte {
 	return file_main_proto_rawDescData
 }
 
-var file_main_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_main_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_main_proto_goTypes = []interface{}{
-	(*UserData)(nil),         // 0: UserData
-	(*Tag)(nil),              // 1: Tag
-	(*Milestone)(nil),        // 2: Milestone
-	(*UserInfoResponse)(nil), // 3: UserInfoResponse
+	(*UserData)(nil),                // 0: UserData
+	(*Tag)(nil),                     // 1: Tag
+	(*Milestone)(nil),               // 2: Milestone
+	(*UserInfoUpdateRequest)(nil),   // 3: UserInfoUpdateRequest
+	(*UserInfoResponse)(nil),        // 4: UserInfoResponse
+	(*MilestoneCreateRequest)(nil),  // 5: MilestoneCreateRequest
+	(*MilestoneCreateResponse)(nil), // 6: MilestoneCreateResponse
+	(*MilestoneUpdateRequest)(nil),  // 7: MilestoneUpdateRequest
 }
 var file_main_proto_depIdxs = []int32{
 	1, // 0: UserData.tag:type_name -> Tag
-	0, // 1: UserInfoResponse.user_data:type_name -> UserData
-	2, // 2: UserInfoResponse.milestones:type_name -> Milestone
-	3, // [3:3] is the sub-list for method output_type
-	3, // [3:3] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	0, // 1: UserInfoUpdateRequest.user_data:type_name -> UserData
+	0, // 2: UserInfoResponse.user_data:type_name -> UserData
+	2, // 3: UserInfoResponse.milestones:type_name -> Milestone
+	2, // 4: MilestoneCreateRequest.milestone:type_name -> Milestone
+	2, // 5: MilestoneCreateResponse.milestone:type_name -> Milestone
+	2, // 6: MilestoneUpdateRequest.milestone:type_name -> Milestone
+	7, // [7:7] is the sub-list for method output_type
+	7, // [7:7] is the sub-list for method input_type
+	7, // [7:7] is the sub-list for extension type_name
+	7, // [7:7] is the sub-list for extension extendee
+	0, // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_main_proto_init() }
@@ -463,7 +676,55 @@ func file_main_proto_init() {
 			}
 		}
 		file_main_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UserInfoUpdateRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_main_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UserInfoResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_main_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MilestoneCreateRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_main_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MilestoneCreateResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_main_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MilestoneUpdateRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -481,7 +742,7 @@ func file_main_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_main_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
