@@ -3,7 +3,7 @@
 import { useCallback, useState } from "react";
 import EditingCareerEvent from "./EditingCareerEvent";
 import milestones from "@/sample-data/milestones.json";
-import { Milestone } from "../../proto/typescript/pb_out/main";
+import { Milestone } from "../../../proto/typescript/pb_out/main";
 
 // とりあえず100年分のカレンダーを表示
 const FULL_YEAR = 100;
