@@ -7,7 +7,6 @@ import { auth } from "@/lib/firebase/client";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const Sidebar = () => {
-
   const router = useRouter();
   const [user] = useAuthState(auth);
   const userIconSize = 48;
@@ -15,7 +14,8 @@ const Sidebar = () => {
     logout();
     router.push("/login");
   };
-  const defaultUseIcon="https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person6.jpg"
+  const defaultUseIcon =
+    "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person6.jpg";
 
   return (
     <div className="w-24 h-screen outline outline-2 items-center flex flex-col justify-between outline-gray-200 ">
