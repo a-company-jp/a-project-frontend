@@ -37,6 +37,10 @@ jobs:
           password: ${{ steps.auth.outputs.access_token }}
           registry: asia-northeast1-docker.pkg.dev
 
+      - name: create .env file
+        run: |
+          echo "${{ secrets.ENV_VARS }}" > .env
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
@@ -61,3 +65,4 @@ jobs:
         with:
           region: "asia-northeast1"
           metadata: "./cloudrun/service-frontend-release.yaml"
+          env_vars_file: ".env"
