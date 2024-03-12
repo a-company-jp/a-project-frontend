@@ -63,7 +63,7 @@ const Sidebar = () => {
       </div>
       <div className="my-4">
         <UserIcon
-          iconImageHash={user?.photoURL || defaultUseIcon}
+          iconUrl={user?.photoURL || defaultUseIcon}
           size={userIconSize}
         />
       </div>

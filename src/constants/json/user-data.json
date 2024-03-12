@@ -17,7 +17,7 @@
         "tagName": "CTO"
       }
     ],
-    "iconImageHash": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person1.jpg"
+    "iconUrl": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person1.jpg"
   },
   {
     "userId": "John Smith",
@@ -37,7 +37,7 @@
         "tagName": "Tech Enthusiast"
       }
     ],
-    "iconImageHash": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person2.jpg"
+    "iconUrl": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person2.jpg"
   },
   {
     "userId": "Emily Johnson",
@@ -57,7 +57,7 @@
         "tagName": "Problem Solver"
       }
     ],
-    "iconImageHash": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person3.jpg"
+    "iconUrl": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person3.jpg"
   },
   {
     "userId": "Jessica Lee",
@@ -77,7 +77,7 @@
         "tagName": "Entrepreneur"
       }
     ],
-    "iconImageHash": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person4.jpg"
+    "iconUrl": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person4.jpg"
   },
   {
     "userId": "Michael Brown",
@@ -97,7 +97,7 @@
         "tagName": "Data Scientist"
       }
     ],
-    "iconImageHash": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person5.jpg"
+    "iconUrl": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person5.jpg"
   },
   {
     "userId": "Sophia Martinez",
@@ -117,7 +117,7 @@
         "tagName": "Machine Learning Engineer"
       }
     ],
-    "iconImageHash": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person6.jpg"
+    "iconUrl": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person6.jpg"
   },
   {
     "userId": "David Garcia",
@@ -137,6 +137,6 @@
         "tagName": "UI/UX Designer"
       }
     ],
-    "iconImageHash": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person7.jpg"
+    "iconUrl": "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person7.jpg"
   }
 ]

@@ -3,20 +3,20 @@ import React from 'react'
 import Image from 'next/image'
 
 // TODO: implement this in utils
-const generateImageUri = (imageHash: string) => {
-    return imageHash
+const generateImageUri = (imageUrl: string) => {
+    return imageUrl
     throw new Error('Not implemented')
 }
 
 type Props = {
-    imageHash: string | null
+    imageUrl: string | null
 }
 
-const MileStoneImage = ({ imageHash }: Props): JSX.Element => {
+const MileStoneImage = ({ imageUrl }: Props): JSX.Element => {
 
     // props handling
     // TODO: modify alternative image
-    const imageUri = imageHash ? generateImageUri(imageHash) : '/milestone-sample.png'
+    const imgUrl = imageUrl ? generateImageUri(imageUrl) : '/milestone-sample.png'
 
     const imageSizes = {
         large: {
@@ -43,7 +43,7 @@ const MileStoneImage = ({ imageHash }: Props): JSX.Element => {
     return (
         <>
             <Image
-                src={imageUri}
+                src={imgUrl}
                 className='relative md:right-3 left-3'
                 alt='Milestone Image'
                 width={windowWidth > 768 ? imageSizes.large.width : imageSizes.small.width}

@@ -4,7 +4,7 @@
         "milestoneId": "1",
         "title": "Mile Stone Title",
         "content": "long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-01-11",
         "finishDate": "2024-03-11"
     },
@@ -13,7 +13,7 @@
         "milestoneId": "2",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-01-11",
         "finishDate": "2024-03-11"
     },
@@ -22,7 +22,7 @@
         "milestoneId": "3",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-01-11",
         "finishDate": "2024-03-11"
     },
@@ -31,7 +31,7 @@
         "milestoneId": "4",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-01-11",
         "finishDate": "2024-03-11"
     },
@@ -40,7 +40,7 @@
         "milestoneId": "5",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-01-11",
         "finishDate": "2024-03-11"
     },
@@ -49,7 +49,7 @@
         "milestoneId": "6",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-01-11",
         "finishDate": "2024-03-11"
     },
@@ -58,7 +58,7 @@
         "milestoneId": "7",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-01-11",
         "finishDate": "2024-03-11"
     },
@@ -67,7 +67,7 @@
         "milestoneId": "8",
         "title": "Mile Stone Title",
         "content": "content",
-        "imageHash": "/milestone-sample.jpg",
+        "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-01-11",
         "finishDate": "2024-03-11"
     }
