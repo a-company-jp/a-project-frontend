@@ -1,7 +1,7 @@
 import React from "react";
 import UserIcon from "../atoms/UserIcon";
 import { useRouter } from "next/navigation";
-import SidebarIcon from "../atoms/SidebarIcon";
+import SidebarIcon from "../molecules/SidebarIcon";
 import { logout } from "@/lib/firebase/auth";
 import { auth } from "@/lib/firebase/client";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -27,22 +27,7 @@ const Sidebar = () => {
             </span>
           }
           path="/main"
-        />
-        <SidebarIcon
-          icon={
-            <span className="material-symbols-outlined material-icons text-3xl cursor-pointer">
-              edit
-            </span>
-          }
-          path="/edit"
-        />
-        <SidebarIcon
-          icon={
-            <span className="material-symbols-outlined material-icons text-3xl cursor-pointer">
-              settings
-            </span>
-          }
-          path="/setting"
+          tooltipText="Home"
         />
         <SidebarIcon
           icon={
@@ -51,6 +36,25 @@ const Sidebar = () => {
             </span>
           }
           path="/future-time-line"
+          tooltipText="My Career"
+        />
+        <SidebarIcon
+          icon={
+            <span className="material-symbols-outlined material-icons text-3xl cursor-pointer">
+              edit
+            </span>
+          }
+          path="/edit"
+          tooltipText="Edit"
+        />
+        <SidebarIcon
+          icon={
+            <span className="material-symbols-outlined material-icons text-3xl cursor-pointer">
+              settings
+            </span>
+          }
+          path="/setting"
+          tooltipText="Profile"
         />
         <SidebarIcon
           icon={
@@ -59,6 +63,7 @@ const Sidebar = () => {
             </span>
           }
           onClick={handleClick}
+          tooltipText="Logout"
         />
       </div>
       <div className="my-4">
