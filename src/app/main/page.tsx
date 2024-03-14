@@ -25,15 +25,15 @@ const Main = () => {
   const handleSearch = (keyword: string) => {
     // キーワードが空の場合、すべてのユーザーを表示する
     if (keyword.trim() === "") {
-      setFilteredUsers([]);
+      setFilteredUsers(allUsers);
       return;
     }
-  
+
     // ユーザーリストをフィルタリングして、キーワードに一致するユーザーを抽出する
     const filtered = allUsers.filter((userInfo) =>
       userInfo.userData?.username.toLowerCase().includes(keyword.toLowerCase())
     );
-  
+
     // フィルタリングされた結果を更新する
     setFilteredUsers(filtered);
   };
