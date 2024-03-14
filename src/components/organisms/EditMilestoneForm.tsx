@@ -51,29 +51,33 @@ const EditMilestoneForm = ({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
-      <label htmlFor="beginMonth">開始</label>
-      <input
-        type="month"
-        id="beginMonth"
-        {...register("beginMonth", { required: true })}
-        defaultValue={`${YYYYMMDDToYYYYMM(lifeEvent.beginDate)}`}
-        min={`${START_YEAR}-01`}
-        max={`${START_YEAR + FULL_YEAR}-03`}
-        className={`${style.input.default} ${errors.beginMonth && style.input.error}`}
-        required
+      <label>期間</label>
+      <div className="flex items-center gap-3">
+        <input
+          type="month"
+          id="beginMonth"
+          title="開始時期"
+          {...register("beginMonth", { required: true })}
+          defaultValue={`${YYYYMMDDToYYYYMM(lifeEvent.beginDate)}`}
+          min={`${START_YEAR}-01`}
+          max={`${START_YEAR + FULL_YEAR}-03`}
+          className={`${style.input.default} ${errors.beginMonth && style.input.error}`}
+          required
         />
+        <p>〜</p>
+        <input
+          type="month"
+          id="endMonth"
+          title="終了時期"
+          {...register("endMonth", { required: true })}
+          defaultValue={`${YYYYMMDDToYYYYMM(lifeEvent.finishDate)}`}
+          min={`${START_YEAR}-01`}
+          max={`${START_YEAR + FULL_YEAR}-03`}
+          className={`${style.input.default} ${errors.endMonth && style.input.error}`}
+          required
+        />
+      </div>
 
-      <label htmlFor="endMonth">終了</label>
-      <input
-        type="month"
-        id="endMonth"
-        {...register("endMonth", { required: true })}
-        defaultValue={`${YYYYMMDDToYYYYMM(lifeEvent.finishDate)}`}
-        min={`${START_YEAR}-01`}
-        max={`${START_YEAR + FULL_YEAR}-03`}
-        className={`${style.input.default} ${errors.endMonth && style.input.error}`}
-        required
-      />
       <label htmlFor="milestoneTitle">タイトル</label>
       <input
         id={"milestoneTitle"}
