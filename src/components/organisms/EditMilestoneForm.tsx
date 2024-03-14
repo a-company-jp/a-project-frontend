@@ -104,7 +104,7 @@ export default EditMilestoneForm;
 
 const style = {
   input: {
-    default: "border",
+    default: "border p-3 rounded-md",
     error: "border-red-600"
   },
 };
