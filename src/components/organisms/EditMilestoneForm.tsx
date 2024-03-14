@@ -31,16 +31,19 @@ const EditMilestoneForm = ({
     formState: { errors },
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = useCallback((data) => {
-    handleSaveChange({
-      ...lifeEvent,
-      title: data.title,
-      content: data.content,
-      beginDate: `${data.beginMonth}-01`,
-      finishDate: `${data.endMonth}-01`,
-    });
-    closeModal();
-  }, [lifeEvent, closeModal, handleSaveChange]);
+  const onSubmit: SubmitHandler<Inputs> = useCallback(
+    (data) => {
+      handleSaveChange({
+        ...lifeEvent,
+        title: data.title,
+        content: data.content,
+        beginDate: `${data.beginMonth}-01`,
+        finishDate: `${data.endMonth}-01`,
+      });
+      closeModal();
+    },
+    [lifeEvent, closeModal, handleSaveChange]
+  );
 
   const YYYYMMDDToYYYYMM = useCallback((dateString: string): string => {
     const [year, month, _] = dateString.split("-");
@@ -53,8 +56,10 @@ const EditMilestoneForm = ({
     const startDate = new Date(`${START_YEAR}-01-01`);
     const endDate = new Date(`${START_YEAR + FULL_YEAR}-01-31`);
     const inputDate = new Date(`${data}-01`);
-    return inputDate >= startDate && inputDate <= endDate ? true : "無効な期間です";
-  }
+    return inputDate >= startDate && inputDate <= endDate
+      ? true
+      : "無効な期間です";
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
@@ -67,11 +72,16 @@ const EditMilestoneForm = ({
           type="month"
           id="beginMonth"
           title="開始時期"
-          {...register("beginMonth", { required: "期間の入力は必須です。", validate: handleValidateBeginMonth })}
+          {...register("beginMonth", {
+            required: "期間の入力は必須です。",
+            validate: handleValidateBeginMonth,
+          })}
           defaultValue={`${YYYYMMDDToYYYYMM(lifeEvent.beginDate)}`}
           min={`${START_YEAR}-01`}
           max={`${START_YEAR + FULL_YEAR}-03`}
-          className={`${style.input.default} ${errors.beginMonth && style.input.error}`}
+          className={`${style.input.default} ${
+            errors.beginMonth && style.input.error
+          }`}
           required
         />
         <p>〜</p>
@@ -79,20 +89,25 @@ const EditMilestoneForm = ({
           type="month"
           id="endMonth"
           title="終了時期"
-          {...register("endMonth", { required: "期間の入力は必須です。", validate: handleValidateBeginMonth })}
+          {...register("endMonth", {
+            required: "期間の入力は必須です。",
+            validate: handleValidateBeginMonth,
+          })}
           defaultValue={`${YYYYMMDDToYYYYMM(lifeEvent.finishDate)}`}
           min={`${START_YEAR}-01`}
           max={`${START_YEAR + FULL_YEAR}-03`}
-          className={`${style.input.default} ${errors.endMonth && style.input.error}`}
+          className={`${style.input.default} ${
+            errors.endMonth && style.input.error
+          }`}
           required
         />
       </div>
-      <strong className={style.inputErrorMessage}>{errors.beginMonth?.message}</strong>
+      <strong className={style.inputErrorMessage}>
+        {errors.beginMonth?.message}
+      </strong>
 
       <label htmlFor="milestoneTitle" className="flex gap-4">
-        <p>
-          タイトル
-        </p>
+        <p>タイトル</p>
         <strong className={style.inputRequired}>*必須</strong>
       </label>
       <input
@@ -100,9 +115,13 @@ const EditMilestoneForm = ({
         defaultValue={lifeEvent.title}
         placeholder="例) マネージャーとしてチームをリードする"
         {...register("title", { required: "タイトルの入力は必須です。" })}
-        className={`${style.input.default} ${errors.title && style.input.error}`}
+        className={`${style.input.default} ${
+          errors.title && style.input.error
+        }`}
       />
-      <strong className={style.inputErrorMessage}>{errors.title?.message}</strong>
+      <strong className={style.inputErrorMessage}>
+        {errors.title?.message}
+      </strong>
 
       <label htmlFor="milestoneContent">内容</label>
       <textarea
