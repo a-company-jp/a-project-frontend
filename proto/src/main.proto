@@ -39,7 +39,7 @@ message UserInfoResponse {
 }
 
 message UserInfosResponse {
-  repeated UserInfoResponse user_info_response = 1;
+  repeated UserInfoResponse user_info_responses = 1;
 }
 
 message MilestoneCreateRequest {
