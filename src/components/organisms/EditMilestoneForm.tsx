@@ -91,8 +91,8 @@ const EditMilestoneForm = ({
       <textarea
         id={"milestoneContent"}
         {...register("content", { required: true })}
-        className={`${style.input.default} leading-[500%]`}
-        >
+        className={`${style.input.default} h-60`}
+      >
         {lifeEvent.content}
       </textarea>
       <input type="submit" />
