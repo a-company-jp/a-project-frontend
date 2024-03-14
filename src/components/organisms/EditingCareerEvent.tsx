@@ -1,8 +1,9 @@
 "use client";
 
 import useEditingCareerEvent from "@/hooks/useEditingCareerEvent";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Milestone } from "../../../proto/typescript/pb_out/main";
+import Modal from "react-modal";
 
 type Props = {
   lifeEvent: Milestone;
@@ -10,6 +11,7 @@ type Props = {
 };
 
 const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
+  const [editModalIsOpen, setEditModalIsOpen] = useState(false);
   const {
     gridRow,
     term,
@@ -31,11 +33,24 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     }
   }, [editingState]);
 
+  const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    setEditModalIsOpen(false);
+  };
+  
   return (
     <div
       className={`bg-pink-500 col-start-2 col-end-3 select-none relative ${cursorStyle}`}
       style={{ gridRow: `${gridRow.start}/${gridRow.end}` }}
       onMouseDown={handleMouseDownSlide}
+      onClick={() => {
+        setEditModalIsOpen(true);
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") setEditModalIsOpen(true);
+      }}
+      role="button"
+      tabIndex={0}
     >
       <p>{`${term.start.year}年${term.start.month}月 ~ ${term.end.year}年${term.end.month}月`}</p>
       <p>{lifeEvent.title}</p>
@@ -48,6 +63,14 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
       >
         {" "}
       </div>
+      <Modal isOpen={editModalIsOpen}>
+        <button type="button" onClick={handleClose}>
+          とじる
+        </button>
+        <p>{`${term.start.year}年${term.start.month}月 ~ ${term.end.year}年${term.end.month}月`}</p>
+        <p>{lifeEvent.title}</p>
+        <p>{lifeEvent.content}</p>
+      </Modal>
     </div>
   );
 };
