@@ -64,6 +64,7 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
         </button>
         <EditMilestoneForm
           lifeEvent={lifeEvent}
+          handleSaveChange={updateLifeEvent}
           closeModal={handleEtidModal.close}
         />
       </Modal>

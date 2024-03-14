@@ -16,11 +16,13 @@ type Inputs = {
 type Props = {
   lifeEvent: Milestone;
   closeModal: (e?: React.MouseEvent<HTMLButtonElement>) => void;
+  handleSaveChange: (newLifeEvent: Milestone) => void;
 };
 
 const EditMilestoneForm = ({
   lifeEvent,
   closeModal,
+  handleSaveChange,
 }: Props) => {
   const {
     register,
@@ -29,10 +31,16 @@ const EditMilestoneForm = ({
     formState: { errors },
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = useCallback((data) => {
+    handleSaveChange({
+      ...lifeEvent,
+      title: data.title,
+      content: data.content,
+      beginDate: `${data.beginMonth}-01`,
+      finishDate: `${data.endMonth}-01`,
+    });
     closeModal();
-  };
+  }, [lifeEvent, closeModal, handleSaveChange]);
 
   const YYYYMMDDToYYYYMM = useCallback((dateString: string): string => {
     const [year, month, _] = dateString.split("-");
