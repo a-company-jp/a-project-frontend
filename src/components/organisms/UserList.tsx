@@ -20,6 +20,7 @@ const UserList = (props: Props) => {
   const { setHoveredUserInfo, hoveredUserInfo,userInfos } = props;
   const [start, setStart] = useState(0); // 表示させる範囲の先頭インデックス
   const perPage = 4; // 表示させる要素の個数
+
   // ページ番号またはnext/previousが押下された時に発火する関数
   const pageChange = (data: { selected: number }) => {
     let pageNumber = data.selected;
@@ -32,9 +33,11 @@ const UserList = (props: Props) => {
     <div className="w-full py-4 items-center">
       <div>
         {userInfos.slice(start, start + perPage).map((userInfo) => {
+          // userDataがundefinedの場合はスキップする
+          if (!userInfo.userData) return null;
           return (
             <li
-              key={userInfo.userData?.userId}
+              key={userInfo.userData.userId}
               className="flex flex-row items-center"
             >
               <div
@@ -46,13 +49,13 @@ const UserList = (props: Props) => {
                   hovered={
                     hoveredUserInfo
                       ? hoveredUserInfo.userData?.userId ===
-                        userInfo.userData.userId
+                        userInfo.userData?.userId // Optional chaining here
                       : false
                   }
                 />
               </div>
               {hoveredUserInfo &&
-              hoveredUserInfo.userData?.userId === userInfo.userData.userId ? (
+               hoveredUserInfo.userData?.userId === userInfo.userData?.userId ? (
                 <div className="w-1/12">
                   <span className="material-symbols-outlined material-icons text-8xl text-blue-200 ">
                     arrow_right
