@@ -12,7 +12,7 @@ type Props = {
 };
 
 const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
-  const [editModalIsOpen, setEditModalIsOpen] = useState(false);
+  const [iEditModalOpen, setIsEditModalOpen] = useState(false);
   const {
     gridRow,
     term,
@@ -34,21 +34,27 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     }
   }, [editingState]);
 
-  const handleClose = (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e?.stopPropagation();
-    setEditModalIsOpen(false);
-  };
-  
+  const handleEtidModal = useMemo(
+    () => ({
+      open: () => {
+        setIsEditModalOpen(true);
+      },
+      close: (e?: React.MouseEvent<HTMLButtonElement>) => {
+        e?.stopPropagation();
+        setIsEditModalOpen(false);
+      },
+    }),
+    []
+  );
+
   return (
     <div
       className={`bg-pink-500 col-start-2 col-end-3 select-none relative ${cursorStyle}`}
       style={{ gridRow: `${gridRow.start}/${gridRow.end}` }}
       onMouseDown={handleMouseDownSlide}
-      onClick={() => {
-        setEditModalIsOpen(true);
-      }}
+      onClick={handleEtidModal.open}
       onKeyDown={(e) => {
-        if (e.key === "Enter") setEditModalIsOpen(true);
+        if (e.key === "Enter") handleEtidModal.open();
       }}
       role="button"
       tabIndex={0}
@@ -64,11 +70,11 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
       >
         {" "}
       </div>
-      <Modal isOpen={editModalIsOpen}>
+      <Modal isOpen={iEditModalOpen}>
         <div className="relative">
           <button
             type="button"
-            onClick={handleClose}
+            onClick={handleEtidModal.close}
             className="border-[1.5px] p-3 rounded-full h-14 w-14 flex justify-center items-center absolute right-0 hover:opacity-50"
             title="変更を破棄してモーダルを閉じる"
             aria-label="変更を破棄してモーダルを閉じる"
@@ -78,7 +84,7 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
           <EditMilestoneForm
             lifeEvent={lifeEvent}
             handleSaveChange={updateLifeEvent}
-            closeModal={handleClose}
+            closeModal={handleEtidModal.close}
           />
         </div>
       </Modal>
