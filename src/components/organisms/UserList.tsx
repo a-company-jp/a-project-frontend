@@ -17,10 +17,9 @@ interface Props {
  * ユーザー一覧
  */
 const UserList = (props: Props) => {
-  const { setHoveredUserInfo, hoveredUserInfo } = props;
+  const { setHoveredUserInfo, hoveredUserInfo,userInfos } = props;
   const [start, setStart] = useState(0); // 表示させる範囲の先頭インデックス
   const perPage = 4; // 表示させる要素の個数
-
   // ページ番号またはnext/previousが押下された時に発火する関数
   const pageChange = (data: { selected: number }) => {
     let pageNumber = data.selected;
