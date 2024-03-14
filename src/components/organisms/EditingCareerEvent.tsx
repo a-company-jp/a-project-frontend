@@ -4,6 +4,7 @@ import useEditingCareerEvent from "@/hooks/useEditingCareerEvent";
 import { useMemo, useState } from "react";
 import { Milestone } from "../../../proto/typescript/pb_out/main";
 import Modal from "react-modal";
+import EditMilestoneForm from "./EditMilestoneForm";
 
 type Props = {
   lifeEvent: Milestone;
@@ -61,9 +62,10 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
         <button type="button" onClick={handleEtidModal.close}>
           とじる
         </button>
-        <p>{`${term.start.year}年${term.start.month}月 ~ ${term.end.year}年${term.end.month}月`}</p>
-        <p>{lifeEvent.title}</p>
-        <p>{lifeEvent.content}</p>
+        <EditMilestoneForm
+          lifeEvent={lifeEvent}
+          closeModal={handleEtidModal.close}
+        />
       </Modal>
     </div>
   );
