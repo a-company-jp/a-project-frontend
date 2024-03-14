@@ -9,6 +9,7 @@ import { UserInfoResponse } from "../../../proto/typescript/pb_out/main";
 interface Props {
   setHoveredUserInfo: Dispatch<SetStateAction<null | UserInfoResponse>>;
   hoveredUserInfo: null | UserInfoResponse;
+  userInfos:  UserInfoResponse[];
 }
 
 /**
@@ -16,7 +17,7 @@ interface Props {
  * ユーザー一覧
  */
 const UserList = (props: Props) => {
-  const { setHoveredUserInfo, hoveredUserInfo } = props;
+  const { setHoveredUserInfo, hoveredUserInfo,userInfos } = props;
   const [start, setStart] = useState(0); // 表示させる範囲の先頭インデックス
   const perPage = 4; // 表示させる要素の個数
 
@@ -32,9 +33,11 @@ const UserList = (props: Props) => {
     <div className="w-full py-4 items-center">
       <div>
         {userInfos.slice(start, start + perPage).map((userInfo) => {
+          // userDataがundefinedの場合はスキップする
+          if (!userInfo.userData) return null;
           return (
             <li
-              key={userInfo.userData?.userId}
+              key={userInfo.userData.userId}
               className="flex flex-row items-center"
             >
               <div
@@ -46,13 +49,13 @@ const UserList = (props: Props) => {
                   hovered={
                     hoveredUserInfo
                       ? hoveredUserInfo.userData?.userId ===
-                        userInfo.userData.userId
+                        userInfo.userData?.userId // Optional chaining here
                       : false
                   }
                 />
               </div>
               {hoveredUserInfo &&
-              hoveredUserInfo.userData?.userId === userInfo.userData.userId ? (
+               hoveredUserInfo.userData?.userId === userInfo.userData?.userId ? (
                 <div className="w-1/12">
                   <span className="material-symbols-outlined material-icons text-8xl text-blue-200 ">
                     arrow_right
@@ -65,6 +68,7 @@ const UserList = (props: Props) => {
           );
         })}
       </div>
+      {userInfos.length > perPage && (
       <ReactPaginate
         // 総ページ数
         pageCount={Math.ceil(userInfos.length / perPage)}
@@ -114,6 +118,7 @@ const UserList = (props: Props) => {
           "text-blue-500 outline outline-2 outline-blue-500 rounded hover:bg-white"
         }
       />
+      )}
     </div>
   );
 };
