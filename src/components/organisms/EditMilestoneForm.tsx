@@ -131,7 +131,24 @@ const EditMilestoneForm = ({
       >
         {lifeEvent.content}
       </textarea>
-      <input type="submit" />
+      <div className="flex gap-4 justify-stretch px-8">
+        <button
+          onClick={closeModal}
+          type="button"
+          className={`${style.buttomButton}`}
+          title="変更を破棄して編集をキャンセルする"
+          aria-label="変更を破棄して編集をキャンセルする"
+        >
+          キャンセル
+        </button>
+        <input
+          type="submit"
+          className={` bg-blue-400 text-white ${style.buttomButton}`}
+          value="保存"
+          title="変更を保存して編集を終了する"
+          aria-label="変更を保存して編集を終了する"
+        />
+      </div>
     </form>
   );
 };
@@ -145,4 +162,6 @@ const style = {
   },
   inputRequired: "text-red-600",
   inputErrorMessage: "text-red-600",
+  buttomButton:
+    "flex-1 py-4 px-4 border rounded-full shadow hover:shadow-none hover:opacity-80 cursor-pointer",
 };
