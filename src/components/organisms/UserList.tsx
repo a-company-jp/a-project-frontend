@@ -9,6 +9,7 @@ import { UserInfoResponse } from "../../../proto/typescript/pb_out/main";
 interface Props {
   setHoveredUserInfo: Dispatch<SetStateAction<null | UserInfoResponse>>;
   hoveredUserInfo: null | UserInfoResponse;
+  userInfos:  UserInfoResponse[];
 }
 
 /**
