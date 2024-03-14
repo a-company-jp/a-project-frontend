@@ -49,6 +49,13 @@ const EditMilestoneForm = ({
     return `${zeroPaddingYear}-${zeroPaddingMonth}`;
   }, []);
 
+  const handleValidateBeginMonth = (data: string) => {
+    const startDate = new Date(`${START_YEAR}-01-01`);
+    const endDate = new Date(`${START_YEAR + FULL_YEAR}-01-31`);
+    const inputDate = new Date(`${data}-01`);
+    return inputDate >= startDate && inputDate <= endDate ? true : "無効な期間です";
+  }
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
       <label className="flex gap-4">
@@ -60,7 +67,7 @@ const EditMilestoneForm = ({
           type="month"
           id="beginMonth"
           title="開始時期"
-          {...register("beginMonth", { required: true })}
+          {...register("beginMonth", { required: "期間の入力は必須です。", validate: handleValidateBeginMonth })}
           defaultValue={`${YYYYMMDDToYYYYMM(lifeEvent.beginDate)}`}
           min={`${START_YEAR}-01`}
           max={`${START_YEAR + FULL_YEAR}-03`}
@@ -72,7 +79,7 @@ const EditMilestoneForm = ({
           type="month"
           id="endMonth"
           title="終了時期"
-          {...register("endMonth", { required: true })}
+          {...register("endMonth", { required: "期間の入力は必須です。", validate: handleValidateBeginMonth })}
           defaultValue={`${YYYYMMDDToYYYYMM(lifeEvent.finishDate)}`}
           min={`${START_YEAR}-01`}
           max={`${START_YEAR + FULL_YEAR}-03`}
@@ -80,6 +87,7 @@ const EditMilestoneForm = ({
           required
         />
       </div>
+      <strong className={style.inputErrorMessage}>{errors.beginMonth?.message}</strong>
 
       <label htmlFor="milestoneTitle" className="flex gap-4">
         <p>
@@ -91,9 +99,10 @@ const EditMilestoneForm = ({
         id={"milestoneTitle"}
         defaultValue={lifeEvent.title}
         placeholder="例) マネージャーとしてチームをリードする"
-        {...register("title", { required: true })}
+        {...register("title", { required: "タイトルの入力は必須です。" })}
         className={`${style.input.default} ${errors.title && style.input.error}`}
       />
+      <strong className={style.inputErrorMessage}>{errors.title?.message}</strong>
 
       <label htmlFor="milestoneContent">内容</label>
       <textarea
@@ -116,4 +125,5 @@ const style = {
     error: "border-red-500 border-2",
   },
   inputRequired: "text-red-600",
+  inputErrorMessage: "text-red-600",
 };
