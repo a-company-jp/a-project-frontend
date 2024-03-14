@@ -12,14 +12,13 @@ type Props = {
 };
 
 const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
+  const [editModalIsOpen, setEditModalIsOpen] = useState(false);
   const {
     gridRow,
     term,
     editingState,
-    isEditModalOpen,
     handleMouseDownSlide,
     handleMouseDownExpansion,
-    handleEtidModal,
   } = useEditingCareerEvent({ lifeEvent, updateLifeEvent });
 
   const cursorStyle = useMemo(() => {
@@ -35,14 +34,21 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     }
   }, [editingState]);
 
+  const handleClose = (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e?.stopPropagation();
+    setEditModalIsOpen(false);
+  };
+  
   return (
     <div
       className={`bg-pink-500 col-start-2 col-end-3 select-none relative ${cursorStyle}`}
       style={{ gridRow: `${gridRow.start}/${gridRow.end}` }}
       onMouseDown={handleMouseDownSlide}
-      onClick={handleEtidModal.open}
+      onClick={() => {
+        setEditModalIsOpen(true);
+      }}
       onKeyDown={(e) => {
-        if (e.key === "Enter") handleEtidModal.open();
+        if (e.key === "Enter") setEditModalIsOpen(true);
       }}
       role="button"
       tabIndex={0}
@@ -58,11 +64,11 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
       >
         {" "}
       </div>
-      <Modal isOpen={isEditModalOpen}>
+      <Modal isOpen={editModalIsOpen}>
         <div className="relative">
           <button
             type="button"
-            onClick={handleEtidModal.close}
+            onClick={handleClose}
             className="border-[1.5px] p-3 rounded-full h-14 w-14 flex justify-center items-center absolute right-0 hover:opacity-50"
             title="変更を破棄してモーダルを閉じる"
             aria-label="変更を破棄してモーダルを閉じる"
@@ -72,7 +78,7 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
           <EditMilestoneForm
             lifeEvent={lifeEvent}
             handleSaveChange={updateLifeEvent}
-            closeModal={handleEtidModal.close}
+            closeModal={handleClose}
           />
         </div>
       </Modal>

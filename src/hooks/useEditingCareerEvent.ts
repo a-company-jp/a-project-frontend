@@ -14,17 +14,6 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     end: 0,
   });
   const [editingState, setEditingState] = useState<"grabbing" | "sliding" | "none">("none");
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-
-  const handleEtidModal = useMemo(() => ({
-    open: () => {
-      setIsEditModalOpen(true);
-    },
-    close: (e?: React.MouseEvent<HTMLButtonElement>) => {
-      e?.stopPropagation();
-      setIsEditModalOpen(false);
-    },
-  }), []);
 
   const term = useMemo(() => ({
     start: {
@@ -128,7 +117,7 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     document.addEventListener("mouseup", handleMouseUp);
   };
 
-  return { gridRow, term, editingState, isEditModalOpen, handleMouseDownSlide, handleMouseDownExpansion, handleEtidModal };
+  return { gridRow, term, editingState, handleMouseDownSlide, handleMouseDownExpansion };
 };
 
 export default useEditingCareerEvent;
