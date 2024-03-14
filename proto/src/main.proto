@@ -38,6 +38,10 @@ message UserInfoResponse {
   repeated Milestone milestones = 2;
 }
 
+message UserInfosResponse {
+  repeated UserInfoResponse user_info_response = 1;
+}
+
 message MilestoneCreateRequest {
   Milestone milestone = 1; // milestone_id should be empty.
 }
