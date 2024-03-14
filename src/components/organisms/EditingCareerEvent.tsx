@@ -11,13 +11,14 @@ type Props = {
 };
 
 const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
-  const [editModalIsOpen, setEditModalIsOpen] = useState(false);
   const {
     gridRow,
     term,
     editingState,
+    isEditModalOpen,
     handleMouseDownSlide,
     handleMouseDownExpansion,
+    handleEtidModal,
   } = useEditingCareerEvent({ lifeEvent, updateLifeEvent });
 
   const cursorStyle = useMemo(() => {
@@ -33,21 +34,14 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     }
   }, [editingState]);
 
-  const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-    setEditModalIsOpen(false);
-  };
-  
   return (
     <div
       className={`bg-pink-500 col-start-2 col-end-3 select-none relative ${cursorStyle}`}
       style={{ gridRow: `${gridRow.start}/${gridRow.end}` }}
       onMouseDown={handleMouseDownSlide}
-      onClick={() => {
-        setEditModalIsOpen(true);
-      }}
+      onClick={handleEtidModal.open}
       onKeyDown={(e) => {
-        if (e.key === "Enter") setEditModalIsOpen(true);
+        if (e.key === "Enter") handleEtidModal.open();
       }}
       role="button"
       tabIndex={0}
@@ -63,8 +57,8 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
       >
         {" "}
       </div>
-      <Modal isOpen={editModalIsOpen}>
-        <button type="button" onClick={handleClose}>
+      <Modal isOpen={isEditModalOpen}>
+        <button type="button" onClick={handleEtidModal.close}>
           とじる
         </button>
         <p>{`${term.start.year}年${term.start.month}月 ~ ${term.end.year}年${term.end.month}月`}</p>
