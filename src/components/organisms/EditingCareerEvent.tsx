@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { Milestone } from "../../../proto/typescript/pb_out/main";
 import Modal from "react-modal";
 import EditMilestoneForm from "./EditMilestoneForm";
+import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 
 type Props = {
   lifeEvent: Milestone;
@@ -34,18 +35,21 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     }
   }, [editingState]);
 
-  const handleEtidModal = useMemo(
-    () => ({
+  const modalRef = useRef(null);
+  const handleEtidModal = useMemo(() => {
+    return {
       open: () => {
         setIsEditModalOpen(true);
+        const currentRef = modalRef.current;
+        currentRef && disableBodyScroll(currentRef);
       },
       close: (e?: React.MouseEvent<HTMLButtonElement>) => {
         e?.stopPropagation();
         setIsEditModalOpen(false);
+        clearAllBodyScrollLocks();
       },
-    }),
-    []
-  );
+    };
+  }, []);
 
   return (
     <div
@@ -70,7 +74,7 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
       >
         {" "}
       </div>
-      <Modal isOpen={iEditModalOpen}>
+      <Modal isOpen={iEditModalOpen} ref={modalRef}>
         <div className="relative">
           <button
             type="button"
