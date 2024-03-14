@@ -161,7 +161,7 @@ export default EditMilestoneForm;
 
 const style = {
   input: {
-    default: "border p-3 rounded-md",
+    default: "border border-gray-300 p-3 rounded-md",
     error: "border-red-500 border-2",
   },
   inputRequired: "text-red-600",
