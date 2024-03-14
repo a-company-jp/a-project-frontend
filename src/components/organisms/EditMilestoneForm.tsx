@@ -51,7 +51,10 @@ const EditMilestoneForm = ({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
-      <label>期間</label>
+      <label className="flex gap-4">
+        <p>期間</p>
+        <strong className={style.inputRequired}>*必須</strong>
+      </label>
       <div className="flex items-center gap-3">
         <input
           type="month"
@@ -78,7 +81,12 @@ const EditMilestoneForm = ({
         />
       </div>
 
-      <label htmlFor="milestoneTitle">タイトル</label>
+      <label htmlFor="milestoneTitle" className="flex gap-4">
+        <p>
+          タイトル
+        </p>
+        <strong className={style.inputRequired}>*必須</strong>
+      </label>
       <input
         id={"milestoneTitle"}
         defaultValue={lifeEvent.title}
@@ -107,4 +115,5 @@ const style = {
     default: "border p-3 rounded-md",
     error: "border-red-600"
   },
+  inputRequired: "text-red-600",
 };
