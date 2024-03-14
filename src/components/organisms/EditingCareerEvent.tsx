@@ -59,14 +59,22 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
         {" "}
       </div>
       <Modal isOpen={isEditModalOpen}>
-        <button type="button" onClick={handleEtidModal.close}>
-          とじる
-        </button>
-        <EditMilestoneForm
-          lifeEvent={lifeEvent}
-          handleSaveChange={updateLifeEvent}
-          closeModal={handleEtidModal.close}
-        />
+        <div className="relative">
+          <button
+            type="button"
+            onClick={handleEtidModal.close}
+            className="border-[1.5px] p-3 rounded-full h-14 w-14 flex justify-center items-center absolute right-0 hover:opacity-50"
+            title="変更を破棄してモーダルを閉じる"
+            aria-label="変更を破棄してモーダルを閉じる"
+          >
+            <span className="material-symbols-outlined">close</span>
+          </button>
+          <EditMilestoneForm
+            lifeEvent={lifeEvent}
+            handleSaveChange={updateLifeEvent}
+            closeModal={handleEtidModal.close}
+          />
+        </div>
       </Modal>
     </div>
   );
