@@ -15,7 +15,7 @@ const MileStoneContentPreview = ({ title, description }: Props) => {
   // styles (IMO: No strict typing needed.)
   const styles = {
     sizing: "w-11/12 h-full",
-    boxing: "ml-2 p-4 break-words ",
+    boxing: "ml-5 p-4 break-words",
     text: "whitespace-pre-line",
     color: "bg-gray-300",
     border: "rounded-lg",

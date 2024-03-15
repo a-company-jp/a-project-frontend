@@ -7,48 +7,7 @@ const convertToShortHandDate = (date: string): string => {
   const year = date.split("-")[0];
   const month = date.split("-")[1];
 
-  let monthStr;
-
-  switch (month) {
-    case "01":
-      monthStr = "Jan";
-      break;
-    case "02":
-      monthStr = "Feb";
-      break;
-    case "03":
-      monthStr = "Mar";
-      break;
-    case "04":
-      monthStr = "Apr";
-      break;
-    case "05":
-      monthStr = "May";
-      break;
-    case "06":
-      monthStr = "Jun";
-      break;
-    case "07":
-      monthStr = "Jul";
-      break;
-    case "08":
-      monthStr = "Aug";
-      break;
-    case "09":
-      monthStr = "Sep";
-      break;
-    case "10":
-      monthStr = "Oct";
-      break;
-    case "11":
-      monthStr = "Nov";
-      break;
-    case "12":
-      monthStr = "Dec";
-      break;
-  }
-
-  return `${monthStr} ${year}`;
+  return `${year}年${parseInt(month, 10).toString()}月`;
 };
 
 type Props = {
