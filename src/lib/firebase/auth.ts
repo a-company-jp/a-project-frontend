@@ -10,7 +10,7 @@ export const login = (): void => {
       const user = result.user;
       window.localStorage.setItem("token", token);
       window.localStorage.setItem("refresh-token", user.refreshToken);
-      console.log(token, user,user.refreshToken);
+      console.log(token, user, user.refreshToken);
     })
     .catch((error) => {
       const errorCode = error.code;

@@ -96,27 +96,26 @@ const useApiPBClient = () => {
       });
   };
 
+  const imageUpload = async (
+    userId: string,
+    file: File,
+  ): Promise<BackendResponse> => {
+    const contentType = getFileContentType(file);
 
-    const imageUpload = async (
-        userId: string,
-        file: File,
-    ): Promise<BackendResponse> => {
-        const contentType = getFileContentType(file);
+    headers["Content-Type"] = contentType;
 
-        headers["Content-Type"] = contentType;
-
-        return await axios
-            .put(`/user/${userId}/icon`, file, { headers })
-            .then((resp) => {
-                if (resp.status < 210) {
-                    return { data: resp.data, unauthorized: false, error: null };
-                }
-                if (resp.status === 401) {
-                    return { data: null, unauthorized: true, error: resp.status };
-                }
-                return { data: null, unauthorized: false, error: resp.statusText };
-            });
-    };
+    return await axios
+      .put(`/user/${userId}/icon`, file, { headers })
+      .then((resp) => {
+        if (resp.status < 210) {
+          return { data: resp.data, unauthorized: false, error: null };
+        }
+        if (resp.status === 401) {
+          return { data: null, unauthorized: true, error: resp.status };
+        }
+        return { data: null, unauthorized: false, error: resp.statusText };
+      });
+  };
   return { get, put, post, del, imageUpload };
 };
 
