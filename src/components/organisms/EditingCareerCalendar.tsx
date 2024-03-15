@@ -1,9 +1,10 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import EditingCareerEvent from "./EditingCareerEvent";
 import milestones from "@/sample-data/milestones.json";
 import { Milestone } from "../../../proto/typescript/pb_out/main";
+import EditMilestoneForm from "./EditMilestoneForm";
 
 // とりあえず100年分のカレンダーを表示
 const FULL_YEAR = 100;
@@ -18,9 +19,40 @@ const EditingCareerCalendar = ({ userId }: Props) => {
   const [lifeEvents, setLifeEvents] = useState<Milestone[]>(
     milestones.filter((m) => m.userId === userId),
   );
+  const [openModalMilestoneId, setOpenModalMilestoneId] = useState<
+    string | null
+  >(null);
+  const openingModalMilestone = useMemo(
+    () => lifeEvents.find((l) => l.milestoneId === openModalMilestoneId),
+    [openModalMilestoneId, lifeEvents]
+  );
+  const handleEtidModal = useMemo(() => {
+    return {
+      open: (milestoneId: string) => {
+        setOpenModalMilestoneId(milestoneId);
+      },
+      close: (e?: React.MouseEvent<HTMLButtonElement>) => {
+        e?.stopPropagation();
+        setOpenModalMilestoneId(null);
+      },
+    };
+  }, []);
 
   const updateLifeEvent = useCallback(
     (newLifeEvent: Milestone) => {
+      if (newLifeEvent.milestoneId === "") {
+        setLifeEvents(
+          lifeEvents.map((n) =>
+            n.milestoneId !== ""
+              ? n
+              : {
+                  ...newLifeEvent,
+                  milestoneId: String(Math.random() * 10000),
+                }
+          )
+        );
+        return;
+      }
       setLifeEvents(
         lifeEvents.map((l) =>
           l.milestoneId === newLifeEvent.milestoneId ? newLifeEvent : l,
@@ -28,6 +60,13 @@ const EditingCareerCalendar = ({ userId }: Props) => {
       );
     },
     [lifeEvents],
+  );
+
+  const deleteLifeEvent = useCallback(
+    (lifeEventId: string) => {
+      setLifeEvents(lifeEvents.filter((l) => l.milestoneId !== lifeEventId));
+    },
+    [lifeEvents]
   );
 
   const addNewLifeEvent = useCallback(
@@ -39,18 +78,23 @@ const EditingCareerCalendar = ({ userId }: Props) => {
 
   const handleClickCalender = useCallback(
     (calendarIndex: number) => {
+      if (openModalMilestoneId !== null) {
+        return;
+      }
       const newLifeEventBeginYear = calendarIndex + START_YEAR;
+      const newMilestoneId = ""; //仮置き
+      setOpenModalMilestoneId(newMilestoneId);
       addNewLifeEvent({
         userId: userId,
-        milestoneId: `${Math.random() * 10000}`, //仮置き
-        title: "新しいマイルストーン",
-        content: "新しいマイルストーンのコンテンツ",
+        milestoneId: newMilestoneId,
+        title: "",
+        content: "",
         imageUrl: "",
         beginDate: `${newLifeEventBeginYear}-01-01`,
         finishDate: `${newLifeEventBeginYear}-12-01`,
       });
     },
-    [userId, addNewLifeEvent],
+    [userId, openModalMilestoneId, addNewLifeEvent]
   );
 
   return (
@@ -92,11 +136,37 @@ const EditingCareerCalendar = ({ userId }: Props) => {
         return (
           <EditingCareerEvent
             lifeEvent={lifeEvent}
+            openModalMilestoneId={openModalMilestoneId}
             updateLifeEvent={updateLifeEvent}
+            handleEtidModal={handleEtidModal}
             key={`lifeEvent-${index}`}
           />
         );
       })}
+      {openingModalMilestone && (
+        <div className="fixed top-8 right-8 w-1/2 bg-white text-black p-5 shadow-2xl rounded-lg border z-50">
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => {
+                handleEtidModal.close();
+                deleteLifeEvent("");
+              }}
+              className="border-[1.5px] p-3 rounded-full h-14 w-14 flex justify-center items-center absolute right-0 hover:opacity-50"
+              title="変更を破棄してモーダルを閉じる"
+              aria-label="変更を破棄してモーダルを閉じる"
+            >
+              <span className="material-symbols-outlined">close</span>
+            </button>
+            <EditMilestoneForm
+              lifeEvent={openingModalMilestone}
+              handleSaveChange={updateLifeEvent}
+              deleteLifeEvent={deleteLifeEvent}
+              closeModal={handleEtidModal.close}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
