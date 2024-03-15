@@ -63,7 +63,7 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
 
   return (
     <div
-      className={`bg-pink-500 col-start-2 col-end-3 select-none relative ${cursorStyle}`}
+      className={`bg-blue-500 rounded-lg border py-1 px-4 col-start-2 col-end-3 select-none relative text-white ${cursorStyle}`}
       style={{ gridRow: `${gridRow.start}/${gridRow.end}` }}
       onMouseDown={onMouseDownSlide}
       onClick={handleEtidModal.open}
@@ -73,9 +73,11 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
       role="button"
       tabIndex={0}
     >
-      <p>{`${term.start.year}年${term.start.month}月 ~ ${term.end.year}年${term.end.month}月`}</p>
-      <p>{lifeEvent.title}</p>
-      <p>{lifeEvent.content}</p>
+      <div className="flex flex-col gap-1">
+        <p className=" text-xs">{`${term.start.year}年${term.start.month}月 ~ ${term.end.year}年${term.end.month}月`}</p>
+        <h2 className="text-2xl font-bold">{lifeEvent.title}</h2>
+        <p className=" text-sm whitespace-pre-wrap">{lifeEvent.content}</p>
+      </div>
       <div
         className={`w-full h-5 absolute bottom-0 ${
           editingState === "grabbing" ? "cursor-grabbing" : "cursor-row-resize"
