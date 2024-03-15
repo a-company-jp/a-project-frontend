@@ -1,9 +1,11 @@
 "use client";
 import axios from "axios";
-const protobuf = require("protobufjs");
+import {
+  Milestone,
+  MilestoneCreateRequest,
+} from "../../proto/typescript/pb_out/main";
 
-import { Milestone } from "../../proto/typescript/pb_out/main";
-import mockMilestones from "@/sample-data/milestones.json";
+const protobuf = require("protobufjs");
 
 const useFetchMilestone = () => {
   const create = async (newMileStone: Milestone): Promise<Milestone | void> => {
@@ -16,7 +18,7 @@ const useFetchMilestone = () => {
       "main.MilestoneCreateRequest",
     );
 
-    const payload = { milestone: newMileStone };
+    const payload = { milestone: newMileStone } as MilestoneCreateRequest;
 
     const errMsg = MilestoneCreateRequest.verify(payload);
     if (errMsg) throw Error(`MilestoneCreateRequest: ${errMsg}`);
