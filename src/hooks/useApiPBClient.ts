@@ -82,16 +82,9 @@ const useApiPBClient = () => {
       });
   };
 
-  const imageUpload = async (
-    userId: string,
-    file: File,
-  ): Promise<BackendResponse> => {
-    const contentType = getFileContentType(file);
-
-    headers["Content-Type"] = contentType;
-
+  const del = async (url: string): Promise<BackendResponse> => {
     return await axios
-      .put(`/user/${userId}/icon`, file, { headers })
+      .delete(process.env.NEXT_PUBLIC_BACKEND_DOMAIN + url, { headers })
       .then((resp) => {
         if (resp.status < 210) {
           return { data: resp.data, unauthorized: false, error: null };
@@ -102,7 +95,29 @@ const useApiPBClient = () => {
         return { data: null, unauthorized: false, error: resp.statusText };
       });
   };
-  return { get, put, post, imageUpload };
+
+
+    const imageUpload = async (
+        userId: string,
+        file: File,
+    ): Promise<BackendResponse> => {
+        const contentType = getFileContentType(file);
+
+        headers["Content-Type"] = contentType;
+
+        return await axios
+            .put(`/user/${userId}/icon`, file, { headers })
+            .then((resp) => {
+                if (resp.status < 210) {
+                    return { data: resp.data, unauthorized: false, error: null };
+                }
+                if (resp.status === 401) {
+                    return { data: null, unauthorized: true, error: resp.status };
+                }
+                return { data: null, unauthorized: false, error: resp.statusText };
+            });
+    };
+  return { get, put, post, del, imageUpload };
 };
 
 export default useApiPBClient;
