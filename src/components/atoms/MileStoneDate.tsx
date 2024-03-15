@@ -7,7 +7,7 @@ const convertToShortHandDate = (date: string): string => {
   const year = date.split("-")[0];
   const month = date.split("-")[1];
 
-  return `${year}年 ${parseInt(month, 10).toString()}月`;
+  return `${year}年${parseInt(month, 10).toString()}月`;
 };
 
 type Props = {
