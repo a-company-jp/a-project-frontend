@@ -1,13 +1,10 @@
 "use client";
-import axios from "axios";
 import {
   UserData,
   UserInfoResponse,
   UserInfosResponse,
 } from "../../proto/typescript/pb_out/main";
 import useApiPBClient from "@/hooks/useApiPBClient";
-
-const protobuf = require("protobufjs");
 
 const useFetchUser = () => {
   const client = useApiPBClient();
