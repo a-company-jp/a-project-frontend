@@ -34,7 +34,7 @@ const Sidebar = () => {
               edit
             </span>
           }
-          path="/edit"
+          path="/edit/3"
         />
         <SidebarIcon
           icon={
