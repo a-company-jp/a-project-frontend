@@ -1,28 +1,22 @@
 "use client";
 import axios from "axios";
+import { UserData, UserInfoResponse } from "../../proto/typescript/pb_out/main";
+import useApiPBClient from "@/hooks/useApiPBClient";
+
 const protobuf = require("protobufjs");
 
-import { UserData } from "../../proto/typescript/pb_out/main";
-
 const useFetchUser = () => {
-  const get = async (userId: string): Promise<string | void> => {
-    const token = localStorage.getItem("token");
-
-    await axios
-      .get(`${process.env.BACKEND_DOMAIN}/api/v1/user/info/${userId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        const UserResponse =
-          protobuf.roots.default.lookupType("main.UserResponse");
-        const res = UserResponse.decode(new Uint8Array(response.data));
-        return res;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const client = useApiPBClient();
+  const get = async (userId: string): Promise<UserInfoResponse> => {
+    return await client.get(`/api/v1/user/info/${userId}`).then((resp) => {
+      if (resp.unauthorized) {
+        throw new Error("unauthorized");
+      }
+      if (resp.error) {
+        throw new Error(resp.error);
+      }
+      return UserInfoResponse.fromBinary(resp.data);
+    });
   };
 
   const list = async (): Promise<UserData[] | void> => {
