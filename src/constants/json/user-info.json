@@ -25,7 +25,7 @@
         "userId": "Mike Tanaka",
         "milestoneId": "1",
         "title": "Mile Stone Title",
-        "content": "long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence",
+        "content": "content",
         "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-01-11",
         "finishDate": "2024-03-11"
@@ -121,7 +121,7 @@
         "userId": "John Smith",
         "milestoneId": "1",
         "title": "Mile Stone Title",
-        "content": "long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence",
+        "content": "content",
         "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-01-11",
         "finishDate": "2024-03-11"
@@ -217,7 +217,7 @@
         "userId": "Emily Johnson",
         "milestoneId": "1",
         "title": "Mile Stone Title",
-        "content": "long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence",
+        "content": "content",
         "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-01-11",
         "finishDate": "2024-03-11"
@@ -313,7 +313,7 @@
         "userId": "Jessica Lee",
         "milestoneId": "1",
         "title": "Mile Stone Title",
-        "content": "long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence",
+        "content": "content",
         "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-01-11",
         "finishDate": "2024-03-11"
@@ -409,7 +409,7 @@
         "userId": "Michael Brown",
         "milestoneId": "1",
         "title": "Mile Stone Title",
-        "content": "long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence",
+        "content": "content",
         "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-01-11",
         "finishDate": "2024-03-11"
@@ -505,7 +505,7 @@
         "userId": "Sophia Martinez",
         "milestoneId": "1",
         "title": "Mile Stone Title",
-        "content": "long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence",
+        "content": "content",
         "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-01-11",
         "finishDate": "2024-03-11"
@@ -601,7 +601,7 @@
         "userId": "David Garcia",
         "milestoneId": "1",
         "title": "Mile Stone Title",
-        "content": "long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence long sentence",
+        "content": "content",
         "imageUrl": "/milestone-sample.jpg",
         "beginDate": "2023-01-11",
         "finishDate": "2024-03-11"

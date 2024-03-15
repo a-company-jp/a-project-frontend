@@ -1,7 +1,4 @@
 import React from "react";
-import MileStoneDate from "../atoms/MileStoneDate";
-import MileStoneImage from "../atoms/MileStoneImage";
-import MileStoneContent from "../atoms/MileStoneContent";
 import MileStoneContentPreview from "../atoms/MileStoneContentPreview";
 import MileStoneImagePreview from "../atoms/MileStoneImagePreview";
 import MileStoneDatePreview from "../atoms/MileStoneDatePreview";
@@ -19,7 +16,6 @@ const TimeLineItemPreview = ({
   content,
   beginDate,
   finishDate,
-  imageUrl,
 }: Props) => {
   const styles = {
     sizing: "h-36 w-11/12",
@@ -32,7 +28,6 @@ const TimeLineItemPreview = ({
       <section className={`${styles.sizing} ${styles.flex} ${styles.color}`}>
         <MileStoneDatePreview beginDate={beginDate} finishDate={finishDate} />
         <MileStoneContentPreview title={title} description={content} />
-        <MileStoneImagePreview imageUrl={imageUrl} />
       </section>
     </>
   );
