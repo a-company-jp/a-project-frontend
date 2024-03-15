@@ -10,15 +10,15 @@ const useApiPBClient = () => {
   }
 
   const refreshTokenFn = async () => {
-    const refreshToken = localStorage.getItem('refresh-token')
+    const refreshToken = localStorage.getItem("refresh-token")
 
     await axios
       .post("/user/refresh", { refreshToken })
       .then((response: AxiosResponse) => {
         const data = response.data
 
-        localStorage.setItem('token', data['token'])
-        localStorage.setItem('refresh-token', data['refresh-token'])
+        localStorage.setItem("token", data["token"])
+        localStorage.setItem("refresh-token", data["refresh-token"])
       })
       .catch((error: AxiosError) => {
         localStorage.clear()
