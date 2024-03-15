@@ -13,10 +13,10 @@ const protobuf = require("protobufjs");
 const useFetchMilestone = () => {
   const client = useApiPBClient();
 
-  const create = (
+  const create = async (
     newMilestoen: MilestoneCreateRequest,
   ): Promise<MilestoneCreateResponse> => {
-    client.post("/milestone", newMilestoen).then((resp) => {
+    return await client.post("/milestone", newMilestoen).then((resp) => {
       if (resp.unauthorized) {
         throw new Error("unauthorized");
       }
@@ -27,7 +27,9 @@ const useFetchMilestone = () => {
     });
   };
 
-  const update = async (newMilestoen: MilestoneCreateRequest) => {
+  const update = async (
+    newMilestoen: MilestoneCreateRequest,
+  ): Promise<MilestoneUpdateResponse> => {
     return await client
       .put(`/milestone/${newMilestoen.milestone?.milestoneId}`, newMilestoen)
       .then((resp) => {
