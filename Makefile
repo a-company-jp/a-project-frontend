@@ -21,4 +21,4 @@ gen_proto_ts:
 
 # Node file for ts proto generation exists on different path on Windows
 gen_proto_ts_win:
-	protoc --ts_proto_opt=nestJs=true --plugin=./node_modules/.bin/protoc-gen-ts_proto.ps1 --ts_proto_out=./proto/typescript/pb_out --proto_path=./proto/src ./proto/src/*.proto
+	protoc --ts_out=./proto/typescript/pb_out --proto_path=./proto/src ./proto/src/*.proto
