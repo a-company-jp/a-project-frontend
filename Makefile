@@ -13,4 +13,4 @@ gen_proto_go:
 	protoc --proto_path=./proto/src --go_out=./proto/golang/pb_out --go_opt=paths=source_relative --go-grpc_out=./proto/golang/pb_out --go-grpc_opt=paths=source_relative ./proto/src/*.proto
 
 gen_proto_ts:
-	protoc --ts_out=./proto/typescript/pb_out --proto_path=./proto/src ./proto/src/*.proto
+	npx protoc --ts_out=./proto/typescript/pb_out --proto_path=./proto/src ./proto/src/*.proto
