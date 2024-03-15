@@ -18,6 +18,7 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     gridRow,
     term,
     editingState,
+    onClickMilestone,
     handleMouseDownSlide,
     handleMouseDownExpansion,
   } = useEditingCareerEvent({ lifeEvent, updateLifeEvent });
@@ -66,7 +67,9 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
       className={`bg-blue-500 rounded-lg border py-1 px-4 col-start-2 col-end-3 select-none relative text-white ${cursorStyle}`}
       style={{ gridRow: `${gridRow.start}/${gridRow.end}` }}
       onMouseDown={onMouseDownSlide}
-      onClick={handleEtidModal.open}
+      onMouseUp={()=>{
+        onClickMilestone(handleEtidModal.open);
+      }}
       onKeyDown={(e) => {
         if (e.key === "Enter") handleEtidModal.open();
       }}

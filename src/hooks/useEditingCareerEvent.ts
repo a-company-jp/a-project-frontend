@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Milestone } from "../../proto/typescript/pb_out/main";
 
 const START_YEAR = 2022;
@@ -14,6 +14,7 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     end: 0,
   });
   const [editingState, setEditingState] = useState<"grabbing" | "sliding" | "none">("none");
+  const [isDragging, setIsDragging] =  useState<boolean>(false);
 
   const term = useMemo(() => ({
     start: {
@@ -53,6 +54,10 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     };
   }
 
+  const onClickMilestone = useCallback(( callback: () => void ) => {
+    (editingState !== "none" && !isDragging) && callback();
+  }, [editingState, isDragging]);
+
   const handleMouseDownSlide = (
     downEvent: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
@@ -60,6 +65,7 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     const draggingFrom = downEvent.clientY;
 
     const handleMouseMove = (moveEvent: MouseEvent) => {
+      setIsDragging(true);
       const differenceClientY = moveEvent.clientY - draggingFrom;
       const differenceGridRow = Math.floor(differenceClientY / 10);
       const newGridStart = gridRow.start + differenceGridRow;
@@ -81,6 +87,7 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
       setEditingState("none");
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
+      setIsDragging(false);
     };
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp);
@@ -92,6 +99,7 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     const draggingFrom = downEvent.clientY;
 
     const handleMouseMove = (moveEvent: MouseEvent) => {
+      setIsDragging(true);
       const differenceClientY = moveEvent.clientY - draggingFrom;
       const differenceGridRow = Math.floor(differenceClientY / 10) + 1;
       const currentGridStart = gridRow.start;
@@ -112,12 +120,13 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
       setEditingState("none");
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
+      setIsDragging(false);
     };
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp);
   };
 
-  return { gridRow, term, editingState, handleMouseDownSlide, handleMouseDownExpansion };
+  return { gridRow, term, editingState, isDragging, handleMouseDownSlide, handleMouseDownExpansion, onClickMilestone };
 };
 
 export default useEditingCareerEvent;
