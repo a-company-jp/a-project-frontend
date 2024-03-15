@@ -1,19 +1,25 @@
 "use client";
 
 import useEditingCareerEvent from "@/hooks/useEditingCareerEvent";
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useMemo } from "react";
 import { Milestone } from "../../../proto/typescript/pb_out/main";
-import Modal from "react-modal";
-import EditMilestoneForm from "./EditMilestoneForm";
-import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 
 type Props = {
   lifeEvent: Milestone;
+  openModalMilestoneId: string | null;
   updateLifeEvent: (newLifeEvent: Milestone) => void;
+  handleEtidModal: {
+    open: (milestoneId: string) => void;
+    close: (e?: React.MouseEvent<HTMLButtonElement>) => void;
+  };
 };
 
-const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
-  const [iEditModalOpen, setIsEditModalOpen] = useState(false);
+const EditingCareerEvent = ({
+  lifeEvent,
+  openModalMilestoneId,
+  updateLifeEvent,
+  handleEtidModal,
+}: Props) => {
   const {
     gridRow,
     term,
@@ -23,6 +29,14 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     handleMouseDownSlide,
     handleMouseDownExpansion,
   } = useEditingCareerEvent({ lifeEvent, updateLifeEvent });
+  const isModalOpen = useMemo(
+    () => openModalMilestoneId === lifeEvent.milestoneId,
+    [openModalMilestoneId, lifeEvent]
+  );
+  const inactiveMilestone = useMemo(
+    () => openModalMilestoneId !== null && !isModalOpen,
+    [openModalMilestoneId, isModalOpen]
+  );
 
   const cursorStyle = useMemo(() => {
     switch (editingState) {
@@ -37,44 +51,30 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     }
   }, [editingState]);
 
-  const modalRef = useRef(null);
-  const handleEtidModal = useMemo(() => {
-    return {
-      open: () => {
-        setIsEditModalOpen(true);
-        const currentRef = modalRef.current;
-        currentRef && disableBodyScroll(currentRef);
-      },
-      close: (e?: React.MouseEvent<HTMLButtonElement>) => {
-        e?.stopPropagation();
-        setIsEditModalOpen(false);
-        clearAllBodyScrollLocks();
-      },
-    };
-  }, []);
-
   const onMouseDownSlide = useMemo(
-    () => (iEditModalOpen ? undefined : handleMouseDownSlide),
-    [iEditModalOpen, handleMouseDownSlide]
+    () => ((isModalOpen || inactiveMilestone) ? undefined : handleMouseDownSlide),
+    [isModalOpen, inactiveMilestone, handleMouseDownSlide]
   );
 
   const onMouseDownExpansion = useMemo(
-    () => (iEditModalOpen ? undefined : handleMouseDownExpansion),
-    [iEditModalOpen, handleMouseDownExpansion]
+    () => (isModalOpen ? undefined : handleMouseDownExpansion),
+    [isModalOpen, handleMouseDownExpansion]
   );
 
   return (
     <div
       className={`bg-blue-500 rounded-lg border py-1 px-4 col-start-2 col-end-3 select-none relative text-white ${cursorStyle} ${
-        isDragging && style.milestone.hold
-      }`}
+        (isDragging || isModalOpen) && style.milestone.hold
+      } ${isModalOpen} ${inactiveMilestone && "opacity-50"}`}
       style={{ gridRow: `${gridRow.start}/${gridRow.end}` }}
       onMouseDown={onMouseDownSlide}
       onMouseUp={() => {
-        onClickMilestone(handleEtidModal.open);
+        onClickMilestone(() => {
+          handleEtidModal.open(lifeEvent.milestoneId);
+        });
       }}
       onKeyDown={(e) => {
-        if (e.key === "Enter") handleEtidModal.open();
+        if (e.key === "Enter") handleEtidModal.open(lifeEvent.milestoneId);
       }}
       role="button"
       tabIndex={0}
@@ -92,24 +92,6 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
       >
         {" "}
       </div>
-      <Modal isOpen={iEditModalOpen} ref={modalRef}>
-        <div className="relative">
-          <button
-            type="button"
-            onClick={handleEtidModal.close}
-            className="border-[1.5px] p-3 rounded-full h-14 w-14 flex justify-center items-center absolute right-0 hover:opacity-50"
-            title="変更を破棄してモーダルを閉じる"
-            aria-label="変更を破棄してモーダルを閉じる"
-          >
-            <span className="material-symbols-outlined">close</span>
-          </button>
-          <EditMilestoneForm
-            lifeEvent={lifeEvent}
-            handleSaveChange={updateLifeEvent}
-            closeModal={handleEtidModal.close}
-          />
-        </div>
-      </Modal>
     </div>
   );
 };
@@ -118,6 +100,6 @@ export default EditingCareerEvent;
 
 const style = {
   milestone: {
-    hold: "translate-x-[-1rem] drop-shadow-2xl z-50",
+    hold: "translate-x-[-1rem] drop-shadow-2xl z-40",
   },
 };
