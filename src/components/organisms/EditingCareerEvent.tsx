@@ -8,6 +8,7 @@ type Props = {
   lifeEvent: Milestone;
   openModalMilestoneId: string | null;
   updateLifeEvent: (newLifeEvent: Milestone) => void;
+  fetchUpdateMilestone: (milestoneId: string) => void;
   handleEtidModal: {
     open: (milestoneId: string) => void;
     close: (e?: React.MouseEvent<HTMLButtonElement>) => void;
@@ -18,6 +19,7 @@ const EditingCareerEvent = ({
   lifeEvent,
   openModalMilestoneId,
   updateLifeEvent,
+  fetchUpdateMilestone,
   handleEtidModal,
 }: Props) => {
   const {
@@ -28,14 +30,18 @@ const EditingCareerEvent = ({
     onClickMilestone,
     handleMouseDownSlide,
     handleMouseDownExpansion,
-  } = useEditingCareerEvent({ lifeEvent, updateLifeEvent });
+  } = useEditingCareerEvent({
+    lifeEvent,
+    updateLifeEvent,
+    fetchUpdateMilestone,
+  });
   const isModalOpen = useMemo(
     () => openModalMilestoneId === lifeEvent.milestoneId,
-    [openModalMilestoneId, lifeEvent],
+    [openModalMilestoneId, lifeEvent]
   );
   const inactiveMilestone = useMemo(
     () => openModalMilestoneId !== null && !isModalOpen,
-    [openModalMilestoneId, isModalOpen],
+    [openModalMilestoneId, isModalOpen]
   );
 
   const cursorStyle = useMemo(() => {
@@ -53,12 +59,12 @@ const EditingCareerEvent = ({
 
   const onMouseDownSlide = useMemo(
     () => (isModalOpen || inactiveMilestone ? undefined : handleMouseDownSlide),
-    [isModalOpen, inactiveMilestone, handleMouseDownSlide],
+    [isModalOpen, inactiveMilestone, handleMouseDownSlide]
   );
 
   const onMouseDownExpansion = useMemo(
     () => (isModalOpen ? undefined : handleMouseDownExpansion),
-    [isModalOpen, handleMouseDownExpansion],
+    [isModalOpen, handleMouseDownExpansion]
   );
 
   return (
