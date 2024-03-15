@@ -5,6 +5,7 @@ import EditingCareerEvent from "./EditingCareerEvent";
 import { Milestone } from "../../../proto/typescript/pb_out/main";
 import EditMilestoneForm from "./EditMilestoneForm";
 import useFetchUser from "@/hooks/useFetchUser";
+import useFetchMilestone from "@/hooks/useFetchMilestone";
 
 // とりあえず100年分のカレンダーを表示
 const FULL_YEAR = 100;
@@ -16,6 +17,7 @@ type Props = {
 
 const EditingCareerCalendar = ({ userId }: Props) => {
   const { me } = useFetchUser();
+  const { create, update, _delete } = useFetchMilestone();
   const [lifeEvents, setLifeEvents] = useState<Milestone[]>([]);
 
   useEffect(() => {
@@ -46,17 +48,17 @@ const EditingCareerCalendar = ({ userId }: Props) => {
   }, []);
 
   const updateLifeEvent = useCallback(
-    (newLifeEvent: Milestone) => {
+    async (newLifeEvent: Milestone) => {
       if (newLifeEvent.milestoneId === "") {
+        const createdMilestone = await create({ milestone: newLifeEvent });
+        const validated = createdMilestone.milestone;
+        const removedNoIdMilestone = lifeEvents.filter(
+          (l) => l.milestoneId !== ""
+        );
         setLifeEvents(
-          lifeEvents.map((n) =>
-            n.milestoneId !== ""
-              ? n
-              : {
-                  ...newLifeEvent,
-                  milestoneId: String(Math.random() * 10000),
-                }
-          )
+          validated
+            ? [...removedNoIdMilestone, validated]
+            : removedNoIdMilestone
         );
         return;
       }
@@ -65,8 +67,9 @@ const EditingCareerCalendar = ({ userId }: Props) => {
           l.milestoneId === newLifeEvent.milestoneId ? newLifeEvent : l
         )
       );
+      update({ milestone: newLifeEvent });
     },
-    [lifeEvents]
+    [lifeEvents, create, update]
   );
 
   const deleteLifeEvent = useCallback(
