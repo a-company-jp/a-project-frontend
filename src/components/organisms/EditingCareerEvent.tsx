@@ -31,11 +31,11 @@ const EditingCareerEvent = ({
   } = useEditingCareerEvent({ lifeEvent, updateLifeEvent });
   const isModalOpen = useMemo(
     () => openModalMilestoneId === lifeEvent.milestoneId,
-    [openModalMilestoneId, lifeEvent]
+    [openModalMilestoneId, lifeEvent],
   );
   const inactiveMilestone = useMemo(
     () => openModalMilestoneId !== null && !isModalOpen,
-    [openModalMilestoneId, isModalOpen]
+    [openModalMilestoneId, isModalOpen],
   );
 
   const cursorStyle = useMemo(() => {
@@ -52,13 +52,13 @@ const EditingCareerEvent = ({
   }, [editingState]);
 
   const onMouseDownSlide = useMemo(
-    () => ((isModalOpen || inactiveMilestone) ? undefined : handleMouseDownSlide),
-    [isModalOpen, inactiveMilestone, handleMouseDownSlide]
+    () => (isModalOpen || inactiveMilestone ? undefined : handleMouseDownSlide),
+    [isModalOpen, inactiveMilestone, handleMouseDownSlide],
   );
 
   const onMouseDownExpansion = useMemo(
     () => (isModalOpen ? undefined : handleMouseDownExpansion),
-    [isModalOpen, handleMouseDownExpansion]
+    [isModalOpen, handleMouseDownExpansion],
   );
 
   return (

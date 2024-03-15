@@ -50,15 +50,6 @@ const Sidebar = () => {
         <SidebarIcon
           icon={
             <span className="material-symbols-outlined material-icons text-3xl cursor-pointer">
-              settings
-            </span>
-          }
-          path="/setting"
-          tooltipText="Profile"
-        />
-        <SidebarIcon
-          icon={
-            <span className="material-symbols-outlined material-icons text-3xl cursor-pointer">
               logout
             </span>
           }

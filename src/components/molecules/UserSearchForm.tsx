@@ -24,8 +24,10 @@ const UserSearchForm: React.FC<UserSearchFormProps> = ({ handleSearch }) => {
         value={searchKeyword}
         onChange={handleChange}
       />
-      <button className="py-2 px-4 text-sm rounded-lg bg-blue-400 text-white "
-      onClick={handleSearchClick}>
+      <button
+        className="py-2 px-4 text-sm rounded-lg bg-blue-400 text-white "
+        onClick={handleSearchClick}
+      >
         検索
       </button>
     </div>
