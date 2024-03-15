@@ -1,10 +1,10 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import EditingCareerEvent from "./EditingCareerEvent";
-import milestones from "@/sample-data/milestones.json";
 import { Milestone } from "../../../proto/typescript/pb_out/main";
 import EditMilestoneForm from "./EditMilestoneForm";
+import useFetchUser from "@/hooks/useFetchUser";
 
 // とりあえず100年分のカレンダーを表示
 const FULL_YEAR = 100;
@@ -15,10 +15,17 @@ type Props = {
 };
 
 const EditingCareerCalendar = ({ userId }: Props) => {
+  const { me } = useFetchUser();
+  const [lifeEvents, setLifeEvents] = useState<Milestone[]>([]);
+
+  useEffect(() => {
+    async () => {
+      const { milestones } = await me();
+      setLifeEvents(milestones);
+    };
+  }, [me]);
+
   const array = new Array(FULL_YEAR).fill(0);
-  const [lifeEvents, setLifeEvents] = useState<Milestone[]>(
-    milestones.filter((m) => m.userId === userId)
-  );
   const [openModalMilestoneId, setOpenModalMilestoneId] = useState<
     string | null
   >(null);
