@@ -17,7 +17,8 @@ const Main = () => {
     useState<UserInfoResponse | null>(null);
   const [user, isLoading] = useAuthState(auth);
   const [allUsers] = useState<UserInfoResponse[]>(userInfos); // テストデータを初期値としてセット
-  const [filteredUsers, setFilteredUsers] = useState<UserInfoResponse[]>(allUsers); // allUsers を初期値としてセット
+  const [filteredUsers, setFilteredUsers] =
+    useState<UserInfoResponse[]>(allUsers); // allUsers を初期値としてセット
   const redirectLogin = () => {
     router.push("/login");
   };
@@ -31,7 +32,7 @@ const Main = () => {
 
     // ユーザーリストをフィルタリングして、キーワードに一致するユーザーを抽出する
     const filtered = allUsers.filter((userInfo) =>
-      userInfo.userData?.username.toLowerCase().includes(keyword.toLowerCase())
+      userInfo.userData?.username.toLowerCase().includes(keyword.toLowerCase()),
     );
 
     // フィルタリングされた結果を更新する

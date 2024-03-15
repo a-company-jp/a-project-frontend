@@ -24,7 +24,7 @@ const EditingCareerCalendar = ({ userId }: Props) => {
   >(null);
   const openingModalMilestone = useMemo(
     () => lifeEvents.find((l) => l.milestoneId === openModalMilestoneId),
-    [openModalMilestoneId, lifeEvents]
+    [openModalMilestoneId, lifeEvents],
   );
   const handleEtidModal = useMemo(() => {
     return {
@@ -48,8 +48,8 @@ const EditingCareerCalendar = ({ userId }: Props) => {
               : {
                   ...newLifeEvent,
                   milestoneId: String(Math.random() * 10000),
-                }
-          )
+                },
+          ),
         );
         return;
       }
@@ -66,7 +66,7 @@ const EditingCareerCalendar = ({ userId }: Props) => {
     (lifeEventId: string) => {
       setLifeEvents(lifeEvents.filter((l) => l.milestoneId !== lifeEventId));
     },
-    [lifeEvents]
+    [lifeEvents],
   );
 
   const addNewLifeEvent = useCallback(
@@ -94,7 +94,7 @@ const EditingCareerCalendar = ({ userId }: Props) => {
         finishDate: `${newLifeEventBeginYear}-12-01`,
       });
     },
-    [userId, openModalMilestoneId, addNewLifeEvent]
+    [userId, openModalMilestoneId, addNewLifeEvent],
   );
 
   return (

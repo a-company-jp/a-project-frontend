@@ -12,10 +12,10 @@ const CareerEdit = () => {
   return (
     <div className="h-screen w-screen flex">
       <Sidebar />
-        <div className="w-full p-4 overflow-scroll">
-          {userId && <EditingCareerCalendar userId={userId} />}
-          {!userId && <p>問題が発生しました。</p>}
-        </div>
+      <div className="w-full p-4 overflow-scroll">
+        {userId && <EditingCareerCalendar userId={userId} />}
+        {!userId && <p>問題が発生しました。</p>}
+      </div>
     </div>
   );
 };
