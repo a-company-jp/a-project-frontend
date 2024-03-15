@@ -18,6 +18,7 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     gridRow,
     term,
     editingState,
+    isDragging,
     onClickMilestone,
     handleMouseDownSlide,
     handleMouseDownExpansion,
@@ -64,10 +65,12 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
 
   return (
     <div
-      className={`bg-blue-500 rounded-lg border py-1 px-4 col-start-2 col-end-3 select-none relative text-white ${cursorStyle}`}
+      className={`bg-blue-500 rounded-lg border py-1 px-4 col-start-2 col-end-3 select-none relative text-white ${cursorStyle} ${
+        isDragging && style.milestone.hold
+      }`}
       style={{ gridRow: `${gridRow.start}/${gridRow.end}` }}
       onMouseDown={onMouseDownSlide}
-      onMouseUp={()=>{
+      onMouseUp={() => {
         onClickMilestone(handleEtidModal.open);
       }}
       onKeyDown={(e) => {
@@ -112,3 +115,9 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
 };
 
 export default EditingCareerEvent;
+
+const style = {
+  milestone: {
+    hold: "translate-x-[-1rem] drop-shadow-2xl z-50",
+  },
+};
