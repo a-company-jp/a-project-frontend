@@ -48,6 +48,10 @@ export interface UserInfosResponse {
   userInfoResponses: UserInfoResponse[];
 }
 
+export interface GetMeResponse {
+  userData: UserData | undefined;
+}
+
 export interface MilestoneCreateRequest {
   /** milestone_id should be empty. */
   milestone: Milestone | undefined;
