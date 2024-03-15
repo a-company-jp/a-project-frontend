@@ -14,7 +14,7 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     end: 0,
   });
   const [editingState, setEditingState] = useState<"grabbing" | "sliding" | "none">("none");
-  const [isDragging, setIsDragging] =  useState<boolean>(false);
+  const [isDragging, setIsDragging] = useState<boolean>(false);
 
   const term = useMemo(() => ({
     start: {
@@ -54,7 +54,7 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     };
   }
 
-  const onClickMilestone = useCallback(( callback: () => void ) => {
+  const onClickMilestone = useCallback((callback: () => void) => {
     (editingState !== "none" && !isDragging) && callback();
   }, [editingState, isDragging]);
 
@@ -63,6 +63,9 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
   ) => {
     setEditingState("grabbing");
     const draggingFrom = downEvent.clientY;
+    const intervalId = setInterval(() => {
+      setIsDragging(true);
+    }, 500);
 
     const handleMouseMove = (moveEvent: MouseEvent) => {
       setIsDragging(true);
@@ -87,6 +90,7 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
       setEditingState("none");
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
+      clearInterval(intervalId);
       setIsDragging(false);
     };
     document.addEventListener("mousemove", handleMouseMove);
@@ -97,6 +101,9 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     downEvent.stopPropagation();
     setEditingState("sliding");
     const draggingFrom = downEvent.clientY;
+    const intervalId = setInterval(() => {
+      setIsDragging(true);
+    }, 500);
 
     const handleMouseMove = (moveEvent: MouseEvent) => {
       setIsDragging(true);
@@ -120,6 +127,7 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
       setEditingState("none");
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
+      clearInterval(intervalId);
       setIsDragging(false);
     };
     document.addEventListener("mousemove", handleMouseMove);
