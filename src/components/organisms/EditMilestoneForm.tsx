@@ -17,12 +17,14 @@ type Props = {
   lifeEvent: Milestone;
   closeModal: (e?: React.MouseEvent<HTMLButtonElement>) => void;
   handleSaveChange: (newLifeEvent: Milestone) => void;
+  deleteLifeEvent: (lifeEventId: string) => void;
 };
 
 const EditMilestoneForm = ({
   lifeEvent,
   closeModal,
   handleSaveChange,
+  deleteLifeEvent,
 }: Props) => {
   const {
     register,
@@ -44,6 +46,11 @@ const EditMilestoneForm = ({
     },
     [lifeEvent, closeModal, handleSaveChange]
   );
+
+  const handleCloseModal = () => {
+    lifeEvent.milestoneId === "" && deleteLifeEvent("");
+    closeModal();
+  };
 
   const YYYYMMDDToYYYYMM = useCallback((dateString: string): string => {
     const [year, month, _] = dateString.split("-");
@@ -137,7 +144,7 @@ const EditMilestoneForm = ({
       </div>
       <div className="flex gap-4 justify-stretch px-8">
         <button
-          onClick={closeModal}
+          onClick={handleCloseModal}
           type="button"
           className={`${style.buttomButton}`}
           title="変更を破棄して編集をキャンセルする"

@@ -40,11 +40,31 @@ const EditingCareerCalendar = ({ userId }: Props) => {
 
   const updateLifeEvent = useCallback(
     (newLifeEvent: Milestone) => {
+      if (newLifeEvent.milestoneId === "") {
+        setLifeEvents(
+          lifeEvents.map((n) =>
+            n.milestoneId !== ""
+              ? n
+              : {
+                  ...newLifeEvent,
+                  milestoneId: String(Math.random() * 10000),
+                }
+          )
+        );
+        return;
+      }
       setLifeEvents(
         lifeEvents.map((l) =>
           l.milestoneId === newLifeEvent.milestoneId ? newLifeEvent : l
         )
       );
+    },
+    [lifeEvents]
+  );
+
+  const deleteLifeEvent = useCallback(
+    (lifeEventId: string) => {
+      setLifeEvents(lifeEvents.filter((l) => l.milestoneId !== lifeEventId));
     },
     [lifeEvents]
   );
@@ -58,18 +78,23 @@ const EditingCareerCalendar = ({ userId }: Props) => {
 
   const handleClickCalender = useCallback(
     (calendarIndex: number) => {
+      if (openModalMilestoneId !== null) {
+        return;
+      }
       const newLifeEventBeginYear = calendarIndex + START_YEAR;
+      const newMilestoneId = ""; //仮置き
+      setOpenModalMilestoneId(newMilestoneId);
       addNewLifeEvent({
         userId: userId,
-        milestoneId: `${Math.random() * 10000}`, //仮置き
-        title: "新しいマイルストーン",
-        content: "新しいマイルストーンのコンテンツ",
+        milestoneId: newMilestoneId,
+        title: "",
+        content: "",
         imageHash: "",
         beginDate: `${newLifeEventBeginYear}-01-01`,
         finishDate: `${newLifeEventBeginYear}-12-01`,
       });
     },
-    [userId, addNewLifeEvent]
+    [userId, openModalMilestoneId, addNewLifeEvent]
   );
 
   return (
@@ -123,7 +148,10 @@ const EditingCareerCalendar = ({ userId }: Props) => {
           <div className="relative">
             <button
               type="button"
-              onClick={handleEtidModal.close}
+              onClick={() => {
+                handleEtidModal.close();
+                deleteLifeEvent("");
+              }}
               className="border-[1.5px] p-3 rounded-full h-14 w-14 flex justify-center items-center absolute right-0 hover:opacity-50"
               title="変更を破棄してモーダルを閉じる"
               aria-label="変更を破棄してモーダルを閉じる"
@@ -133,6 +161,7 @@ const EditingCareerCalendar = ({ userId }: Props) => {
             <EditMilestoneForm
               lifeEvent={openingModalMilestone}
               handleSaveChange={updateLifeEvent}
+              deleteLifeEvent={deleteLifeEvent}
               closeModal={handleEtidModal.close}
             />
           </div>
