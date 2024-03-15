@@ -60,19 +60,9 @@ const useFetchUser = () => {
     });
   };
 
-  //   const icon = async (userId: string, file: File) => {
-  //     return await client.put(
-  //         `/user/${userId}/icon`,
-  //         ).then((resp) => {
-  //         if (resp.unauthorized) {
-  //             throw new Error("unauthorized");
-  //           }
-  //           if (resp.error) {
-  //             throw new Error(resp.error);
-  //           }
-  //           return UserInfoResponse.fromBinary(resp.data)
-  //     })
-  //   }
+  const iconUpload = async (userId: string, file: File) => {
+    return await client.imageUpload(userId, file);
+  };
 
   return { me, get, list, create };
 };

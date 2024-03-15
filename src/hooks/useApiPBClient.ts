@@ -58,7 +58,44 @@ const useApiPBClient = () => {
         return { data: null, unauthorized: false, error: resp.statusText };
       });
   };
-  return { get, put, post };
+
+  const imageUpload = async (
+    userId: string,
+    file: File,
+  ): Promise<BackendResponse> => {
+    const contentType = getFileContentType(file);
+
+    headers["Content-Type"] = contentType;
+
+    return await axios
+      .put(`/user/${userId}/icon`, file, { headers })
+      .then((resp) => {
+        if (resp.status < 210) {
+          return { data: resp.data, unauthorized: false, error: null };
+        }
+        if (resp.status === 401) {
+          return { data: null, unauthorized: true, error: resp.status };
+        }
+        return { data: null, unauthorized: false, error: resp.statusText };
+      });
+  };
+  return { get, put, post, imageUpload };
 };
 
 export default useApiPBClient;
+
+function getFileContentType(file: File): string {
+  const extension = file.name.split(".").pop();
+  switch (extension) {
+    case "png":
+      return "image/png";
+    case "jpg":
+    case "jpeg":
+      return "image/jpeg";
+    case "gif":
+      return "image/gif";
+    // 追加の拡張子に対する処理を追加できます
+    default:
+      return "application/octet-stream"; // デフォルトのContent-Type
+  }
+}
