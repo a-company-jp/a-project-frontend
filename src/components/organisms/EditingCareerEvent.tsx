@@ -1,7 +1,7 @@
 "use client";
 
 import useEditingCareerEvent from "@/hooks/useEditingCareerEvent";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { Milestone } from "../../../proto/typescript/pb_out/main";
 import Modal from "react-modal";
 import EditMilestoneForm from "./EditMilestoneForm";
@@ -51,11 +51,21 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     };
   }, []);
 
+  const onMouseDownSlide = useMemo(
+    () => (iEditModalOpen ? undefined : handleMouseDownSlide),
+    [iEditModalOpen, handleMouseDownSlide]
+  );
+
+  const onMouseDownExpansion = useMemo(
+    () => (iEditModalOpen ? undefined : handleMouseDownExpansion),
+    [iEditModalOpen, handleMouseDownExpansion]
+  );
+
   return (
     <div
       className={`bg-pink-500 col-start-2 col-end-3 select-none relative ${cursorStyle}`}
       style={{ gridRow: `${gridRow.start}/${gridRow.end}` }}
-      onMouseDown={handleMouseDownSlide}
+      onMouseDown={onMouseDownSlide}
       onClick={handleEtidModal.open}
       onKeyDown={(e) => {
         if (e.key === "Enter") handleEtidModal.open();
@@ -70,7 +80,7 @@ const EditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
         className={`w-full h-5 absolute bottom-0 ${
           editingState === "grabbing" ? "cursor-grabbing" : "cursor-row-resize"
         }`}
-        onMouseDown={handleMouseDownExpansion}
+        onMouseDown={onMouseDownExpansion}
       >
         {" "}
       </div>
