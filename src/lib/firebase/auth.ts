@@ -8,7 +8,9 @@ export const login = (): void => {
       const credential: any = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
-      console.log(token, user);
+      window.localStorage.setItem("token", token);
+      window.localStorage.setItem("refresh-token", user.refreshToken);
+      console.log(token, user, user.refreshToken);
     })
     .catch((error) => {
       const errorCode = error.code;
