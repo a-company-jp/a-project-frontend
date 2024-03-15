@@ -1,22 +1,19 @@
 "use client";
-import axios from "axios";
 import {
-  Milestone,
   MilestoneCreateRequest,
   MilestoneCreateResponse,
+  MilestoneUpdateRequest,
 } from "../../proto/typescript/pb_out/main";
 
 import useApiPBClient from "@/hooks/useApiPBClient";
-
-const protobuf = require("protobufjs");
 
 const useFetchMilestone = () => {
   const client = useApiPBClient();
 
   const create = async (
-    newMilestoen: MilestoneCreateRequest,
+    req: MilestoneCreateRequest,
   ): Promise<MilestoneCreateResponse> => {
-    return await client.post("/milestone", newMilestoen).then((resp) => {
+    return await client.post("/apu/v1/milestone", req).then((resp) => {
       if (resp.unauthorized) {
         throw new Error("unauthorized");
       }
@@ -27,11 +24,9 @@ const useFetchMilestone = () => {
     });
   };
 
-  const update = async (
-    newMilestoen: MilestoneCreateRequest,
-  ): Promise<MilestoneUpdateResponse> => {
+  const update = async (req: MilestoneUpdateRequest): Promise<boolean> => {
     return await client
-      .put(`/milestone/${newMilestoen.milestone?.milestoneId}`, newMilestoen)
+      .put(`/api/v1/milestone/${req.milestone?.milestoneId}`, req)
       .then((resp) => {
         if (resp.unauthorized) {
           throw new Error("unauthorized");
@@ -39,25 +34,23 @@ const useFetchMilestone = () => {
         if (resp.error) {
           throw new Error(resp.error);
         }
-        return MilestoneUpdateResponse.fromBinary(resp.data);
+        return true;
       });
   };
 
-  const _delete = async (
-    milestoneId: string,
-  ): Promise<MilestoneDeleteResponse> => {
-    return await client.delete(`/milestone/${milestoneId}`).then((resp) => {
+  const del = async (milestoneId: string): Promise<boolean> => {
+    return await client.del(`/api/v1/milestone/${milestoneId}`).then((resp) => {
       if (resp.unauthorized) {
         throw new Error("unauthorized");
       }
       if (resp.error) {
         throw new Error(resp.error);
       }
-      return MilestoneDeleteResponse.fromBinary(resp.data);
+      return true;
     });
   };
 
-  return { create, update, _delete };
+  return { create, update, del };
 };
 
 export default useFetchMilestone;
