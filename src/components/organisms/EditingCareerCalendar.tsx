@@ -162,7 +162,7 @@ const EditingCareerCalendar = ({ userId }: Props) => {
                   type="button"
                   onClick={() => {
                     handleEtidModal.close();
-                    deleteLifeEvent(openModalMilestoneId);
+                    _delete(openModalMilestoneId);
                   }}
                   className="border-[1.5px] p-3 rounded-full h-14 w-14 flex justify-center items-center hover:opacity-50"
                   title="マイルストーンを削除する"
