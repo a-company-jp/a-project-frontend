@@ -129,7 +129,7 @@ const EditMilestoneForm = ({
         <label htmlFor="milestoneContent">内容</label>
         <textarea
           id={"milestoneContent"}
-          {...register("content", { required: true })}
+          {...register("content")}
           className={`${style.input.default} h-60`}
         >
           {lifeEvent.content}
