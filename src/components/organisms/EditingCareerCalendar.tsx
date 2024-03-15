@@ -47,6 +47,26 @@ const EditingCareerCalendar = ({ userId }: Props) => {
     };
   }, []);
 
+  const updateLifeEventWithSlider = useCallback(
+    async (newLifeEvent: Milestone) => {
+      setLifeEvents(
+        lifeEvents.map((l) =>
+          l.milestoneId === newLifeEvent.milestoneId ? newLifeEvent : l
+        )
+      );
+    },
+    [lifeEvents]
+  );
+
+  const fetchUpdateMilestone = useCallback(
+    (milestoneId: string) => {
+      update({
+        milestone: lifeEvents.find((l) => l.milestoneId === milestoneId),
+      });
+    },
+    [lifeEvents, update]
+  );
+
   const updateLifeEvent = useCallback(
     async (newLifeEvent: Milestone) => {
       if (newLifeEvent.milestoneId === "") {
@@ -147,7 +167,8 @@ const EditingCareerCalendar = ({ userId }: Props) => {
           <EditingCareerEvent
             lifeEvent={lifeEvent}
             openModalMilestoneId={openModalMilestoneId}
-            updateLifeEvent={updateLifeEvent}
+            updateLifeEvent={updateLifeEventWithSlider}
+            fetchUpdateMilestone={fetchUpdateMilestone}
             handleEtidModal={handleEtidModal}
             key={`lifeEvent-${index}`}
           />
