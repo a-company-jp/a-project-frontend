@@ -12,8 +12,15 @@ const UserSearchForm: React.FC<UserSearchFormProps> = ({ handleSearch }) => {
   };
 
   const handleSearchClick = () => {
-    handleSearch(searchKeyword); // ここでは最新の searchKeyword を使用する
+    handleSearch(searchKeyword);
   };
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearchClick();
+    }
+  };
+
   return (
     <div className="pb-4 h-max">
       <p className="text-lg font-bold my-4">ユーザーを検索する</p>
@@ -23,9 +30,10 @@ const UserSearchForm: React.FC<UserSearchFormProps> = ({ handleSearch }) => {
         className="p-2 mr-3 text-sm rounded-lg bg-gray-100"
         value={searchKeyword}
         onChange={handleChange}
+        onKeyDown={handleKeyPress} // Enterキーを検知する
       />
       <button
-        className="py-2 px-4 text-sm rounded-lg bg-blue-400 text-white "
+        className="py-2 px-4 text-sm rounded-lg bg-blue-400 text-white hover:opacity-80"
         onClick={handleSearchClick}
       >
         検索
