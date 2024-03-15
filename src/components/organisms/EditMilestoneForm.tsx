@@ -44,7 +44,7 @@ const EditMilestoneForm = ({
       });
       closeModal();
     },
-    [lifeEvent, closeModal, handleSaveChange]
+    [lifeEvent, closeModal, handleSaveChange],
   );
 
   const handleCloseModal = () => {

@@ -13,7 +13,9 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     start: 0,
     end: 0,
   });
-  const [editingState, setEditingState] = useState<"grabbing" | "sliding" | "none">("none");
+  const [editingState, setEditingState] = useState<
+    "grabbing" | "sliding" | "none"
+  >("none");
   const [isDragging, setIsDragging] = useState<boolean>(false);
 
   const term = useMemo(
@@ -62,9 +64,12 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     };
   };
 
-  const onClickMilestone = useCallback((callback: () => void) => {
-    (editingState !== "none" && !isDragging) && callback();
-  }, [editingState, isDragging]);
+  const onClickMilestone = useCallback(
+    (callback: () => void) => {
+      editingState !== "none" && !isDragging && callback();
+    },
+    [editingState, isDragging],
+  );
 
   const handleMouseDownSlide = (
     downEvent: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -144,7 +149,15 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     document.addEventListener("mouseup", handleMouseUp);
   };
 
-  return { gridRow, term, editingState, isDragging, handleMouseDownSlide, handleMouseDownExpansion, onClickMilestone };
+  return {
+    gridRow,
+    term,
+    editingState,
+    isDragging,
+    handleMouseDownSlide,
+    handleMouseDownExpansion,
+    onClickMilestone,
+  };
 };
 
 export default useEditingCareerEvent;
