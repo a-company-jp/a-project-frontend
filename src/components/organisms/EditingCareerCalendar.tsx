@@ -17,14 +17,14 @@ type Props = {
 const EditingCareerCalendar = ({ userId }: Props) => {
   const array = new Array(FULL_YEAR).fill(0);
   const [lifeEvents, setLifeEvents] = useState<Milestone[]>(
-    milestones.filter((m) => m.userId === userId),
+    milestones.filter((m) => m.userId === userId)
   );
   const [openModalMilestoneId, setOpenModalMilestoneId] = useState<
     string | null
   >(null);
   const openingModalMilestone = useMemo(
     () => lifeEvents.find((l) => l.milestoneId === openModalMilestoneId),
-    [openModalMilestoneId, lifeEvents],
+    [openModalMilestoneId, lifeEvents]
   );
   const handleEtidModal = useMemo(() => {
     return {
@@ -48,32 +48,32 @@ const EditingCareerCalendar = ({ userId }: Props) => {
               : {
                   ...newLifeEvent,
                   milestoneId: String(Math.random() * 10000),
-                },
-          ),
+                }
+          )
         );
         return;
       }
       setLifeEvents(
         lifeEvents.map((l) =>
-          l.milestoneId === newLifeEvent.milestoneId ? newLifeEvent : l,
-        ),
+          l.milestoneId === newLifeEvent.milestoneId ? newLifeEvent : l
+        )
       );
     },
-    [lifeEvents],
+    [lifeEvents]
   );
 
   const deleteLifeEvent = useCallback(
     (lifeEventId: string) => {
       setLifeEvents(lifeEvents.filter((l) => l.milestoneId !== lifeEventId));
     },
-    [lifeEvents],
+    [lifeEvents]
   );
 
   const addNewLifeEvent = useCallback(
     (newLifeEvent: Milestone) => {
       setLifeEvents([...lifeEvents, newLifeEvent]);
     },
-    [lifeEvents],
+    [lifeEvents]
   );
 
   const handleClickCalender = useCallback(
@@ -94,7 +94,7 @@ const EditingCareerCalendar = ({ userId }: Props) => {
         finishDate: `${newLifeEventBeginYear}-12-01`,
       });
     },
-    [userId, openModalMilestoneId, addNewLifeEvent],
+    [userId, openModalMilestoneId, addNewLifeEvent]
   );
 
   return (
@@ -146,18 +146,36 @@ const EditingCareerCalendar = ({ userId }: Props) => {
       {openingModalMilestone && (
         <div className="fixed top-8 right-8 w-1/2 bg-white text-black p-5 shadow-2xl rounded-lg border z-50">
           <div className="relative">
-            <button
-              type="button"
-              onClick={() => {
-                handleEtidModal.close();
-                deleteLifeEvent("");
-              }}
-              className="border-[1.5px] p-3 rounded-full h-14 w-14 flex justify-center items-center absolute right-0 hover:opacity-50"
-              title="変更を破棄してモーダルを閉じる"
-              aria-label="変更を破棄してモーダルを閉じる"
-            >
-              <span className="material-symbols-outlined">close</span>
-            </button>
+            <div className="flex absolute right-0 gap-4">
+              {openModalMilestoneId && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    handleEtidModal.close();
+                    deleteLifeEvent(openModalMilestoneId);
+                  }}
+                  className="border-[1.5px] p-3 rounded-full h-14 w-14 flex justify-center items-center hover:opacity-50"
+                  title="マイルストーンを削除する"
+                  aria-label="マイルストーンを削除する"
+                >
+                  <span className="material-symbols-outlined text-red-500">
+                    delete
+                  </span>
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={() => {
+                  handleEtidModal.close();
+                  deleteLifeEvent("");
+                }}
+                className="border-[1.5px] p-3 rounded-full h-14 w-14 flex justify-center items-center hover:opacity-50"
+                title="変更を破棄してモーダルを閉じる"
+                aria-label="変更を破棄してモーダルを閉じる"
+              >
+                <span className="material-symbols-outlined">close</span>
+              </button>
+            </div>
             <EditMilestoneForm
               lifeEvent={openingModalMilestone}
               handleSaveChange={updateLifeEvent}
