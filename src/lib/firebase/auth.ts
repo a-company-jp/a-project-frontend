@@ -8,6 +8,7 @@ export const login = (): void => {
       const credential: any = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
+      window.localStorage.setItem("token", token);
       console.log(token, user);
     })
     .catch((error) => {

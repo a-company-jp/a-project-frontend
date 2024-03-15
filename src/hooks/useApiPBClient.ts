@@ -1,4 +1,6 @@
 import axios from "axios";
+import mem from 'memoize';
+import{ AxiosError, AxiosResponse} from 'axios';
 
 const useApiPBClient = () => {
   interface BackendResponse {
@@ -6,6 +8,26 @@ const useApiPBClient = () => {
     unauthorized: boolean;
     error: any;
   }
+
+  const refreshTokenFn = async () => {
+    const refreshToken = localStorage.getItem('refresh-token')
+
+    await axios
+      .post("/user/refresh", { refreshToken })
+      .then((response: AxiosResponse) => {
+        const data = response.data
+
+        localStorage.setItem('token', data['token'])
+        localStorage.setItem('refresh-token', data['refresh-token'])
+      })
+      .catch((error: AxiosError) => {
+        localStorage.clear()
+        return Promise.reject(error)
+      });
+  }
+
+  const maxAge = 10000 //メモ化している時間
+  const memoizedRefreshToken = mem(refreshTokenFn, { maxAge });
 
   // get access token
   const token = localStorage.getItem("token");
@@ -25,6 +47,7 @@ const useApiPBClient = () => {
           return { data: resp.data, unauthorized: false, error: null };
         }
         if (resp.status === 401) {
+          memoizedRefreshToken();
           return { data: null, unauthorized: true, error: resp.status };
         }
         return { data: null, unauthorized: false, error: resp.statusText };
