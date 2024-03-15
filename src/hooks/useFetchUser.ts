@@ -13,7 +13,7 @@ const useFetchUser = () => {
             `${process.env.BACKEND_DOMAIN}/api/v1/user/info/${userId}`,
             {
                 headers: {
-                    Authorization: `token ${token}`,
+                    Authorization: `Bearer ${token}`,
                 },
             }
         )
@@ -34,7 +34,7 @@ const useFetchUser = () => {
         `${process.env.BACKEND_DOMAIN}/api/v1/user/info`, // TODO: rename to /users
         {
             headers: {
-                Authorization: `token ${token}`,
+                Authorization: `Bearer ${token}`,
             },
         }
         )
@@ -64,7 +64,7 @@ const useFetchUser = () => {
       buffer,
       {
           headers: {
-              Authorization: `token ${token}`,
+              Authorization: `Bearer ${token}`,
           },
       }
     )
@@ -95,7 +95,7 @@ const useFetchUser = () => {
       buffer,
       {
           headers: {
-              Authorization: `token ${token}`,
+              Authorization: `Bearer ${token}`,
           },
       }
     )
