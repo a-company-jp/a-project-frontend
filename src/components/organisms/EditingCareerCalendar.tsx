@@ -17,7 +17,7 @@ type Props = {
 const EditingCareerCalendar = ({ userId }: Props) => {
   const array = new Array(FULL_YEAR).fill(0);
   const [lifeEvents, setLifeEvents] = useState<Milestone[]>(
-    milestones.filter((m) => m.userId === userId)
+    milestones.filter((m) => m.userId === userId),
   );
   const [openModalMilestoneId, setOpenModalMilestoneId] = useState<
     string | null
@@ -55,11 +55,11 @@ const EditingCareerCalendar = ({ userId }: Props) => {
       }
       setLifeEvents(
         lifeEvents.map((l) =>
-          l.milestoneId === newLifeEvent.milestoneId ? newLifeEvent : l
-        )
+          l.milestoneId === newLifeEvent.milestoneId ? newLifeEvent : l,
+        ),
       );
     },
-    [lifeEvents]
+    [lifeEvents],
   );
 
   const deleteLifeEvent = useCallback(
@@ -73,7 +73,7 @@ const EditingCareerCalendar = ({ userId }: Props) => {
     (newLifeEvent: Milestone) => {
       setLifeEvents([...lifeEvents, newLifeEvent]);
     },
-    [lifeEvents]
+    [lifeEvents],
   );
 
   const handleClickCalender = useCallback(
@@ -89,7 +89,7 @@ const EditingCareerCalendar = ({ userId }: Props) => {
         milestoneId: newMilestoneId,
         title: "",
         content: "",
-        imageHash: "",
+        imageUrl: "",
         beginDate: `${newLifeEventBeginYear}-01-01`,
         finishDate: `${newLifeEventBeginYear}-12-01`,
       });

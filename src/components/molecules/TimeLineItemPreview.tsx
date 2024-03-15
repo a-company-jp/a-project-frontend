@@ -11,7 +11,7 @@ type Props = {
   content: string;
   beginDate: string;
   finishDate: string;
-  imageHash: string;
+  imageUrl?: string | undefined;
 };
 
 const TimeLineItemPreview = ({
@@ -19,7 +19,7 @@ const TimeLineItemPreview = ({
   content,
   beginDate,
   finishDate,
-  imageHash,
+  imageUrl,
 }: Props) => {
   const styles = {
     sizing: "h-36 w-11/12",
@@ -32,7 +32,7 @@ const TimeLineItemPreview = ({
       <section className={`${styles.sizing} ${styles.flex} ${styles.color}`}>
         <MileStoneDatePreview beginDate={beginDate} finishDate={finishDate} />
         <MileStoneContentPreview title={title} description={content} />
-        <MileStoneImagePreview imageHash={imageHash} />
+        <MileStoneImagePreview imageUrl={imageUrl} />
       </section>
     </>
   );

@@ -11,7 +11,7 @@ message UserData {
   string lastname_kana = 6;
   string status_message = 7;
   repeated Tag tag = 8;
-  string icon_image_hash = 9; // GCS内のファイル名
+  optional string icon_url = 9; // GCS内のファイル名
 }
 
 message Tag {
@@ -24,7 +24,7 @@ message Milestone {
   string milestone_id = 2;
   string title = 3;
   string content = 4;
-  string image_hash = 5; // GCS内のファイル名
+  optional string image_url = 5; // GCS内のファイル名
   string begin_date = 6; //  RFC3339
   string finish_date = 7; // RFC3339
 }
@@ -36,6 +36,10 @@ message UserInfoUpdateRequest {
 message UserInfoResponse {
   UserData user_data = 1;
   repeated Milestone milestones = 2;
+}
+
+message UserInfosResponse {
+  repeated UserInfoResponse user_info_responses = 1;
 }
 
 message MilestoneCreateRequest {

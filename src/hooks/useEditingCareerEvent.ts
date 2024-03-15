@@ -4,9 +4,9 @@ import { Milestone } from "../../proto/typescript/pb_out/main";
 const START_YEAR = 2022;
 
 type Props = {
-  lifeEvent: Milestone,
-  updateLifeEvent: (newLifeEvent: Milestone) => void,
-}
+  lifeEvent: Milestone;
+  updateLifeEvent: (newLifeEvent: Milestone) => void;
+};
 
 const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
   const [gridRow, setGridRow] = useState<{ start: number; end: number }>({
@@ -16,24 +16,32 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
   const [editingState, setEditingState] = useState<"grabbing" | "sliding" | "none">("none");
   const [isDragging, setIsDragging] = useState<boolean>(false);
 
-  const term = useMemo(() => ({
-    start: {
-      year: parseInt(lifeEvent.beginDate.split("-")[0]),
-      month: parseInt(lifeEvent.beginDate.split("-")[1]),
-    },
-    end: {
-      year: parseInt(lifeEvent.finishDate.split("-")[0]),
-      month: parseInt(lifeEvent.finishDate.split("-")[1]),
-    },
-  }), [lifeEvent]);
+  const term = useMemo(
+    () => ({
+      start: {
+        year: parseInt(lifeEvent.beginDate.split("-")[0]),
+        month: parseInt(lifeEvent.beginDate.split("-")[1]),
+      },
+      end: {
+        year: parseInt(lifeEvent.finishDate.split("-")[0]),
+        month: parseInt(lifeEvent.finishDate.split("-")[1]),
+      },
+    }),
+    [lifeEvent],
+  );
 
   useEffect(() => {
-    const newGridRowStart = term.start.month + (term.start.year - START_YEAR) * 12;
-    const newGridRowEnd = term.end.month + (term.end.year - START_YEAR) * 12 + 1;
+    const newGridRowStart =
+      term.start.month + (term.start.year - START_YEAR) * 12;
+    const newGridRowEnd =
+      term.end.month + (term.end.year - START_YEAR) * 12 + 1;
     setGridRow({ start: newGridRowStart, end: newGridRowEnd });
   }, [term]);
 
-  const gridRowToDateString = (inputGridRow: { start: number; end: number }) => {
+  const gridRowToDateString = (inputGridRow: {
+    start: number;
+    end: number;
+  }) => {
     const startMonth = inputGridRow.start % 12;
     const startYear = Math.floor(inputGridRow.start / 12 + START_YEAR);
     const endMonth = (inputGridRow.end - 1) % 12;
@@ -52,14 +60,14 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
       begin: `${newTerm.begin.year}-${newTerm.begin.month}-01`,
       end: `${newTerm.end.year}-${newTerm.end.month}-01`,
     };
-  }
+  };
 
   const onClickMilestone = useCallback((callback: () => void) => {
     (editingState !== "none" && !isDragging) && callback();
   }, [editingState, isDragging]);
 
   const handleMouseDownSlide = (
-    downEvent: React.MouseEvent<HTMLDivElement, MouseEvent>
+    downEvent: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
     setEditingState("grabbing");
     const draggingFrom = downEvent.clientY;
@@ -97,7 +105,9 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
     document.addEventListener("mouseup", handleMouseUp);
   };
 
-  const handleMouseDownExpansion = (downEvent: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleMouseDownExpansion = (
+    downEvent: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => {
     downEvent.stopPropagation();
     setEditingState("sliding");
     const draggingFrom = downEvent.clientY;

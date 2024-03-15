@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 interface Props {
-  iconImageHash: string;
+  iconUrl: string;
   size: number;
 }
 
@@ -11,12 +11,12 @@ interface Props {
  * ユーザーのアイコン
  */
 const UserIcon = (props: Props) => {
-  const { iconImageHash, size } = props;
+  const { iconUrl, size } = props;
 
   return (
     <div>
       <Image
-        src={iconImageHash}
+        src={iconUrl}
         alt=""
         width={size}
         height={size}

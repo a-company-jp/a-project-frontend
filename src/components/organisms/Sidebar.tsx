@@ -1,13 +1,12 @@
 import React from "react";
 import UserIcon from "../atoms/UserIcon";
 import { useRouter } from "next/navigation";
-import SidebarIcon from "../atoms/SidebarIcon";
+import SidebarIcon from "../molecules/SidebarIcon";
 import { logout } from "@/lib/firebase/auth";
 import { auth } from "@/lib/firebase/client";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const Sidebar = () => {
-
   const router = useRouter();
   const [user] = useAuthState(auth);
   const userIconSize = 48;
@@ -15,7 +14,8 @@ const Sidebar = () => {
     logout();
     router.push("/login");
   };
-  const defaultUseIcon="https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person6.jpg"
+  const defaultUseIcon =
+    "https://storage.googleapis.com/dev-open-hacku-bucket/dev-person-images/person6.jpg";
 
   return (
     <div className="w-24 h-screen outline outline-2 items-center flex flex-col justify-between outline-gray-200 ">
@@ -27,22 +27,7 @@ const Sidebar = () => {
             </span>
           }
           path="/main"
-        />
-        <SidebarIcon
-          icon={
-            <span className="material-symbols-outlined material-icons text-3xl cursor-pointer">
-              edit
-            </span>
-          }
-          path="/edit/3"
-        />
-        <SidebarIcon
-          icon={
-            <span className="material-symbols-outlined material-icons text-3xl cursor-pointer">
-              settings
-            </span>
-          }
-          path="/setting"
+          tooltipText="Home"
         />
         <SidebarIcon
           icon={
@@ -51,6 +36,25 @@ const Sidebar = () => {
             </span>
           }
           path="/future-time-line"
+          tooltipText="My Career"
+        />
+        <SidebarIcon
+          icon={
+            <span className="material-symbols-outlined material-icons text-3xl cursor-pointer">
+              edit
+            </span>
+          }
+          path="/edit/3"
+          tooltipText="Edit"
+        />
+        <SidebarIcon
+          icon={
+            <span className="material-symbols-outlined material-icons text-3xl cursor-pointer">
+              settings
+            </span>
+          }
+          path="/setting"
+          tooltipText="Profile"
         />
         <SidebarIcon
           icon={
@@ -59,11 +63,12 @@ const Sidebar = () => {
             </span>
           }
           onClick={handleClick}
+          tooltipText="Logout"
         />
       </div>
       <div className="my-4">
         <UserIcon
-          iconImageHash={user?.photoURL || defaultUseIcon}
+          iconUrl={user?.photoURL || defaultUseIcon}
           size={userIconSize}
         />
       </div>
