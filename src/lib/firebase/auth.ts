@@ -6,7 +6,7 @@ export const login = (): void => {
   signInWithPopup(auth, provider)
     .then((result) => {
       const credential: any = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
+      const token = credential.idToken;
       const user = result.user;
       window.localStorage.setItem("token", token);
       window.localStorage.setItem("refresh-token", user.refreshToken);
