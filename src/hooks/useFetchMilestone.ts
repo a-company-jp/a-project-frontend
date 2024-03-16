@@ -13,7 +13,7 @@ const useFetchMilestone = () => {
   const create = async (
     req: MilestoneCreateRequest,
   ): Promise<MilestoneCreateResponse> => {
-    return await client.post("/apu/v1/milestone", req).then((resp) => {
+    return await client.post("/api/v1/milestone", req).then((resp) => {
       if (resp.unauthorized) {
         throw new Error("unauthorized");
       }
