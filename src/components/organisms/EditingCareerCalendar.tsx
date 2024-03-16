@@ -17,7 +17,7 @@ type Props = {
 
 const EditingCareerCalendar = ({ userId }: Props) => {
   const { me } = useFetchUser();
-  const { create, update, _delete } = useFetchMilestone();
+  const { create, update, del } = useFetchMilestone();
   const [lifeEvents, setLifeEvents] = useState<Milestone[]>([]);
 
   useEffect(() => {
@@ -183,7 +183,7 @@ const EditingCareerCalendar = ({ userId }: Props) => {
                   type="button"
                   onClick={() => {
                     handleEtidModal.close();
-                    _delete(openModalMilestoneId);
+                    del(openModalMilestoneId);
                   }}
                   className="border-[1.5px] p-3 rounded-full h-14 w-14 flex justify-center items-center hover:opacity-50"
                   title="マイルストーンを削除する"
