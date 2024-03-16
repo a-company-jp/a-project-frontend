@@ -6,11 +6,10 @@ export const login = (): void => {
   signInWithPopup(auth, provider)
     .then((result) => {
       const credential: any = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.idToken;
+      const token = credential.accessToken;
       const user = result.user;
-      window.localStorage.setItem("token", token);
+      window.localStorage.setItem("token", (user as any).accessToken);
       window.localStorage.setItem("refresh-token", user.refreshToken);
-      console.log(token, user, user.refreshToken);
     })
     .catch((error) => {
       const errorCode = error.code;
