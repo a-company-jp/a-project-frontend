@@ -6,9 +6,10 @@ const START_YEAR = 2022;
 type Props = {
   lifeEvent: Milestone;
   updateLifeEvent: (newLifeEvent: Milestone) => void;
+  fetchUpdateMilestone: (milestoneId: string) => void;
 };
 
-const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
+const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent, fetchUpdateMilestone }: Props) => {
   const [gridRow, setGridRow] = useState<{ start: number; end: number }>({
     start: 0,
     end: 0,
@@ -105,6 +106,7 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
       document.removeEventListener("mouseup", handleMouseUp);
       clearInterval(intervalId);
       setIsDragging(false);
+      fetchUpdateMilestone(lifeEvent.milestoneId);
     };
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp);
@@ -144,6 +146,7 @@ const useEditingCareerEvent = ({ lifeEvent, updateLifeEvent }: Props) => {
       document.removeEventListener("mouseup", handleMouseUp);
       clearInterval(intervalId);
       setIsDragging(false);
+      fetchUpdateMilestone(lifeEvent.milestoneId);
     };
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp);
