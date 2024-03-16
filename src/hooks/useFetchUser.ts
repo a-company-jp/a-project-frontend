@@ -19,9 +19,7 @@ const useFetchUser = () => {
       if (resp.error) {
         throw new Error(resp.error);
       }
-      const encoder = new TextEncoder(); // テキストをUTF-8にエンコードするためのエンコーダー
-      const uint8Array = encoder.encode(resp.data); // 文字列をUint8Arrayにエンコード
-      return UserInfoResponse.fromBinary(uint8Array);
+      return UserInfoResponse.fromBinary(resp.data);
     });
   };
 
@@ -33,9 +31,7 @@ const useFetchUser = () => {
       if (resp.error) {
         throw new Error(resp.error);
       }
-      const encoder = new TextEncoder(); // テキストをUTF-8にエンコードするためのエンコーダー
-      const uint8Array = encoder.encode(resp.data); // 文字列をUint8Arrayにエンコード
-      return UserInfoResponse.fromBinary(uint8Array);
+      return UserInfoResponse.fromBinary(resp.data);
     });
   };
 
@@ -47,10 +43,7 @@ const useFetchUser = () => {
       if (resp.error) {
         throw new Error(resp.error);
       }
-      const encoder = new TextEncoder(); // テキストをUTF-8にエンコードするためのエンコーダー
-      const uint8Array = encoder.encode(resp.data); // 文字列をUint8Arrayにエンコード
-      console.log(UserInfosResponse.fromBinary(uint8Array));
-      return UserInfosResponse.fromBinary(uint8Array);
+      return UserInfosResponse.fromBinary(resp.data);
     });
   };
 
