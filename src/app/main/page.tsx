@@ -4,24 +4,35 @@ import CareerPreview from "@/components/organisms/CareerPreview";
 import Sidebar from "@/components/organisms/Sidebar";
 import UserList from "@/components/organisms/UserList";
 import UserSearchForm from "@/components/molecules/UserSearchForm";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { auth } from "@/lib/firebase/client";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { UserInfoResponse } from "../../../proto/typescript/pb_out/main";
 import userInfos from "@/constants/json/user-info.json"; // テストデータ読み込み
+import useFetchUser from "@/hooks/useFetchUser";
 
 const Main = () => {
   const router = useRouter();
   const [hoveredUserInfo, setHoveredUserInfo] =
     useState<UserInfoResponse | null>(null);
   const [user, isLoading] = useAuthState(auth);
-  const [allUsers] = useState<UserInfoResponse[]>(userInfos); // テストデータを初期値としてセット
+  const [allUsers, setAllUsers] = useState<UserInfoResponse[]>([]); // テストデータを初期値としてセット
   const [filteredUsers, setFilteredUsers] =
     useState<UserInfoResponse[]>(allUsers); // allUsers を初期値としてセット
   const redirectLogin = () => {
     router.push("/login");
   };
+  const { list } = useFetchUser();
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const resp = await list();
+      console.log("resp: ", resp.userInfoResponses);
+      setAllUsers(resp.userInfoResponses);
+      setFilteredUsers(resp.userInfoResponses);
+    };
+    fetchUsers();
+  }, []);
 
   const handleSearch = (keyword: string) => {
     // キーワードが空の場合、すべてのユーザーを表示する
@@ -32,7 +43,7 @@ const Main = () => {
 
     // ユーザーリストをフィルタリングして、キーワードに一致するユーザーを抽出する
     const filtered = allUsers.filter((userInfo) =>
-      userInfo.userData?.username.toLowerCase().includes(keyword.toLowerCase()),
+      userInfo.userData?.username.toLowerCase().includes(keyword.toLowerCase())
     );
 
     // フィルタリングされた結果を更新する
