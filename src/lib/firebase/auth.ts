@@ -17,6 +17,7 @@ export const login = (): void => {
       .me()
       .then((userInfo) => {
         const newUserInfo = UserData.create({
+          userId: userInfo.userData?.userId,
           username: user.displayName!,
           firstname: firstName,
           lastname: lastName,
@@ -25,7 +26,11 @@ export const login = (): void => {
           statusMessage: "",
           tag: [],
         });
-        client.update(newUserInfo);
+        client.update(newUserInfo).then(() => {
+          client.me().then((userInfo) => {
+            console.log(userInfo);
+          });
+        });
       })
       .catch((error) => {
         const errorCode = error.code;
