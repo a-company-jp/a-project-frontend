@@ -17,7 +17,7 @@ type Props = {
 
 const EditingCareerCalendar = ({ userId }: Props) => {
   const { me } = useFetchUser();
-  const { create, update, _delete } = useFetchMilestone();
+  const { create, update, del } = useFetchMilestone();
   const [lifeEvents, setLifeEvents] = useState<Milestone[]>([]);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const EditingCareerCalendar = ({ userId }: Props) => {
   >(null);
   const openingModalMilestone = useMemo(
     () => lifeEvents.find((l) => l.milestoneId === openModalMilestoneId),
-    [openModalMilestoneId, lifeEvents]
+    [openModalMilestoneId, lifeEvents],
   );
   const handleEtidModal = useMemo(() => {
     return {
@@ -51,11 +51,11 @@ const EditingCareerCalendar = ({ userId }: Props) => {
     async (newLifeEvent: Milestone) => {
       setLifeEvents(
         lifeEvents.map((l) =>
-          l.milestoneId === newLifeEvent.milestoneId ? newLifeEvent : l
-        )
+          l.milestoneId === newLifeEvent.milestoneId ? newLifeEvent : l,
+        ),
       );
     },
-    [lifeEvents]
+    [lifeEvents],
   );
 
   const fetchUpdateMilestone = useCallback(
@@ -64,7 +64,7 @@ const EditingCareerCalendar = ({ userId }: Props) => {
         milestone: lifeEvents.find((l) => l.milestoneId === milestoneId),
       });
     },
-    [lifeEvents, update]
+    [lifeEvents, update],
   );
 
   const updateLifeEvent = useCallback(
@@ -73,37 +73,37 @@ const EditingCareerCalendar = ({ userId }: Props) => {
         const createdMilestone = await create({ milestone: newLifeEvent });
         const validated = createdMilestone.milestone;
         const removedNoIdMilestone = lifeEvents.filter(
-          (l) => l.milestoneId !== ""
+          (l) => l.milestoneId !== "",
         );
         setLifeEvents(
           validated
             ? [...removedNoIdMilestone, validated]
-            : removedNoIdMilestone
+            : removedNoIdMilestone,
         );
         return;
       }
       setLifeEvents(
         lifeEvents.map((l) =>
-          l.milestoneId === newLifeEvent.milestoneId ? newLifeEvent : l
-        )
+          l.milestoneId === newLifeEvent.milestoneId ? newLifeEvent : l,
+        ),
       );
       update({ milestone: newLifeEvent });
     },
-    [lifeEvents, create, update]
+    [lifeEvents, create, update],
   );
 
   const deleteLifeEvent = useCallback(
     (lifeEventId: string) => {
       setLifeEvents(lifeEvents.filter((l) => l.milestoneId !== lifeEventId));
     },
-    [lifeEvents]
+    [lifeEvents],
   );
 
   const addNewLifeEvent = useCallback(
     (newLifeEvent: Milestone) => {
       setLifeEvents([...lifeEvents, newLifeEvent]);
     },
-    [lifeEvents]
+    [lifeEvents],
   );
 
   const handleClickCalender = useCallback(
@@ -124,7 +124,7 @@ const EditingCareerCalendar = ({ userId }: Props) => {
         finishDate: `${newLifeEventBeginYear}-12-01`,
       });
     },
-    [userId, openModalMilestoneId, addNewLifeEvent]
+    [userId, openModalMilestoneId, addNewLifeEvent],
   );
 
   return (
@@ -183,7 +183,7 @@ const EditingCareerCalendar = ({ userId }: Props) => {
                   type="button"
                   onClick={() => {
                     handleEtidModal.close();
-                    _delete(openModalMilestoneId);
+                    del(openModalMilestoneId);
                   }}
                   className="border-[1.5px] p-3 rounded-full h-14 w-14 flex justify-center items-center hover:opacity-50"
                   title="マイルストーンを削除する"
