@@ -1,12 +1,14 @@
-export default function Home() {
-  return <div>{/* ホームページのコンテンツ */}</div>;
-}
+"use client";
 
-export async function getServerSideProps() {
-  return {
-    redirect: {
-      destination: "/main", // リダイレクト先
-      permanent: false, // 301(永続的)か302(一時的)かを選択
-    },
-  };
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+export default function Home() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push("/main");
+  }, [router]);
+
+  return <div></div>;
 }
