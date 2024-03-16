@@ -52,7 +52,7 @@ const useFetchUser = () => {
     });
   };
 
-  const create = async (newUser: UserData): Promise<UserInfoResponse> => {
+  const update = async (newUser: UserData): Promise<UserInfoResponse> => {
     return await client.put(`/user/${newUser.userId}`, newUser).then((resp) => {
       if (resp.unauthorized) {
         throw new Error("unauthorized");
@@ -68,7 +68,7 @@ const useFetchUser = () => {
     return await client.imageUpload(userId, file);
   };
 
-  return { me, get, list, create };
+  return { me, get, list, update };
 };
 
 export default useFetchUser;
