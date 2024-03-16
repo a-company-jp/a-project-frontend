@@ -41,10 +41,18 @@ const useApiPBClient = () => {
     params?: Record<string, any>,
   ): Promise<BackendResponse> => {
     return await axios
-      .get(process.env.NEXT_PUBLIC_BACKEND_DOMAIN + url, { params, headers })
+      .get(process.env.NEXT_PUBLIC_BACKEND_DOMAIN + url, {
+        params,
+        headers,
+        responseType: "arraybuffer",
+      })
       .then((resp) => {
         if (resp.status < 210) {
-          return { data: resp.data, unauthorized: false, error: null };
+          return {
+            data: new Uint8Array(resp.data),
+            unauthorized: false,
+            error: null,
+          };
         }
         if (resp.status === 401) {
           memoizedRefreshToken();
@@ -56,10 +64,17 @@ const useApiPBClient = () => {
 
   const put = async (url: string, body: any): Promise<BackendResponse> => {
     return await axios
-      .put(process.env.NEXT_PUBLIC_BACKEND_DOMAIN + url, body, { headers })
+      .put(process.env.NEXT_PUBLIC_BACKEND_DOMAIN + url, body, {
+        headers,
+        responseType: "arraybuffer",
+      })
       .then((resp) => {
         if (resp.status < 210) {
-          return { data: resp.data, unauthorized: false, error: null };
+          return {
+            data: new Uint8Array(resp.data),
+            unauthorized: false,
+            error: null,
+          };
         }
         if (resp.status === 401) {
           return { data: null, unauthorized: true, error: resp.status };
@@ -73,7 +88,11 @@ const useApiPBClient = () => {
       .post(process.env.NEXT_PUBLIC_BACKEND_DOMAIN + url, body, { headers })
       .then((resp) => {
         if (resp.status < 210) {
-          return { data: resp.data, unauthorized: false, error: null };
+          return {
+            data: new Uint8Array(resp.data),
+            unauthorized: false,
+            error: null,
+          };
         }
         if (resp.status === 401) {
           return { data: null, unauthorized: true, error: resp.status };
@@ -84,10 +103,17 @@ const useApiPBClient = () => {
 
   const del = async (url: string): Promise<BackendResponse> => {
     return await axios
-      .delete(process.env.NEXT_PUBLIC_BACKEND_DOMAIN + url, { headers })
+      .delete(process.env.NEXT_PUBLIC_BACKEND_DOMAIN + url, {
+        headers,
+        responseType: "arraybuffer",
+      })
       .then((resp) => {
         if (resp.status < 210) {
-          return { data: resp.data, unauthorized: false, error: null };
+          return {
+            data: new Uint8Array(resp.data),
+            unauthorized: false,
+            error: null,
+          };
         }
         if (resp.status === 401) {
           return { data: null, unauthorized: true, error: resp.status };
